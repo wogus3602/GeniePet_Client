@@ -2,7 +2,7 @@
 
 
 ## Django structure
-
+http://localhost:8000/admin/
 ```
 localhost:8000
 ├── admin
