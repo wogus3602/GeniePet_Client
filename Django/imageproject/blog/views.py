@@ -11,10 +11,9 @@ from rest_framework.authentication import SessionAuthentication
 class AllPost(APIView):
 
 	authentication_classes = (TokenAuthentication, SessionAuthentication)
-	permission_classes = (IsAuthenticated,)
+	#permission_classes = (IsAuthenticated,)
 
-	
 	def get(self, request):
-		allpost = Post.objects.order_by('id')
+		allpost = Post.objects.all()
 		serializer = postSerializer(allpost, many=True)
 		return Response(serializer.data)

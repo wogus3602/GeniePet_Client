@@ -8,6 +8,10 @@ from rest_framework.serializers import (
 from create_app.models import Post
 
 
+# class postSerializer(serializers.ModelSerializer):
+#    class Meta:
+#       model = Post
+#       fields = '__all__'
 
 class CreateSerializer(ModelSerializer):
    class Meta:
