@@ -1,5 +1,7 @@
 # GeniePet_Client
 
+
+## Django root
 http://localhost:8000/admin/
 
 http://localhost:8000/post/create/
