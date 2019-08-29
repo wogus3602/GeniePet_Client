@@ -1,14 +1,18 @@
 # GeniePet_Client
 
 
-## Django root
-http://localhost:8000/admin/
+## Django structure
 
-http://localhost:8000/post/create/
-
-http://localhost:8000/blog/post/
-
-http://localhost:8000/image/upload/
+```
+localhost:8000
+├── admin
+├── post
+│   ├── create
+├── blog
+│   ├── post
+├── image
+│   ├── upload
+```
 
 
 
