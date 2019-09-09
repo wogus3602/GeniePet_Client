@@ -10,8 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -109,7 +110,7 @@ public class GetImageActivity extends AppCompatActivity {
         if (requestCode == PICK_FROM_ALBUM) {
 
             Uri photoUri = data.getData();
-
+            Log.d("photoUri",""+data.getData());
             Cursor cursor = null;
 
             try {
@@ -128,19 +129,15 @@ public class GetImageActivity extends AppCompatActivity {
                 cursor.moveToFirst();
 
                 tempFile = new File(cursor.getString(column_index));
-                Log.d("333333333",""+tempFile);
             } finally {
                 if (cursor != null) {
                     cursor.close();
                 }
             }
-
             setImage();
-
         }
 
         else if (requestCode == PICK_FROM_CAMERA) {
-
             setImage();
         }
     }
@@ -189,13 +186,16 @@ public class GetImageActivity extends AppCompatActivity {
         String imageFileName = "blackJin_" + timeStamp + "_";
 
         // 이미지가 저장될 폴더 이름 ( blackJin )
+        File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),"Camera/");
 
-        File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),"Genie/");
-        if (!storageDir.exists()) storageDir.mkdirs();
-        Log.d("22222222222",""+storageDir);
-        // 빈 파일 생성
+        if (!storageDir.exists()) {
+            Log.d("22222222222","생성완료"+storageDir);
+            storageDir.mkdirs();
+        }else{
+            Log.d("Fail","Fail");
+        }
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-
+        getApplicationContext().sendBroadcast(new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(image)) );
         return image;
     }
 }

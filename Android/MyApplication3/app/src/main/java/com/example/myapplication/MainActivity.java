@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -13,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
