@@ -1,5 +1,4 @@
-package com.alpha.hcamera;
-
+package com.example.myapplication;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,20 +6,21 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
+
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,9 +30,10 @@ public class GetImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_image_layout);
-        Button bt_camera = (Button)findViewById(R.id.btnCamera);
-        Button bt_album = (Button)findViewById(R.id.btnGallery);
-        Button bt_go_profile = (Button)findViewById(R.id.go_profile_button);
+
+        Button bt_camera = findViewById(R.id.btnCamera);
+        Button bt_album = findViewById(R.id.btnGallery);
+        Button bt_go_profile = findViewById(R.id.go_profile_button);
         bt_go_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,16 +84,14 @@ public class GetImageActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent, PICK_FROM_ALBUM);
-
     }
     public File tempFile;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        Log.d("11111",""+resultCode);
+        Log.d("11111",""+Activity.RESULT_OK);
 
         if (resultCode != Activity.RESULT_OK) {
-
+            Log.d("22222",""+Activity.RESULT_OK);
             Toast.makeText(this, "취소되었습니다.", Toast.LENGTH_SHORT).show();
 
             if(tempFile != null) {
@@ -114,7 +113,6 @@ public class GetImageActivity extends AppCompatActivity {
             Cursor cursor = null;
 
             try {
-
                 /*
                  *  Uri 스키마를
                  *  content:/// 에서 file:/// 로  변경한다.
@@ -130,7 +128,7 @@ public class GetImageActivity extends AppCompatActivity {
                 cursor.moveToFirst();
 
                 tempFile = new File(cursor.getString(column_index));
-
+                Log.d("333333333",""+tempFile);
             } finally {
                 if (cursor != null) {
                     cursor.close();
@@ -155,8 +153,6 @@ public class GetImageActivity extends AppCompatActivity {
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
 
         imageView.setImageBitmap(originalBm);
-
-
     }
 
     private void takePhoto() {
@@ -175,16 +171,14 @@ public class GetImageActivity extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 
                 Uri photoUri = FileProvider.getUriForFile(this,
-                        "alpha.provider", tempFile);
+                        "example.provider", tempFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(intent, PICK_FROM_CAMERA);
 
             } else {
-
                 Uri photoUri = Uri.fromFile(tempFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(intent, PICK_FROM_CAMERA);
-
             }
         }
     }
@@ -194,11 +188,11 @@ public class GetImageActivity extends AppCompatActivity {
         String timeStamp = new java.text.SimpleDateFormat("HHmmss").format(new java.util.Date());
         String imageFileName = "blackJin_" + timeStamp + "_";
 
-
         // 이미지가 저장될 폴더 이름 ( blackJin )
 
         File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),"Genie/");
         if (!storageDir.exists()) storageDir.mkdirs();
+        Log.d("22222222222",""+storageDir);
         // 빈 파일 생성
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
 

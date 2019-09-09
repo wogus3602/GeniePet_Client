@@ -1,11 +1,7 @@
-package com.alpha.hcamera;
+package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
 
