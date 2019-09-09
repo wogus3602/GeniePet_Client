@@ -22,11 +22,17 @@ import android.widget.Toast;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class GetImageActivity extends AppCompatActivity {
+    private static final int PICK_FROM_ALBUM = 1;
+    private static final int PICK_FROM_CAMERA = 2;
+    private static final String TAG = "FragmentActivity";
+    public File tempFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +64,6 @@ public class GetImageActivity extends AppCompatActivity {
         tedPermission();
     }
 
-    private static final int PICK_FROM_ALBUM = 1;
-    private static final int PICK_FROM_CAMERA = 2;
-    private static final String TAG = "FragmentActivity";
 
     private void tedPermission() {
         PermissionListener permissionListener = new PermissionListener() {
@@ -86,13 +89,11 @@ public class GetImageActivity extends AppCompatActivity {
         intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent, PICK_FROM_ALBUM);
     }
-    public File tempFile;
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("11111",""+Activity.RESULT_OK);
 
         if (resultCode != Activity.RESULT_OK) {
-            Log.d("22222",""+Activity.RESULT_OK);
             Toast.makeText(this, "취소되었습니다.", Toast.LENGTH_SHORT).show();
 
             if(tempFile != null) {
@@ -103,16 +104,13 @@ public class GetImageActivity extends AppCompatActivity {
                     }
                 }
             }
-
             return;
         }
 
         if (requestCode == PICK_FROM_ALBUM) {
-
             Uri photoUri = data.getData();
             Log.d("photoUri",""+data.getData());
             Cursor cursor = null;
-
             try {
                 /*
                  *  Uri 스키마를
@@ -143,17 +141,27 @@ public class GetImageActivity extends AppCompatActivity {
     }
 
     private void setImage() {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
+        Log.d("11111",""+tempFile.getAbsolutePath());
+
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        //Bitmap sendBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        intent.putExtra("image",byteArray);
+        startActivity(intent);
 
         ImageView imageView = findViewById(R.id.get_imageview);
 
-        BitmapFactory.Options options = new BitmapFactory.Options();
-        Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
 
         imageView.setImageBitmap(originalBm);
     }
 
     private void takePhoto() {
-
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         try {
@@ -188,12 +196,8 @@ public class GetImageActivity extends AppCompatActivity {
         // 이미지가 저장될 폴더 이름 ( blackJin )
         File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),"Camera/");
 
-        if (!storageDir.exists()) {
-            Log.d("22222222222","생성완료"+storageDir);
-            storageDir.mkdirs();
-        }else{
-            Log.d("Fail","Fail");
-        }
+        if (!storageDir.exists()) storageDir.mkdirs();
+
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
         getApplicationContext().sendBroadcast(new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(image)) );
         return image;

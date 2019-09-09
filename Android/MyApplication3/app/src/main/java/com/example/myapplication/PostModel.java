@@ -11,6 +11,4 @@ public class PostModel {
         this.title = title;
         this.text = text;
     }
-
-
 }

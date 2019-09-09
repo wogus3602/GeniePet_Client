@@ -211,8 +211,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("fail", "fail" + t);
             }
         });
-
-
     }
 
 

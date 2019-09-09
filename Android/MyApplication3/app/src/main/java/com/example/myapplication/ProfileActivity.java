@@ -1,6 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -9,14 +14,15 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
+
+
+        Intent intent = getIntent();
+        byte[] arr = getIntent().getByteArrayExtra("image");
+        Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
+        ImageView BigImage = findViewById(R.id.profile_imageview);
+        BigImage.setImageBitmap(image);
+
     }
 
-//    private void setImage() {
-//        ImageView imageView = findViewById(R.id.get_imageview);
-//
-//        BitmapFactory.Options options = new BitmapFactory.Options();
-//        Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
-//
-//        imageView.setImageBitmap(originalBm);
-//    }
+
 }
