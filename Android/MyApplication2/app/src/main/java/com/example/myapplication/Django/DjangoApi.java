@@ -16,6 +16,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Body;
+import retrofit2.http.Query;
 
 
 public interface DjangoApi {
@@ -37,5 +38,8 @@ public interface DjangoApi {
 
     @GET("post/")
     Call<List<PostsAdapter>> getPost(@Header("Authorization")  String djangoToken);
+
+    @GET ("comments")
+    Call<ResponseBody>getComment(@Query("result") String result);
 
 }
