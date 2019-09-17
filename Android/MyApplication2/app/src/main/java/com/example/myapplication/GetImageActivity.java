@@ -126,7 +126,6 @@ public class GetImageActivity extends AppCompatActivity {
             }
             setImage();
         }
-
         else if (requestCode == PICK_FROM_CAMERA) {
             setImage();
         }
@@ -143,10 +142,6 @@ public class GetImageActivity extends AppCompatActivity {
         intent.putExtra("image",byteArray);
         intent.putExtra("imageLocation",tempFile.toString());
         startActivity(intent);
-
-        ImageView imageView = findViewById(R.id.get_imageview);
-
-        imageView.setImageBitmap(originalBm);
     }
 
     private void takePhoto() {

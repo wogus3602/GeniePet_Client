@@ -20,10 +20,10 @@ import retrofit2.http.Query;
 
 
 public interface DjangoApi {
-
-    String DJANGO_SITE = "http://220.79.163.115:8000/image/";
-    String DJANGO_SITE2 = "http://220.79.163.115:8000/post/";
-    String DJANGO_SITE3 = "http://220.79.163.115:8000/blog/";  //로그인 주소
+    String Ipaddress = "http://c92f9911.ngrok.io/";
+    String DJANGO_SITE = Ipaddress + "image/";
+    String DJANGO_SITE2 = Ipaddress + "post/";
+    String DJANGO_SITE3 = Ipaddress + "blog/";  //로그인 주소
 
     @Multipart
     @POST("upload/")

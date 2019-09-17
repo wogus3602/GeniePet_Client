@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.Django.DjangoApi;
 import com.example.myapplication.Django.DjangoREST;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
     DjangoREST djangoREST = new DjangoREST();
-    private DjangoApi postApi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
 
-
         ImageView BigImage = findViewById(R.id.profile_imageview);
-
 
         BigImage.setImageBitmap(image);
 
@@ -50,32 +49,13 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //dogPredict();
         TextView textView =  findViewById(R.id.textView);
     }
 
     public void sendProfileInformation(){
-        TextInputLayout inputDogName = findViewById(R.id.textInputLayout);
-        TextInputLayout inputDogAge = findViewById(R.id.textInputLayout2);
-        djangoREST.AddPostServer(inputDogName.getEditText().toString(),inputDogAge.getEditText().toString());
+        TextInputEditText inputDogName = findViewById(R.id.textInputEditText1);
+        TextInputEditText inputDogAge = findViewById(R.id.textInputEditText2);
+        djangoREST.AddPostServer(inputDogName.getText().toString(),inputDogAge.getText().toString());
     }
-
-//    public void dogPredict(){
-//        Call<ResponseBody> comment = postApi.getComment("0");
-//        comment.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                try {
-//                    Log.v("Test", response.body().string());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//            }
-//        });
-//    }
 
 }
