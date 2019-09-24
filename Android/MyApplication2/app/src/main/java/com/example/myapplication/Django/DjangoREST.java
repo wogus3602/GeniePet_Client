@@ -2,6 +2,7 @@ package com.example.myapplication.Django;
 
 import android.os.Environment;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -10,8 +11,14 @@ import com.example.myapplication.DjangoAdapter.PostModel;
 //import com.example.myapplication.MainActivity;
 import com.example.myapplication.DjangoAdapter.PostsAdapter;
 import com.example.myapplication.DjangoAdapter.UserAdapter;
+import com.example.myapplication.ProfileActivity;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -27,9 +34,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DjangoREST {
     private Retrofit retrofit;
     private DjangoApi postApi;
-
+    public String MyResult;
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(DjangoApi.DJANGO_SITE)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -48,20 +56,25 @@ public class DjangoREST {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.d("good", "good" +response);
-                Log.d("body", "good"+ response.body());
-                Log.d("message", "good"+ response.message());
-                Log.d("code", "good"+ response.code());
-                Log.d("headers", "good"+ response.headers());
-                Log.d("headers", "good"+ response.raw());
+                try {
+                    MyResult = response.body().string();
+                    ProfileActivity profileActivity = new ProfileActivity();
+                    profileActivity.textView.setText(MyResult);
+                    Log.d("MyResult", "" +MyResult);
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d("fail", "fail" + t);
             }
         });
+    }
 
-
+    public String getMyResult() {
+        return MyResult;
     }
 
     //정보 올리기

@@ -26,13 +26,15 @@ import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
     DjangoREST djangoREST = new DjangoREST();
-
+    public TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
         Intent intent = getIntent();
         djangoREST.uploadFoto(intent.getExtras().getString("imageLocation"));
+        String MyResult = djangoREST.getMyResult();
+
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
 
@@ -49,7 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        TextView textView =  findViewById(R.id.textView);
+        textView =  findViewById(R.id.textView);
+        textView.setText(MyResult);
     }
 
     public void sendProfileInformation(){
