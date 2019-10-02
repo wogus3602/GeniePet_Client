@@ -2,7 +2,6 @@ package com.example.myapplication.Django;
 
 import android.os.Environment;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -11,7 +10,6 @@ import com.example.myapplication.DjangoAdapter.PostModel;
 //import com.example.myapplication.MainActivity;
 import com.example.myapplication.DjangoAdapter.PostsAdapter;
 import com.example.myapplication.DjangoAdapter.UserAdapter;
-import com.example.myapplication.ProfileActivity;
 import com.google.gson.JsonObject;
 
 import org.json.JSONException;
@@ -35,6 +33,11 @@ public class DjangoREST {
     private Retrofit retrofit;
     private DjangoApi postApi;
     public String MyResult;
+
+    public void setMyResult(String myResult) {
+        MyResult = myResult;
+    }
+
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
 
@@ -58,14 +61,13 @@ public class DjangoREST {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     MyResult = response.body().string();
-                    ProfileActivity profileActivity = new ProfileActivity();
-                    profileActivity.textView.setText(MyResult);
+                    setMyResult(MyResult);
                     Log.d("MyResult", "" +MyResult);
                 }catch (IOException e){
                     e.printStackTrace();
                 }
-
             }
+
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d("fail", "fail" + t);
@@ -78,7 +80,7 @@ public class DjangoREST {
     }
 
     //정보 올리기
-    public void AddPostServer(String name, String age) {
+    public void AddPostServer(String name, String age, String species) {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(DjangoApi.DJANGO_SITE2)
@@ -87,8 +89,9 @@ public class DjangoREST {
         postApi= retrofit.create(DjangoApi.class);
 
         PostModel postModel = new PostModel(
+                name,
                 age,
-                name
+                species
         );
 
         Call<ResponseBody> comment = postApi.addPostVoditel(postModel);
@@ -179,6 +182,8 @@ public class DjangoREST {
 
                             String text = h.getText();
                             //Toast.makeText(MainActivity.mContext.getApplicationContext(), text, Toast.LENGTH_SHORT).show();
+
+                            String species = h.getSpecies();
                         }
 
                     }

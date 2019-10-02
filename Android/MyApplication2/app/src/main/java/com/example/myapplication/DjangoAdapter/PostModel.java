@@ -2,12 +2,14 @@ package com.example.myapplication.DjangoAdapter;
 
 public class PostModel {
 
-    private String title;
-    private String text;
+    private String name;
+    private String age;
+    private  String species;
 
-    public PostModel(String title, String text)
+    public PostModel(String name, String age, String species)
     {
-        this.title = title;
-        this.text = text;
+        this.name = name;
+        this.age = age;
+        this.species = species;
     }
 }

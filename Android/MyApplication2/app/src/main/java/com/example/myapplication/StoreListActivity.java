@@ -38,7 +38,7 @@ public class StoreListActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... Params) {
             try{
-                String site_url_json = "http://a163585f.ngrok.io/feed";
+                String site_url_json = "http://ce6f58e7.ngrok.io/feed";
                 URL url = new URL(site_url_json);
 
                 urlconnection = (HttpURLConnection) url.openConnection();

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.example.myapplication.Django.DjangoREST;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -33,6 +34,7 @@ public class GetImageActivity extends AppCompatActivity {
     private static final String TAG = "FragmentActivity";
     public File tempFile;
     public String storageDirectory;
+    DjangoREST djangoREST = new DjangoREST();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,13 +103,8 @@ public class GetImageActivity extends AppCompatActivity {
 
         if (requestCode == PICK_FROM_ALBUM) {
             Uri photoUri = data.getData();
-            Log.d("photoUri",""+data.getData());
             Cursor cursor = null;
             try {
-                /*
-                 *  Uri 스키마를
-                 *  content:/// 에서 file:/// 로  변경한다.
-                 */
                 String[] proj = { MediaStore.Images.Media.DATA };
 
                 assert photoUri != null;
@@ -134,7 +131,6 @@ public class GetImageActivity extends AppCompatActivity {
     private void setImage() {
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
-
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);

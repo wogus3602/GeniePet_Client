@@ -20,16 +20,16 @@ import retrofit2.http.Query;
 
 
 public interface DjangoApi {
-    String Ipaddress = "https://e0d51fc2.ngrok.io/";
+    String Ipaddress = "http://ce6f58e7.ngrok.io/";
     String DJANGO_SITE = Ipaddress + "pot/";
-    String DJANGO_SITE2 = Ipaddress + "post/";
+    String DJANGO_SITE2 = Ipaddress ;
     String DJANGO_SITE3 = Ipaddress + "blog/";  //로그인 주소
 
     @Multipart
     @POST("upload/")
     Call<ResponseBody> uploadFile(@Part MultipartBody.Part file);
 
-    @POST("create/")
+    @POST("dog/")
     Call<ResponseBody> addPostVoditel(@Body PostModel postModel);
 
     //로그인 부분
