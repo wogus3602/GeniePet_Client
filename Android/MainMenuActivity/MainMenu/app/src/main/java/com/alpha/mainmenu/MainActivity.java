@@ -1,9 +1,12 @@
 package com.alpha.mainmenu;
 
-import android.support.v7.app.AppCompatActivity;
+
+
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView_item = (RecyclerView) findViewById(R.id.activity_recycler);
         RecyclerVerticalAdapter verticalAdapter = new RecyclerVerticalAdapter(this, all);
         recyclerView_item.setHasFixedSize(true);
-        recyclerView_item.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        recyclerView_item.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
 //      ---- layoutManager_menu = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
 //      ---- HORIZONTAL로 수직, 수평을 구분하고 / reverseLayout으로 아이템 순서를 구분할 수 있음
         recyclerView_item.setAdapter(verticalAdapter);
