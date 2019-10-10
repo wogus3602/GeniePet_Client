@@ -26,7 +26,9 @@ import com.gun0912.tedpermission.TedPermission;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class GetImageActivity extends AppCompatActivity {
     private static final int PICK_FROM_ALBUM = 1;
@@ -34,6 +36,7 @@ public class GetImageActivity extends AppCompatActivity {
     private static final String TAG = "FragmentActivity";
     public File tempFile;
     public String storageDirectory;
+    ImageView imageView;
     DjangoREST djangoREST = new DjangoREST();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class GetImageActivity extends AppCompatActivity {
 
         Button bt_camera = findViewById(R.id.btnCamera);
         Button bt_album = findViewById(R.id.btnGallery);
-
+        imageView = findViewById(R.id.get_imageview);
         bt_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,14 +133,19 @@ public class GetImageActivity extends AppCompatActivity {
 
     private void setImage() {
         BitmapFactory.Options options = new BitmapFactory.Options();
+        Log.d("tempFile : ",""+tempFile);
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
-        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        intent.putExtra("image",byteArray);
-        intent.putExtra("imageLocation",tempFile.toString());
-        startActivity(intent);
+
+
+        //Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        //byte[] byteArray = stream.toByteArray();
+        imageView.setImageBitmap(originalBm);
+        //intent.putExtra("image",byteArray);
+        //intent.putExtra("imageLocation",tempFile.toString());
+        //startActivity(intent);
     }
 
     private void takePhoto() {
@@ -155,7 +163,7 @@ public class GetImageActivity extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 
                 Uri photoUri = FileProvider.getUriForFile(this,
-                        "example.provider", tempFile);
+                        "com.example.myapplication.provider", tempFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(intent, PICK_FROM_CAMERA);
 
@@ -167,18 +175,18 @@ public class GetImageActivity extends AppCompatActivity {
         }
     }
     private File createImageFile() throws IOException {
-
-        // 이미지 파일 이름 ( blackJin_{시간}_ )
-        String timeStamp = new java.text.SimpleDateFormat("HHmmss").format(new java.util.Date());
+        //String imagePath;
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "Genie_" + timeStamp + "_";
-        // 이미지가 저장될 폴더 이름 ( Genie_ )
-        File storageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM),"Camera/");
+        File storageDir = new File(Environment.getExternalStorageDirectory(),"Genie/");
 
         if (!storageDir.exists()) storageDir.mkdirs();
 
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-        storageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM) + "Camera/" + imageFileName+".jpg";
-        getApplicationContext().sendBroadcast(new Intent( Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(image)) );
+        //storageDirectory = Environment.getExternalStorageDirectory() + "Genie/" + imageFileName+".jpg";
+
+        getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(image)) );
+        Log.d("image : ",""+image);
         return image;
     }
 }
