@@ -1,22 +1,6 @@
 # GeniePet_Client
 
 
-## Django structure
-http://localhost:8000/admin/
-```
-localhost:8000
-├── admin
-├── post
-│   ├── create
-├── blog
-│   ├── post
-├── image
-│   ├── upload
-```
-
-
-
-![android](./picture/android_1.png)
-
-![django](./picture/django_1.png)
-
+# 진행상황
+~2019.10.09 - 딥러닝 모델(견종 파악), 서버와 통신 코드
+2019.10.10 - 홈메인, BottomNavigation 완성
