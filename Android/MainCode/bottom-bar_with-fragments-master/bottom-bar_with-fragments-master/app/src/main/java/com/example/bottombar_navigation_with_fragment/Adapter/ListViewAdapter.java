@@ -1,4 +1,4 @@
-package com.example.bottombar_navigation_with_fragment;
+package com.example.bottombar_navigation_with_fragment.Adapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.bottombar_navigation_with_fragment.ListVO;
+import com.example.bottombar_navigation_with_fragment.R;
 
 import java.util.ArrayList;
 
