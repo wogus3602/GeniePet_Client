@@ -1,7 +1,9 @@
 package com.example.bottombar_navigation_with_fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -10,6 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.bottombar_navigation_with_fragment.Fragment.DashboardFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.HomeFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -43,6 +48,11 @@ public class MainActivity extends AppCompatActivity implements
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
             public void itemClick(View view, int pos) {
+                Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
+                if(pos==6){
+                    Intent intent = new Intent(getApplicationContext(),StoreListActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
