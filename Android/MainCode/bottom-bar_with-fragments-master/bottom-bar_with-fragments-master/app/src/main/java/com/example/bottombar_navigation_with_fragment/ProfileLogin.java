@@ -1,8 +1,6 @@
 package com.example.bottombar_navigation_with_fragment;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.bottombar_navigation_with_fragment.Fragment.RightFragment;
 import com.example.bottombar_navigation_with_fragment.model.Login;
 import com.example.bottombar_navigation_with_fragment.model.User;
 
@@ -24,12 +23,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.content.Context.MODE_PRIVATE;
-
 
 public class ProfileLogin extends Fragment implements View.OnClickListener {
-
-
     EditText Edreg_username;
     EditText Edreg_password;
     EditText Edreg_email;
@@ -47,16 +42,13 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
 
 
-        Button logBtn = (Button) rootView.findViewById(R.id.login_button);
-        Button to_reg_Btn = (Button) rootView.findViewById(R.id.to_registration_button);
+        Button logBtn = rootView.findViewById(R.id.login_button);
+        Button to_reg_Btn = rootView.findViewById(R.id.to_registration_button);
 
 
-        Edreg_username = (EditText) rootView.findViewById(R.id.reg_username);
-        Edreg_password = (EditText) rootView.findViewById(R.id.reg_password);
-        Edreg_email = (EditText) rootView.findViewById(R.id.reg_email);
-
-
-
+        Edreg_username = rootView.findViewById(R.id.reg_username);
+        Edreg_password = rootView.findViewById(R.id.reg_password);
+        Edreg_email = rootView.findViewById(R.id.reg_email);
 
         logBtn.setOnClickListener(this);
         to_reg_Btn.setOnClickListener(this);
@@ -137,18 +129,18 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
-
-
                     if (response.body() != null) {
 
                         String token = response.body().getToken();
 
+                        SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
 
-                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
-                        SharedPreferences.Editor prefLoginEdit = preferences.edit();
-                        prefLoginEdit.putBoolean("loggedin", true);
-                        prefLoginEdit.putString("token", token);
-                        prefLoginEdit.commit();
+
+//                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
+//                        SharedPreferences.Editor prefLoginEdit = preferences.edit();
+//                        prefLoginEdit.putBoolean("loggedin", true);
+//                        prefLoginEdit.putString("token", token);
+//                        prefLoginEdit.commit();
 
 //                        SharedPreferences preferences1 = getActivity().getSharedPreferences("setting", MODE_PRIVATE);
 //                        SharedPreferences.Editor editor = preferences1.edit();
@@ -158,9 +150,9 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
                         Toast.makeText(getContext(), token, Toast.LENGTH_SHORT).show();
 
-//                        Fragment fragment = null;
-//                        fragment = new Home();
-//                        replaceFragment(fragment);
+                        Fragment fragment = null;
+                        fragment = new RightFragment();
+                        replaceFragment(fragment);
 
                     }
 
@@ -182,9 +174,9 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
         if(Edreg_password.getText().toString().isEmpty() || Edreg_username.getText().toString().isEmpty()){
 
-            SharedPreferences sf = getActivity().getSharedPreferences("myPrefs",MODE_PRIVATE);
-            String token = sf.getString("token","");
-            Log.d("sf Text : ",""+token);
+//            SharedPreferences sf = getActivity().getSharedPreferences("myPrefs",MODE_PRIVATE);
+//            String token = sf.getString("token","");
+//            Log.d("sf Text : ",""+token);
             //Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
 
             Toast toast = Toast.makeText(getActivity(),"Empty EditText", Toast.LENGTH_LONG);

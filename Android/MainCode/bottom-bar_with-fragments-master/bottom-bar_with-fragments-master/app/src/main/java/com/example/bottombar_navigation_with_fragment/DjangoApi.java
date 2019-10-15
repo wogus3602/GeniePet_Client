@@ -12,10 +12,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface DjangoApi {
-    String root = "http://a59c35f9.ngrok.io/";  // 기본주소
+    String root = "http://662e3a3f.ngrok.io/";  // 기본주소
     String DJANGO_SITE = root + "pot/";
-    String login_page = root + "auth/login";  //로그인 페이지
-    String reg_page = root + "auth/regiter";  // 회원가입 페이지
+    String login_page = root + "auth/";  //로그인 페이지
+    String reg_page = root + "auth/";  // 회원가입 페이지
     String DJANGO_SITE3 = root + "blog/";  //로그인 주소
 
     @Multipart
@@ -30,7 +30,7 @@ public interface DjangoApi {
     Call<User> login(@Body Login login);
 
     //회원가입
-    @POST("register/")
+    @POST("regiter/")
     Call<User> registrationUser(@Body User userModel);
 
 }

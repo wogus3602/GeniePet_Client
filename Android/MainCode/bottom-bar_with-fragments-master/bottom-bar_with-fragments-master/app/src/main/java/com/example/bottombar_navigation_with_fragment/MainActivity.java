@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener {
     private int flag = 1;
     private CircleMenuLayout mCircleMenuLayout;
-    public Boolean token;
+    public Boolean loggedin;
     private SharedPreferences appData;
 
     //Circle 속성
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements
         // SharedPreferences 객체.get타입( 저장된 이름, 기본값 )
         // 저장된 이름이 존재하지 않을 시 기본값
         //saveLoginData = appData.getBoolean("SAVE_LOGIN_DATA", false);
-        token = appData.getBoolean("loggedin",false);
+        loggedin = appData.getBoolean("loggedin",false);
         //id = appData.getString("ID", "");
         //pwd = appData.getString("PWD", "");
     }
@@ -107,8 +107,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
 
             case R.id.navigation_profile:
-                if(token){
-                    Log.d("11111111",""+token);
+                if(SaveSharedPreference.getLogged(this)){
                     fragment = new RightFragment();
                 }else{
                     fragment =new ProfileLogin();
