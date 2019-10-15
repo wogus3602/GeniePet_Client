@@ -16,7 +16,7 @@ import com.example.bottombar_navigation_with_fragment.Adapter.RecyclerVerticalAd
 
 import java.util.ArrayList;
 
-public class DashboardFragment extends Fragment {
+public class CenterFragment extends Fragment {
     @Nullable
     RecyclerView recyclerView_item;
     private ArrayList<ArrayList<MainItemInfo>> all = new ArrayList();
@@ -25,8 +25,8 @@ public class DashboardFragment extends Fragment {
 
         //just change the fragment_dashboard
         //with the fragment you want to inflate
-        //like if the class is HomeFragment it should have R.layout.home_fragment
-        //if it is DashboardFragment it should have R.layout.fragment_dashboard
+        //like if the class is LeftFragment it should have R.layout.home_fragment
+        //if it is CenterFragment it should have R.layout.fragment_dashboard
 
         //목록 용 RecyclerView
         this.initializeData();

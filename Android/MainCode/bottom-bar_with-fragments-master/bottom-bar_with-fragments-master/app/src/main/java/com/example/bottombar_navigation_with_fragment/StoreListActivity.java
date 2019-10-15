@@ -19,7 +19,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class StoreListActivity extends AppCompatActivity {
+public class StoreListActivity extends AppCompatActivity{
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class StoreListActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... Params) {
             try{
-                String site_url_json = "http://d8f79318.ngrok.io/feed/";
+                String site_url_json = DjangoApi.root+"feed/";
                 URL url = new URL(site_url_json);
 
                 urlconnection = (HttpURLConnection) url.openConnection();

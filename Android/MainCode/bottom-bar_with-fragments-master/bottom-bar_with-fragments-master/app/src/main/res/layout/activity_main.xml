@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/holo_orange_light"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/navigation">
 

@@ -1,6 +1,7 @@
 package com.example.bottombar_navigation_with_fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -12,15 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.bottombar_navigation_with_fragment.Fragment.DashboardFragment;
-import com.example.bottombar_navigation_with_fragment.Fragment.HomeFragment;
-import com.example.bottombar_navigation_with_fragment.Fragment.ProfileFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.CenterFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.LeftFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.RightFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity extends AppCompatActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener {
+    private int flag = 1;
     private CircleMenuLayout mCircleMenuLayout;
+    public Boolean token;
+    private SharedPreferences appData;
+
     //Circle 속성
     String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
     float staticwidth = 0f;
@@ -32,11 +37,14 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
 
         //loading the default fragment
-        loadFragment(new HomeFragment());
+        loadFragment(new CenterFragment());
 
         //getting bottom navigation view and attaching the listener
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
+
+        appData = getSharedPreferences("myPrefs", MODE_PRIVATE);
+        load();
 
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -67,6 +75,14 @@ public class MainActivity extends AppCompatActivity implements
         });
     }
 
+    private void load() {
+        // SharedPreferences 객체.get타입( 저장된 이름, 기본값 )
+        // 저장된 이름이 존재하지 않을 시 기본값
+        //saveLoginData = appData.getBoolean("SAVE_LOGIN_DATA", false);
+        token = appData.getBoolean("loggedin",false);
+        //id = appData.getString("ID", "");
+        //pwd = appData.getString("PWD", "");
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -74,18 +90,31 @@ public class MainActivity extends AppCompatActivity implements
 
         switch (item.getItemId()) {
             case R.id.navigation_home:
-                fragment = new HomeFragment();
+                fragment = new LeftFragment();
                 mCircleMenuLayout.setVisibility(View.INVISIBLE);
+                flag = 1;
                 break;
 
             case R.id.navigation_dashboard:
-                fragment = new DashboardFragment();
-                mCircleMenuLayout.setVisibility(View.VISIBLE);
+                fragment = new CenterFragment();
+                if(flag==1) {
+                    mCircleMenuLayout.setVisibility(View.VISIBLE);
+                    flag = 0;
+                }else {
+                    mCircleMenuLayout.setVisibility(View.INVISIBLE);
+                    flag = 1;
+                }
                 break;
 
             case R.id.navigation_profile:
-                fragment = new ProfileFragment();
+                if(token){
+                    Log.d("11111111",""+token);
+                    fragment = new RightFragment();
+                }else{
+                    fragment =new ProfileLogin();
+                }
                 mCircleMenuLayout.setVisibility(View.INVISIBLE);
+                flag  = 1;
                 break;
         }
 
