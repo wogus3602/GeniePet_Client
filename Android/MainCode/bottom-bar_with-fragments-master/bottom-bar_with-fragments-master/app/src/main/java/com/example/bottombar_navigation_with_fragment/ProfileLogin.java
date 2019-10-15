@@ -36,11 +36,7 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
-
         View rootView = inflater.inflate(R.layout.profile_login, container, false);
-
-
 
         Button logBtn = rootView.findViewById(R.id.login_button);
         Button to_reg_Btn = rootView.findViewById(R.id.to_registration_button);
@@ -54,8 +50,6 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
         to_reg_Btn.setOnClickListener(this);
 
         return rootView;
-
-
     }
 
 
@@ -109,8 +103,6 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
 
     private void login(){
-
-
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(DjangoApi.login_page)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -132,9 +124,7 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
                     if (response.body() != null) {
 
                         String token = response.body().getToken();
-
                         SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
-
 
 //                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
 //                        SharedPreferences.Editor prefLoginEdit = preferences.edit();

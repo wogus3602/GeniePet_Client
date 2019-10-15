@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface DjangoApi {
-    String root = "http://662e3a3f.ngrok.io/";  // 기본주소
+    String root = "http://515f4587.ngrok.io/";  // 기본주소
     String DJANGO_SITE = root + "pot/";
     String login_page = root + "auth/";  //로그인 페이지
     String reg_page = root + "auth/";  // 회원가입 페이지

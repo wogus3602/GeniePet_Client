@@ -27,7 +27,7 @@ public class SaveSharedPreference {
     }
 
     public static Boolean getLogged(Context ctx) {
-        return getSharedPreferences(ctx).getBoolean(PREF_LOGGED,true);
+        return getSharedPreferences(ctx).getBoolean(PREF_LOGGED,false);
     }
 
     // 로그아웃
