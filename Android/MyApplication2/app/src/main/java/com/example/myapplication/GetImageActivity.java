@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -9,22 +10,28 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import com.example.myapplication.Django.DjangoREST;
+import com.google.android.material.snackbar.Snackbar;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,9 +42,10 @@ public class GetImageActivity extends AppCompatActivity {
     private static final int PICK_FROM_CAMERA = 2;
     private static final String TAG = "FragmentActivity";
     public File tempFile;
-    public String storageDirectory;
-    ImageView imageView;
+    ByteArrayOutputStream stream;
+    TextView textView;
     DjangoREST djangoREST = new DjangoREST();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +53,8 @@ public class GetImageActivity extends AppCompatActivity {
 
         Button bt_camera = findViewById(R.id.btnCamera);
         Button bt_album = findViewById(R.id.btnGallery);
-        imageView = findViewById(R.id.get_imageview);
+        Button bt_check = findViewById(R.id.check);
+        textView = findViewById(R.id.textView2);
         bt_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +65,16 @@ public class GetImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 goToAlbum();
+            }
+        });
+        bt_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                byte[] byteArray = stream.toByteArray();
+                intent.putExtra("image",byteArray);
+                intent.putExtra("dogresult",djangoREST.getMyResult());
+                startActivity(intent);
             }
         });
         tedPermission();
@@ -128,24 +147,36 @@ public class GetImageActivity extends AppCompatActivity {
         }
         else if (requestCode == PICK_FROM_CAMERA) {
             setImage();
+            showMessage();
         }
+    }
+
+    public void showMessage(){
+        new Thread(new Runnable() {
+            @Override public void run() {
+                while(djangoREST.getMyResult() == null){
+                    // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            textView.setText(djangoREST.getMyResult());
+                            // 메시지 큐에 저장될 메시지의 내용
+                        } }); } }
+        }).start();
     }
 
     private void setImage() {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        Log.d("tempFile : ",""+tempFile);
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        stream = new ByteArrayOutputStream();
         originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
+        ImageView imageView = findViewById(R.id.get_imageview);
 
-        //Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        //byte[] byteArray = stream.toByteArray();
         imageView.setImageBitmap(originalBm);
-        //intent.putExtra("image",byteArray);
-        //intent.putExtra("imageLocation",tempFile.toString());
-        //startActivity(intent);
+
+        djangoREST.uploadFoto(tempFile.toString());
+
     }
 
     private void takePhoto() {
@@ -174,19 +205,16 @@ public class GetImageActivity extends AppCompatActivity {
             }
         }
     }
+
     private File createImageFile() throws IOException {
-        //String imagePath;
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "Genie_" + timeStamp + "_";
-        File storageDir = new File(Environment.getExternalStorageDirectory(),"Genie/");
-
+        File storageDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Genie");
         if (!storageDir.exists()) storageDir.mkdirs();
+        String fileName = String.format("%d.jpg", System.currentTimeMillis());
+        File image = new File(storageDir, fileName);
+        Log.d("File Image name" , ""+image);
 
-        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
-        //storageDirectory = Environment.getExternalStorageDirectory() + "Genie/" + imageFileName+".jpg";
+        getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(image)));
 
-        getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(image)) );
-        Log.d("image : ",""+image);
         return image;
     }
 }

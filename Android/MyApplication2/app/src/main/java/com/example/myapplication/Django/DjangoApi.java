@@ -20,7 +20,7 @@ import retrofit2.http.Query;
 
 
 public interface DjangoApi {
-    String Ipaddress = "http://ce6f58e7.ngrok.io/";
+    String Ipaddress = "http://b96f6ba1.ngrok.io/";
     String DJANGO_SITE = Ipaddress + "pot/";
     String DJANGO_SITE2 = Ipaddress ;
     String DJANGO_SITE3 = Ipaddress + "blog/";  //로그인 주소

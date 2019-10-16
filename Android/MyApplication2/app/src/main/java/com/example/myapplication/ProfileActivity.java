@@ -33,15 +33,17 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
+
+
         Intent intent = getIntent();
-        djangoREST.uploadFoto(intent.getExtras().getString("imageLocation"));
+
 
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
         ImageView BigImage = findViewById(R.id.profile_imageview);
         BigImage.setImageBitmap(image);
-         textView = findViewById(R.id.textView);
-
+        textView = findViewById(R.id.textView);
+        textView.setText(intent.getExtras().getString("dogresult"));
         Button sendButton = findViewById(R.id.profileButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,16 +56,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        new Thread(new Runnable() {
-            @Override public void run() {
-                while(djangoREST.getMyResult() == null){
-                    // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            textView.setText(djangoREST.getMyResult());
+//        new Thread(new Runnable() {
+//            @Override public void run() {
+//                while(djangoREST.getMyResult() == null){
+//                    // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
+//                    runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            textView.setText(intent.getExtras().getString("dogresult"));
                             // 메시지 큐에 저장될 메시지의 내용
-                            } }); } }
-        }).start();
+//                            } }); } }
+//        }).start();
     }
 
 

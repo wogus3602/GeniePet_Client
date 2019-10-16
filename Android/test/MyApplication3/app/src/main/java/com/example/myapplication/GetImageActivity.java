@@ -143,7 +143,6 @@ public class GetImageActivity extends AppCompatActivity {
     private void setImage() {
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
-        Log.d("11111",""+tempFile.getAbsolutePath());
 
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         //Bitmap sendBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.);
