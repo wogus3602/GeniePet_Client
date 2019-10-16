@@ -1,6 +1,8 @@
 package com.example.bottombar_navigation_with_fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class ProfileLogin extends Fragment implements View.OnClickListener {
@@ -124,8 +128,11 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
                     if (response.body() != null) {
 
                         String token = response.body().getToken();
-                        SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
 
+                        SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
+                        Log.d("2222222222",""+getContext());
+                        Log.d("2222222222",""+MainActivity.getInstance());
+                        Log.d("2222222222",""+ProfileLogin.class);
 //                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
 //                        SharedPreferences.Editor prefLoginEdit = preferences.edit();
 //                        prefLoginEdit.putBoolean("loggedin", true);

@@ -1,4 +1,4 @@
-package com.example.myapplication.DjangoAdapter;
+package com.example.bottombar_navigation_with_fragment.Adapter;
 
 public class PostModel {
 

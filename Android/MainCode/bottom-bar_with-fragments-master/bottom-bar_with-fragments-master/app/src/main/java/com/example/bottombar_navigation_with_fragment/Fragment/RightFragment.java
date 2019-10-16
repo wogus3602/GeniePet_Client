@@ -1,6 +1,7 @@
 package com.example.bottombar_navigation_with_fragment.Fragment;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.bottombar_navigation_with_fragment.Camera.Camera;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 
@@ -24,6 +26,7 @@ public class RightFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_right,container, false);
         Button button = view.findViewById(R.id.button);
+        Button button1 = view.findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -35,16 +38,17 @@ public class RightFragment extends Fragment {
                 replaceFragment(fragment);
             }
         });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Camera.class);
+                startActivity(intent);
+
+            }
+        });
         return view;
     }
 
-    public void clearUserName() {
-        SharedPreferences appData;
-        appData = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = appData.edit();
-        editor.clear();
-        editor.commit();
-    }
 
     public void replaceFragment(Fragment someFragment) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

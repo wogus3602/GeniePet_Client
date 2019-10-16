@@ -30,7 +30,10 @@ public interface DjangoApi {
     Call<ResponseBody> uploadFile(@Part MultipartBody.Part file);
 
     @POST("dog/")
-    Call<ResponseBody> addPostVoditel(@Body PostModel postModel);
+    Call<ResponseBody> addPostVoditel(@Header("Authorization") String djangoToken,@Body PostModel postModel);
+
+    //@POST("check/")
+    //Call<ResponseBody> addPostVoditel(@Body PostModel postModel);
 
     //로그인 부분
     @POST("api-token-auth/")

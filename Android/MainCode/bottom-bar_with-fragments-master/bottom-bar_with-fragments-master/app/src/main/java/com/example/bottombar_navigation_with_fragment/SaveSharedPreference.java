@@ -4,12 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SaveSharedPreference {
 
     static final String PREF_TOKEN = "username";
     static final String PREF_LOGGED = "logged";
 
     static SharedPreferences getSharedPreferences(Context ctx) {
+
         return PreferenceManager.getDefaultSharedPreferences(ctx);
     }
 

@@ -1,6 +1,5 @@
-package com.example.myapplication;
+package com.example.bottombar_navigation_with_fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,17 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.Django.DjangoApi;
-import com.example.myapplication.Django.DjangoREST;
+import com.example.bottombar_navigation_with_fragment.Fragment.RightFragment;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
     DjangoREST djangoREST = new DjangoREST();
@@ -42,7 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         ImageView BigImage = findViewById(R.id.profile_imageview);
         BigImage.setImageBitmap(image);
         textView = findViewById(R.id.textView);
-        textView.setText(intent.getExtras().getString("dogresult"));
+        textView.setText(DataManager.getInstance().getSpecies());
         Button sendButton = findViewById(R.id.profileButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +40,9 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.d("1111",""+djangoREST.getMyResult());
 
                 sendProfileInformation();
-//                Intent intent = new Intent(ProfileActivity.this,StoreListActivity.class);
+//                Intent intent = new Intent(ProfileActivity.this, RightFragment.class);
 //                startActivity(intent);
+//                finish();
             }
         });
 

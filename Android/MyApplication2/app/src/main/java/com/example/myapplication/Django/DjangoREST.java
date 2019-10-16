@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.example.myapplication.DataManager;
 import com.example.myapplication.DjangoAdapter.LoginAdapter;
 import com.example.myapplication.DjangoAdapter.PostModel;
 //import com.example.myapplication.MainActivity;
@@ -80,7 +81,7 @@ public class DjangoREST {
     }
 
     //정보 올리기
-    public void AddPostServer(String name, String age, String species) {
+    public void AddPostServer(String name, String species, String age) {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(DjangoApi.DJANGO_SITE2)
@@ -90,11 +91,11 @@ public class DjangoREST {
 
         PostModel postModel = new PostModel(
                 name,
-                age,
-                species
+                species,
+                age
         );
-
-        Call<ResponseBody> comment = postApi.addPostVoditel(postModel);
+        String token = "JWT " +"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwidXNlcm5hbWUiOiJ0ZXN0NSIsImV4cCI6MTU3MTIzNTg4MiwiZW1haWwiOiJ0ZXN0QHRlc3QudGVzdDExNSJ9.zxmTvW5VPs14p4PoWpnD6jPifXJK4i2SHo-zn0qasdU";
+        Call<ResponseBody> comment = postApi.addPostVoditel(token,postModel);
         comment.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

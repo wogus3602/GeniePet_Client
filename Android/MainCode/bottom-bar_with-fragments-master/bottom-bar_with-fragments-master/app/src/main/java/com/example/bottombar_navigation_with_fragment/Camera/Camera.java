@@ -1,18 +1,14 @@
-package com.example.myapplication;
+package com.example.bottombar_navigation_with_fragment.Camera;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.icu.util.LocaleData;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -21,25 +17,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import com.example.myapplication.Django.DjangoREST;
-import com.example.myapplication.DjangoAdapter.DogSpeciesAdapter;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.bottombar_navigation_with_fragment.DataManager;
+import com.example.bottombar_navigation_with_fragment.DjangoREST;
+import com.example.bottombar_navigation_with_fragment.MainActivity;
+import com.example.bottombar_navigation_with_fragment.ProfileActivity;
+import com.example.bottombar_navigation_with_fragment.ProfileLogin;
+import com.example.bottombar_navigation_with_fragment.R;
+import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class GetImageActivity extends AppCompatActivity {
+public class Camera extends AppCompatActivity {
     private static final int PICK_FROM_ALBUM = 1;
     private static final int PICK_FROM_CAMERA = 2;
     private static final String TAG = "FragmentActivity";
@@ -51,7 +47,7 @@ public class GetImageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.get_image_layout);
+        setContentView(R.layout.cemera_layout);
 
         Button bt_camera = findViewById(R.id.btnCamera);
         Button bt_album = findViewById(R.id.btnGallery);
@@ -75,8 +71,9 @@ public class GetImageActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 byte[] byteArray = stream.toByteArray();
                 intent.putExtra("image",byteArray);
-                intent.putExtra("dogresult",djangoREST.getMyResult());
+                //Toast.makeText(getApplicationContext(), "현재 선택" + SaveSharedPreference.getToken(ProfileLogin),Toast.LENGTH_SHORT).show();
                 startActivity(intent);
+
             }
         });
         tedPermission();
@@ -111,10 +108,11 @@ public class GetImageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != Activity.RESULT_OK) {
             Toast.makeText(this, "취소되었습니다.", Toast.LENGTH_SHORT).show();
 
-            if(tempFile != null) {
+            if (tempFile != null) {
                 if (tempFile.exists()) {
                     if (tempFile.delete()) {
                         Log.e(TAG, tempFile.getAbsolutePath() + " 삭제 성공");
@@ -129,7 +127,7 @@ public class GetImageActivity extends AppCompatActivity {
             Uri photoUri = data.getData();
             Cursor cursor = null;
             try {
-                String[] proj = { MediaStore.Images.Media.DATA };
+                String[] proj = {MediaStore.Images.Media.DATA};
 
                 assert photoUri != null;
                 cursor = getContentResolver().query(photoUri, proj, null, null, null);
@@ -146,8 +144,7 @@ public class GetImageActivity extends AppCompatActivity {
                 }
             }
             setImage();
-        }
-        else if (requestCode == PICK_FROM_CAMERA) {
+        } else if (requestCode == PICK_FROM_CAMERA) {
             setImage();
             showMessage();
         }
@@ -204,7 +201,7 @@ public class GetImageActivity extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 
                 Uri photoUri = FileProvider.getUriForFile(this,
-                        "com.example.myapplication.provider", tempFile);
+                        "com.example.bottombar_navigation_with_fragment.provider", tempFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(intent, PICK_FROM_CAMERA);
 
