@@ -56,7 +56,6 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
         return rootView;
     }
 
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -69,17 +68,12 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
         }
     }
 
-
-
     public void replaceFragment(Fragment someFragment) {
-
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, someFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-
     }
-
 
     public void RegButtonClick()
     {
@@ -87,28 +81,21 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
         Fragment fragment = null;
         fragment = new ProfileRegister();
         replaceFragment(fragment);
-
     }
-
 
     public void LogButtonClick()
     {
         if (!IsEmptyEditTextLogin()){
-
             if ( InternetUtil.isInternetOnline(getActivity()) ){
                 login();
             }
-
         }
-
-
-
     }
 
 
     private void login(){
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(DjangoApi.login_page)
+                .baseUrl(DjangoApi.LoginPage)
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
 
@@ -130,14 +117,6 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
                         String token = response.body().getToken();
 
                         SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
-                        Log.d("2222222222",""+getContext());
-                        Log.d("2222222222",""+MainActivity.getInstance());
-                        Log.d("2222222222",""+ProfileLogin.class);
-//                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
-//                        SharedPreferences.Editor prefLoginEdit = preferences.edit();
-//                        prefLoginEdit.putBoolean("loggedin", true);
-//                        prefLoginEdit.putString("token", token);
-//                        prefLoginEdit.commit();
 
 //                        SharedPreferences preferences1 = getActivity().getSharedPreferences("setting", MODE_PRIVATE);
 //                        SharedPreferences.Editor editor = preferences1.edit();
@@ -147,8 +126,7 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
                         Toast.makeText(getContext(), token, Toast.LENGTH_SHORT).show();
 
-                        Fragment fragment = null;
-                        fragment = new RightFragment();
+                        Fragment fragment = new RightFragment();
                         replaceFragment(fragment);
 
                     }
@@ -168,24 +146,14 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
 
     private Boolean IsEmptyEditTextLogin(){
-
-        if(Edreg_password.getText().toString().isEmpty() || Edreg_username.getText().toString().isEmpty()){
-
-//            SharedPreferences sf = getActivity().getSharedPreferences("myPrefs",MODE_PRIVATE);
-//            String token = sf.getString("token","");
-//            Log.d("sf Text : ",""+token);
-            //Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
-
+        if(Edreg_password.getText().toString().isEmpty() || Edreg_username.getText().toString().isEmpty())
+        {
             Toast toast = Toast.makeText(getActivity(),"Empty EditText", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-
-
             return true;
-        }else{
-            return false;
         }
-
+        else return false;
     }
 
 

@@ -1,17 +1,12 @@
 package com.example.bottombar_navigation_with_fragment;
 
-import android.app.Application;
-import android.content.Context;
 import android.util.Log;
 
-import androidx.fragment.app.FragmentActivity;
-
-import com.example.bottombar_navigation_with_fragment.Adapter.PostModel;
+import com.example.bottombar_navigation_with_fragment.model.PostModel;
 
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -38,7 +33,7 @@ public class DjangoREST {
     public void uploadFoto(String storage) {
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(DjangoApi.DJANGO_SITE)
+                .baseUrl(DjangoApi.ImageUpload)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         postApi= retrofit.create(DjangoApi.class);

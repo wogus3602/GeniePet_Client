@@ -43,7 +43,7 @@ public class Camera extends AppCompatActivity {
     ByteArrayOutputStream stream;
     TextView textView;
     DjangoREST djangoREST = new DjangoREST();
-    String result;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +71,6 @@ public class Camera extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 byte[] byteArray = stream.toByteArray();
                 intent.putExtra("image",byteArray);
-                //Toast.makeText(getApplicationContext(), "현재 선택" + SaveSharedPreference.getToken(ProfileLogin),Toast.LENGTH_SHORT).show();
                 startActivity(intent);
 
             }

@@ -2,7 +2,6 @@ package com.example.bottombar_navigation_with_fragment.Fragment;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import com.example.bottombar_navigation_with_fragment.Camera.Camera;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 
-import static android.content.Context.MODE_PRIVATE;
 
 public class RightFragment extends Fragment {
 

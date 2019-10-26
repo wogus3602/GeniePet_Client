@@ -80,24 +80,16 @@ public class StoreListActivity extends AppCompatActivity{
             //ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
             //HashMap<String,String> hashMap;
 
-
-
             try {
-                JSONObject jsonObject = new JSONObject(strJson);
-               JSONArray jArray = jsonObject.getJSONArray("results");
-                //JSONArray jArray = new JSONArray(strJson);
+                // JsonObject results:{ id: , re: ..} 받기
+                //JSONObject jsonObject = new JSONObject(strJson);
+                //JSONArray jArray = jsonObject.getJSONArray("results");
+
+                JSONArray jArray = new JSONArray(strJson);
 
                 Log.d("FOR_LOG", ""+jArray);
                 for(int i = 0; i < jArray.length(); i++){
                     JSONObject friend = jArray.getJSONObject(i);
-
-                    //String nameOS = friend.getString("name");
-                    //String price = friend.getString("price");
-                    //String rating = friend.getString("image");
-                    //String id = friend.getString("id");
-                    //String text = friend.getString("text");
-
-                    //Drawable img = drawableFromUrl(friend.getString("image"));
                     String img = friend.getString("image");
                     String title = friend.getString("name");
                     String context = friend.getString("text");

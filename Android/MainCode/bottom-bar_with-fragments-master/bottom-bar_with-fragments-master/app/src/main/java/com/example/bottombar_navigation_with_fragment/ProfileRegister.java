@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.bottombar_navigation_with_fragment.model.RegisterModel;
 import com.example.bottombar_navigation_with_fragment.model.User;
 
 import retrofit2.Call;
@@ -49,8 +50,6 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
         logBtn.setOnClickListener(this);
 
         return rootView;
-
-
     }
 
 
@@ -67,7 +66,6 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
     }
 
 
-
     public void replaceFragment(Fragment someFragment) {
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -80,24 +78,22 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
     public void RegButtonClick()
     {
-        String str_reg_username = Edreg_username.getText().toString();
-        String str_reg_password = Edreg_password.getText().toString();
-        String str_reg_password2 = Edreg_password2.getText().toString();
-        String str_reg_email = Edreg_email.getText().toString();
+        String reg_username = Edreg_username.getText().toString();
+        String reg_password = Edreg_password.getText().toString();
+        String reg_password2 = Edreg_password2.getText().toString();
+        String reg_email = Edreg_email.getText().toString();
 
-        User userModel = new User(
-                1,
-                str_reg_email,
-                str_reg_username,
-                str_reg_password,
-                str_reg_password2,
-                "sadasdasd"
+        RegisterModel registerModel = new RegisterModel(
+                reg_email,
+                reg_username,
+                reg_password,
+                reg_password2
         );
 
         if (!IsEmptyEditTextLogin()){
 
             if ( InternetUtil.isInternetOnline(getActivity()) ){
-                RegisterInServer(userModel);
+                RegisterInServer(registerModel);
             }
 
         }
@@ -106,30 +102,29 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
     public void LogButtonClick()
     {
-        Fragment fragment = null;
-        fragment = new ProfileLogin();
+        Fragment fragment = new ProfileLogin();
         replaceFragment(fragment);
     }
 
 
-    public void RegisterInServer(User userModel) {
+    public void RegisterInServer(RegisterModel registerModel) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(DjangoApi.reg_page)
+                .baseUrl(DjangoApi.RegisterPage)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         DjangoApi postApi= retrofit.create(DjangoApi.class);
-        Call<User> call = postApi.registrationUser(userModel);
+        Call<RegisterModel> call = postApi.registrationUser(registerModel);
 
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<RegisterModel>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
 
                 if(response.isSuccessful()){
                     if (response.body() != null) {
-                        String token = response.body().getToken();
-                        SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
+                        //String token = response.body().getToken();
+                        //SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
 
 //                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
 //                        SharedPreferences.Editor prefLoginEdit = preferences.edit();
@@ -145,7 +140,7 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
             }
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<RegisterModel> call, Throwable t) {
                 Log.d("fail", "fail");
             }
         });

@@ -1,6 +1,5 @@
 package com.example.bottombar_navigation_with_fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,20 +11,16 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bottombar_navigation_with_fragment.Fragment.RightFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ProfileActivity extends AppCompatActivity {
     DjangoREST djangoREST = new DjangoREST();
-    //public String MyResult = djangoREST.getMyResult();
     public TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
-
-
-        Intent intent = getIntent();
 
         byte[] arr = getIntent().getByteArrayExtra("image");
         Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
@@ -38,11 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("1111",""+djangoREST.getMyResult());
-
                 sendProfileInformation();
-//                Intent intent = new Intent(ProfileActivity.this, RightFragment.class);
-//                startActivity(intent);
-//                finish();
             }
         });
 
@@ -58,11 +49,9 @@ public class ProfileActivity extends AppCompatActivity {
 //        }).start();
     }
 
-
     public void sendProfileInformation(){
         TextInputEditText inputDogName = findViewById(R.id.textInputEditText1);
         TextInputEditText inputDogAge = findViewById(R.id.textInputEditText2);
         djangoREST.AddPostServer(inputDogName.getText().toString(),DataManager.getInstance().getSpecies(),inputDogAge.getText().toString());
     }
-
 }

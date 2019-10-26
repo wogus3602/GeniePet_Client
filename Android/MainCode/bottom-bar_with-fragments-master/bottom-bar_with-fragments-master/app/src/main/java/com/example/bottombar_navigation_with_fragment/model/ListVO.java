@@ -1,4 +1,4 @@
-package com.example.bottombar_navigation_with_fragment.Adapter;
+package com.example.bottombar_navigation_with_fragment.model;
 
 import android.graphics.drawable.Drawable;
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bottombar_navigation_with_fragment.R;
+import com.example.bottombar_navigation_with_fragment.model.MainItemInfo;
 
 import java.util.ArrayList;
 

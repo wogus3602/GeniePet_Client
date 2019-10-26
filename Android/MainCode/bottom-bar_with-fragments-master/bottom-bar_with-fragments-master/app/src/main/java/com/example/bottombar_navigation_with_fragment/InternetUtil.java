@@ -22,7 +22,6 @@ public class InternetUtil {
 
     public static boolean isOnline(Context context){
 
-
         ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = connManager.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnectedOrConnecting()){
@@ -35,9 +34,6 @@ public class InternetUtil {
 
 
     public static boolean isInternetOnline(Context context){
-
-
-//        if ( InternetUtil.myInternetConnection(context) || InternetUtil.isOnline(context)){
 
         if (InternetUtil.isOnline(context)){
 
