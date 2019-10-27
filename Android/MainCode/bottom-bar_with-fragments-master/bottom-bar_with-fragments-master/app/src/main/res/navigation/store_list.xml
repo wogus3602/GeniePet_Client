@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/store_list"
+    app:startDestination="@id/storeListActivity">
+
+    <fragment
+        android:id="@+id/storeListActivity"
+        android:name="com.example.bottombar_navigation_with_fragment.StoreListActivity"
+        android:label="store_list"
+        tools:layout="@layout/store_list" />
+</navigation>

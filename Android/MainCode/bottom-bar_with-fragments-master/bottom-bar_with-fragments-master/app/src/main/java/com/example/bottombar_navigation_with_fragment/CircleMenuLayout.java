@@ -194,7 +194,6 @@ public class CircleMenuLayout extends ViewGroup {
                 child.findViewById(R.id.id_circle_menu_item_text).setBackgroundResource(R.drawable.menuitem);
             // jiaodu 아이템 회전률
             child.setRotation(jiaodu);
-
             mStartAngle += angleDelay;
         }
 
