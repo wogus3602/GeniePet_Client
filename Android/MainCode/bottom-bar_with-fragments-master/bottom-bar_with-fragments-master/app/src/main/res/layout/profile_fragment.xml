@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="139dp"
             android:layout_marginTop="116dp"
-            android:background="@color/colorAccent"
+            android:background="#FFCA7E2A"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -52,41 +52,30 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:text="John Doe"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:text="콩이"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.467"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="New York, USA"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="52dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             app:srcCompat="@drawable/ic_comment"
-            android:layout_marginRight="16dp"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -107,12 +96,12 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="52dp"
             android:background="@android:color/transparent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             app:srcCompat="@drawable/ic_question_answer"
-            android:layout_marginLeft="16dp"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
@@ -134,22 +123,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:gravity="start"
             android:text="Info"
             android:textAlignment="textStart"
-            android:textColor="@android:color/white"
+            android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/view"
-            android:gravity="start" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <View
             android:id="@+id/view2"
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:layout_marginTop="8dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="#FFCA7E2A"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -160,9 +149,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Profession:"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:text="나이:"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="@+id/view2" />
@@ -172,12 +161,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Web and Software Developer"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:text="11살"
+            android:textColor="#000000"
+            android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
-            app:layout_constraintStart_toEndOf="@+id/textView6"
-            android:layout_marginLeft="8dp" />
+            app:layout_constraintStart_toEndOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/textView8"
@@ -185,9 +173,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Company:"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:text="품종:"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -197,12 +185,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="AndroUI"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:text="푸들"
+            android:textColor="#000000"
+            android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            android:layout_marginLeft="8dp" />
+            app:layout_constraintStart_toEndOf="@+id/textView8" />
 
         <TextView
             android:id="@+id/textView10"
@@ -210,9 +197,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Phone:"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:text="전화번호:"
+            android:textColor="#000000"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -222,13 +209,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="+111-111-1111"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:text="010-1234-5678"
+            android:textColor="#000000"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
-            app:layout_constraintStart_toEndOf="@+id/textView10"
-            android:layout_marginLeft="8dp" />
+            app:layout_constraintStart_toEndOf="@+id/textView10" />
 
         <Button
             android:id="@+id/button"
@@ -236,13 +222,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@android:color/transparent"
+            android:text="Profile"
             app:layout_constraintBottom_toBottomOf="@+id/button2"
             app:layout_constraintEnd_toStartOf="@+id/button2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toEndOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/button2"
-            android:text="Profile"/>
+            app:layout_constraintTop_toTopOf="@+id/button2" />
 
         <Button
             android:id="@+id/button2"
@@ -250,11 +236,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="172dp"
             android:background="@android:color/transparent"
+            android:text="프로필 등록"
             app:layout_constraintEnd_toStartOf="@+id/button3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toTopOf="@+id/view2"
-            android:text="프로필 등록" />
+            app:layout_constraintTop_toTopOf="@+id/view2" />
 
         <Button
             android:id="@+id/button3"
@@ -262,12 +248,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@android:color/transparent"
+            android:text="로그아웃"
             app:layout_constraintBottom_toBottomOf="@+id/button2"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button2"
-            app:layout_constraintTop_toTopOf="@+id/button2"
-            android:text="로그아웃"/>
+            app:layout_constraintTop_toTopOf="@+id/button2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -68,13 +68,18 @@ public class CenterFragment extends Fragment {
         ArrayList<MainItemInfo> feedInfoArrayList_1 = new ArrayList<>();
         feedInfoArrayList_1.add(new MainItemInfo(R.drawable.feed1, "39,900원", "퓨리나 원 1세이상 관절건강 강아지사료 3.4kg","모두 보기(63개)->"));
         feedInfoArrayList_1.add(new MainItemInfo(R.drawable.feed2, "41,500원", "[간식포켓+휴대용물그릇 증정] 로얄캐닌 엑스 퍼피 강아지사료 1.5kg","모두 보기(24개)->"));
+        feedInfoArrayList_1.add(new MainItemInfo(R.drawable.feed2, "41,500원", "[간식포켓+휴대용물그릇 증정] 로얄캐닌 엑스 퍼피 강아지사료 1.5kg","모두 보기(24개)->"));
+
 
         ArrayList<MainItemInfo> feedInfoArrayList_2 = new ArrayList<>();
         feedInfoArrayList_2.add(new MainItemInfo(R.drawable.feed3, "43,200원", "[간식포켓+휴대용물그릇 증정] 로얄캐닌 시츄 어덜트 강아지사료 3kg (1.5kg x 2개)","모두 보기(31개)->"));
         feedInfoArrayList_2.add(new MainItemInfo(R.drawable.feed4, "39,800원", "뉴트리탑 소프트 어덜트 강아지 사료 1.2kg","모두 보기(97개)->"));
+        feedInfoArrayList_2.add(new MainItemInfo(R.drawable.feed4, "39,800원", "뉴트리탑 소프트 어덜트 강아지 사료 1.2kg","모두 보기(97개)->"));
+
 
         ArrayList<MainItemInfo> feedInfoArrayList_3 = new ArrayList<>();
         feedInfoArrayList_3.add(new MainItemInfo(R.drawable.feed5, "43,200원", "[간식포켓+휴대용물그릇 증정] 로얄캐닌 미니 인도어 어덜트 강아지사료 4.5kg (3kg+1.5kg)","모두 보기(69개)->"));
+        feedInfoArrayList_3.add(new MainItemInfo(R.drawable.feed6, "39,800원", "[유통19.12.24] 네이처스 버라이어티 인스팅트 오리 강아지사료 1.8kg","모두 보기(112개)->"));
         feedInfoArrayList_3.add(new MainItemInfo(R.drawable.feed6, "39,800원", "[유통19.12.24] 네이처스 버라이어티 인스팅트 오리 강아지사료 1.8kg","모두 보기(112개)->"));
 
 
