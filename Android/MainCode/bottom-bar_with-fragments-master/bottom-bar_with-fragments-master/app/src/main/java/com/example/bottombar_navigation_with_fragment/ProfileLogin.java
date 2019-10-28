@@ -1,8 +1,6 @@
 package com.example.bottombar_navigation_with_fragment;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.bottombar_navigation_with_fragment.Fragment.RightFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.ProfileFragment;
 import com.example.bottombar_navigation_with_fragment.model.Login;
 import com.example.bottombar_navigation_with_fragment.model.User;
 
@@ -24,8 +22,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 public class ProfileLogin extends Fragment implements View.OnClickListener {
@@ -116,17 +112,11 @@ public class ProfileLogin extends Fragment implements View.OnClickListener {
 
                         String token = response.body().getToken();
 
-                        SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
-
-//                        SharedPreferences preferences1 = getActivity().getSharedPreferences("setting", MODE_PRIVATE);
-//                        SharedPreferences.Editor editor = preferences1.edit();
-//                        editor.putString("id",add1);
-//                        editor.putString("password",add2);
-//                        editor.commit();
+                        SaveSharedPreference.setUserName(MainActivity.getInstance(),token,true); // 셋팅
 
                         Toast.makeText(getContext(), token, Toast.LENGTH_SHORT).show();
 
-                        Fragment fragment = new RightFragment();
+                        Fragment fragment = new ProfileFragment();
                         replaceFragment(fragment);
 
                     }

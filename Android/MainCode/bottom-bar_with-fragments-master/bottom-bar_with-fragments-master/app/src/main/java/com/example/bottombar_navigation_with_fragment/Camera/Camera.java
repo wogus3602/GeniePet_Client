@@ -11,13 +11,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 
 import com.example.bottombar_navigation_with_fragment.DataManager;
@@ -71,13 +74,37 @@ public class Camera extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 byte[] byteArray = stream.toByteArray();
                 intent.putExtra("image",byteArray);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-
             }
         });
+
+        //툴바
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Get the ActionBar here to configure the way it behaves.
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("카메라");
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        //actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+        //actionBar.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
+
         tedPermission();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void tedPermission() {
         PermissionListener permissionListener = new PermissionListener() {
@@ -98,7 +125,9 @@ public class Camera extends AppCompatActivity {
                 .check();
 
 
-    }private void goToAlbum() {
+    }
+
+    private void goToAlbum() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent, PICK_FROM_ALBUM);

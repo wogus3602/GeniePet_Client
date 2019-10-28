@@ -53,6 +53,9 @@ public class DjangoREST {
                 try {
                     MyResult = response.body().string();
                     setMyResult(MyResult);
+
+                    SaveSharedPreference.setSpecie(MainActivity.getInstance(),MyResult);
+
                     Log.d("MyResult", "" +MyResult);
                 }catch (IOException e){
                     e.printStackTrace();
@@ -84,8 +87,9 @@ public class DjangoREST {
                 species,
                 age
         );
-        String token = "JWT " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNCwidXNlcm5hbWUiOiJ0ZXN0NCIsImV4cCI6MTU3MTMyODA0OSwiZW1haWwiOiJ0ZXN0QHRlc3QudGVzdDExIiwib3JpZ19pYXQiOjE1NzEyNDE2NDl9.Zja4KmLanRwzYhJqrIEZpKeAUbizyb2i9HWDCHZYIE8";
-       // Log.d("1212121",""+ SaveSharedPreference.getToken(MainActivity.getInstance()));
+
+        String token = "JWT "+SaveSharedPreference.getToken(MainActivity.getInstance());
+        Log.d("adsada",""+token);
         Call<ResponseBody> comment = postApi.addPostVoditel(token,postModel);
         comment.enqueue(new Callback<ResponseBody>() {
             @Override

@@ -1,5 +1,6 @@
 package com.example.bottombar_navigation_with_fragment;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -34,19 +35,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("1111",""+djangoREST.getMyResult());
                 sendProfileInformation();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         });
 
-//        new Thread(new Runnable() {
-//            @Override public void run() {
-//                while(djangoREST.getMyResult() == null){
-//                    // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
-//                    runOnUiThread(new Runnable() {
-//                        public void run() {
-//                            textView.setText(intent.getExtras().getString("dogresult"));
-                            // 메시지 큐에 저장될 메시지의 내용
-//                            } }); } }
-//        }).start();
     }
 
     public void sendProfileInformation(){

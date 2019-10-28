@@ -1,44 +1,32 @@
 package com.example.bottombar_navigation_with_fragment.Fragment;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bottombar_navigation_with_fragment.CircleMenuLayout;
-import com.example.bottombar_navigation_with_fragment.StoreListActivity;
-import com.example.bottombar_navigation_with_fragment.model.MainItemInfo;
-import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.Adapter.RecyclerVerticalAdapter;
+import com.example.bottombar_navigation_with_fragment.R;
+import com.example.bottombar_navigation_with_fragment.model.MainItemInfo;
 
 import java.util.ArrayList;
 
-import static android.view.View.VISIBLE;
-
-public class CenterFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView_item;
     private ArrayList<ArrayList<MainItemInfo>> all = new ArrayList();
 
 
-    public CenterFragment() {
+    public HomeFragment() {
     }
 
     public static Fragment newInstance() {
-        return new CenterFragment();
+        return new HomeFragment();
     }
 
 
@@ -61,7 +49,7 @@ public class CenterFragment extends Fragment {
 
         //목록 용 RecyclerView
         this.initializeData();
-        View v = inflater.inflate(R.layout.fragment_center, container, false);
+        View v = inflater.inflate(R.layout.home_fragment, container, false);
         recyclerView_item = v.findViewById(R.id.activity_recycler);
         RecyclerVerticalAdapter verticalAdapter = new RecyclerVerticalAdapter(getContext(), all);
         recyclerView_item.setHasFixedSize(true);

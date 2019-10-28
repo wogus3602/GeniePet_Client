@@ -123,14 +123,6 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
                 if(response.isSuccessful()){
                     if (response.body() != null) {
-                        //String token = response.body().getToken();
-                        //SaveSharedPreference.setUserName(getActivity(),token,true); // 셋팅
-
-//                        SharedPreferences preferences = getActivity().getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-//                        SharedPreferences.Editor prefLoginEdit = preferences.edit();
-//                        prefLoginEdit.putBoolean("registration",true);
-//                        prefLoginEdit.commit();
-
                         Fragment fragment = new ProfileLogin();
                         replaceFragment(fragment);
                     }

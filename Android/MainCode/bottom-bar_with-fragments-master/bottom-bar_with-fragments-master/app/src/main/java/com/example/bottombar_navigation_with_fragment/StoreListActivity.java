@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,17 @@ public class StoreListActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_list);
+
+        TextView textview = findViewById(R.id.textlogin);
+        if(!SaveSharedPreference.getLogged(MainActivity.getInstance())){
+            textview.setText("로그인이 안됐습니다. 정확한 추천을 해주기 어렵습니다.");
+        }else{
+            if(SaveSharedPreference.getSpecie(MainActivity.getInstance())==null){
+                textview.setText("프로필 등록이 안됐습니다.");
+            }else {
+                textview.setText(DataManager.getInstance().getSpecies() + "종에게 상품이 많이 팔린순 입니다.");
+            }
+        }
         new ParseTask().execute();
     }
 

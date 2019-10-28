@@ -4,53 +4,66 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.bottombar_navigation_with_fragment.Fragment.CenterFragment;
-import com.example.bottombar_navigation_with_fragment.Fragment.LeftFragment;
-import com.example.bottombar_navigation_with_fragment.Fragment.RightFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.CartFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.HomeFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity implements
-        BottomNavigationView.OnNavigationItemSelectedListener {
-    private int flag = 1;
+public class MainActivity extends AppCompatActivity {
+    static int flag = 1;
     private CircleMenuLayout mCircleMenuLayout;
-    public Boolean loggedin;
-    private SharedPreferences appData;
 
+    int mCartItemCount = 10;
+    TextView textCartItemCount;
     //Circle 속성
     String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
     float staticwidth = 0f;
-    public static MainActivity mMyApplication = null;
+    public static MainActivity mMyApplication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMyApplication = this;
+        BottomNavigationView navView = findViewById(R.id.navigation);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        //loading the default fragment
-        loadFragment(new CenterFragment());
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, HomeFragment.newInstance()).commit();
 
-        //getting bottom navigation view and attaching the listener
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(this);
+        //툴바
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        appData = getSharedPreferences("myPrefs", MODE_PRIVATE);
-        load();
-
+        //Get the ActionBar here to configure the way it beh ves.
+        ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        // actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(false); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+        //actionBar.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
+        //actionBar.setHomeButtonEnabled(true);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         staticwidth = dm.widthPixels;
-        //Toast.makeText(getApplicationContext(), ""+staticwidth ,Toast.LENGTH_SHORT).show();
+
         mCircleMenuLayout = findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray);
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
@@ -75,51 +88,37 @@ public class MainActivity extends AppCompatActivity implements
         });
     }
 
-    private void load() {
-        // SharedPreferences 객체.get타입( 저장된 이름, 기본값 )
-        // 저장된 이름이 존재하지 않을 시 기본값
-        //saveLoginData = appData.getBoolean("SAVE_LOGIN_DATA", false);
-        loggedin = appData.getBoolean("loggedin",false);
-        //id = appData.getString("ID", "");
-        //pwd = appData.getString("PWD", "");
-    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            SharedPreferences sf = getSharedPreferences("login",MODE_PRIVATE);
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
-
-        switch (item.getItemId()) {
-            case R.id.navigation_home:
-                fragment = new LeftFragment();
-                mCircleMenuLayout.setVisibility(View.INVISIBLE);
-                flag = 1;
-                break;
-
-            case R.id.navigation_dashboard:
-                fragment = new CenterFragment();
-                if(flag==1) {
-                    mCircleMenuLayout.setVisibility(View.VISIBLE);
-                    flag = 0;
-                }else {
-                    mCircleMenuLayout.setVisibility(View.INVISIBLE);
-                    flag = 1;
-                }
-                break;
-
-            case R.id.navigation_profile:
-                if(SaveSharedPreference.getLogged(this)){
-                    fragment = new RightFragment();
-                }else{
-                    fragment =new ProfileLogin();
-                }
-                mCircleMenuLayout.setVisibility(View.INVISIBLE);
-                flag  = 1;
-                break;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    replaceFragment(HomeFragment.newInstance());
+                    return true;
+                case R.id.navigation_dashboard:
+                    if(flag==1) {
+                        mCircleMenuLayout.setVisibility(View.VISIBLE);
+                        flag = 0;
+                    }
+                    else {
+                        mCircleMenuLayout.setVisibility(View.INVISIBLE);
+                        flag = 1;
+                    }
+                    return true;
+                case R.id.navigation_profile:
+                    if (SaveSharedPreference.getLogged(MainActivity.getInstance())) {
+                        replaceFragment(ProfileFragment.newInstance());
+                    } else {
+                        loadFragment(new ProfileLogin());
+                    }
+                    return true;
+            }
+            return false;
         }
-
-        return loadFragment(fragment);
-    }
-
+    };
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
@@ -130,6 +129,64 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
+
+        setupBadge();
+
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOptionsItemSelected(menuItem);
+            }
+        });
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.action_cart: {
+                replaceFragment(CartFragment.newInstance());
+//                mCartItemCount -= 1;
+//                setupBadge();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
+    }
+
+    private void setupBadge() {
+        if (textCartItemCount != null) {
+            if(mCartItemCount < 0) return;
+            if (mCartItemCount == 0) {
+                if (textCartItemCount.getVisibility() != View.GONE) {
+                    textCartItemCount.setVisibility(View.GONE);
+                }
+            } else {
+                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
+                if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                    textCartItemCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
 
     public static MainActivity getInstance() {
