@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Get the ActionBar here to configure the way it beh ves.
         ActionBar actionBar = getSupportActionBar();
-        //actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         // actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
-        //actionBar.setHomeAsUpIndicator(R.drawable.ic_search_black_24dp); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
+        actionBar.setHomeAsUpIndicator(R.drawable.splash_image); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
         //actionBar.setHomeButtonEnabled(true);
 
         DisplayMetrics dm = new DisplayMetrics();

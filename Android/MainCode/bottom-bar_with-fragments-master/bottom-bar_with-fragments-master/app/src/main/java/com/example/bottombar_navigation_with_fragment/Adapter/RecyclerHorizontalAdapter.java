@@ -20,12 +20,14 @@ public class RecyclerHorizontalAdapter extends RecyclerView.Adapter<RecyclerHori
         ImageView ivPicture;
         TextView tvPrice;
         TextView tvName;
+        TextView tvall;
 
         HorizontalViewHolder(View view){
             super(view);
             ivPicture = view.findViewById(R.id.iv_picture);
             tvPrice = view.findViewById(R.id.tv_price);
             tvName = view.findViewById(R.id.tv_name);
+            tvall = view.findViewById(R.id.tv_all);
         }
     }
 
@@ -48,6 +50,7 @@ public class RecyclerHorizontalAdapter extends RecyclerView.Adapter<RecyclerHori
         horizontalViewHolder.ivPicture.setImageResource(feedInfoArrayList.get(position).drawableId);
         horizontalViewHolder.tvPrice.setText(feedInfoArrayList.get(position).price);
         horizontalViewHolder.tvName.setText(feedInfoArrayList.get(position).name);
+        horizontalViewHolder.tvall.setText(feedInfoArrayList.get(position).all);
     }
 
     @Override
