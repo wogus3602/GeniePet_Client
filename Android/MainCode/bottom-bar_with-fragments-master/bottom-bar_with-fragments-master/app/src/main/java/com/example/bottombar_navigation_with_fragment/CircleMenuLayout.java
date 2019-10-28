@@ -190,6 +190,15 @@ public class CircleMenuLayout extends ViewGroup {
                     mOnMenuItemClickListener.itemSelChange(nowSelPostion);
                 }
             }
+            else if (Math.abs(jiaodu) > (360 / (MainActivity.getInstance().getMenuArray().length))+1){
+                child.findViewById(R.id.id_circle_menu_item_text).setBackgroundResource(R.drawable.menuitem_shadow);
+                if(nowSelPostion != i-1 && nowSelPostion !=i-1-MainActivity.getInstance().getMenuArray().length){
+                    nowSelPostion = i-1;
+                    if(nowSelPostion >= MainActivity.getInstance().getMenuArray().length)
+                        nowSelPostion -= MainActivity.getInstance().getMenuArray().length;
+                    mOnMenuItemClickListener.itemSelChange(nowSelPostion);
+                }
+            }
             else
                 child.findViewById(R.id.id_circle_menu_item_text).setBackgroundResource(R.drawable.menuitem);
             // jiaodu 아이템 회전률

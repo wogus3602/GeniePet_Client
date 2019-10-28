@@ -14,8 +14,9 @@
     <!--cardCornerRadius는 라운드 모서리용 코드-->
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
         <ImageView
@@ -38,9 +39,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginBottom="11dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="#242424"
             android:textSize="20sp"
+            android:fontFamily="@font/nanumbarunpenb"
             tools:text="가격" />
 
         <TextView
@@ -50,11 +53,14 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="35dp"
+            android:layout_marginStart="21dp"
             android:layout_marginEnd="21dp"
             android:layout_marginBottom="64dp"
             android:gravity="center"
+            android:textColor="#242424"
             android:textSize="20sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumbarunpenb"
             tools:text="이름" />
 
         <TextView
@@ -65,7 +71,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="21dp"
             android:layout_marginBottom="12dp"
-            android:textSize="20sp"
+            android:fontFamily="@font/nanumbarunpenb"
+            android:textColor="#CA7E2A"
+            android:textSize="17sp"
+            android:textStyle="bold"
             tools:text="모두 보기->" />
 
     </RelativeLayout>
