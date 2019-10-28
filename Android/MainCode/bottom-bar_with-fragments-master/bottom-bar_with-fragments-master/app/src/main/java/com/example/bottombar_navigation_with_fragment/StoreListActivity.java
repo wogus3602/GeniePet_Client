@@ -1,5 +1,6 @@
 package com.example.bottombar_navigation_with_fragment;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,12 +30,14 @@ public class StoreListActivity extends AppCompatActivity{
 
         TextView textview = findViewById(R.id.textlogin);
         if(!SaveSharedPreference.getLogged(MainActivity.getInstance())){
-            textview.setText("로그인이 안됐습니다. 정확한 추천을 해주기 어렵습니다.");
+            textview.setText("로그인이 안됐습니다. ");
         }else{
-            if(SaveSharedPreference.getSpecie(MainActivity.getInstance())==null){
-                textview.setText("프로필 등록이 안됐습니다.");
+            if(SaveSharedPreference.getSpecie(MainActivity.getInstance())==""){
+                String strColor = "#FF0004";
+                textview.setTextColor(Color.parseColor(strColor));
+                textview.setText("프로필 등록이 안됐습니다. 정확한 추천을 해주기 어렵습니다.");
             }else {
-                textview.setText(DataManager.getInstance().getSpecies() + "종에게 상품이 많이 팔린순 입니다.");
+                textview.setText(SaveSharedPreference.getSpecie(MainActivity.getInstance()) + " 종에게 맞춤 추천 상품입니다.");
             }
         }
         new ParseTask().execute();

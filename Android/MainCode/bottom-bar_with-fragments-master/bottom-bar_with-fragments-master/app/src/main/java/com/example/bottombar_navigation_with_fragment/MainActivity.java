@@ -66,29 +66,7 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         staticwidth = dm.widthPixels;
-
-//        mCircleMenuLayout = findViewById(R.id.id_menulayout);
-//        mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
-//        mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
-//            @Override
-//            public void itemClick(View view, int pos) {
-//                Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
-//                if(pos==6){
-//                    Intent intent = new Intent(getApplicationContext(),StoreListActivity.class);
-//                    startActivity(intent);
-//                }
-//            }
-//
-//            @Override
-//            public void itemCenterClick(View view) {
-//                Toast.makeText(getApplicationContext(), "센터 클릭" ,Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void itemSelChange(int pos) {
-//                //Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

@@ -41,7 +41,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         ImageView image =  convertView.findViewById(R.id.img) ;
         TextView title =  convertView.findViewById(R.id.title) ;
-        TextView Context = convertView.findViewById(R.id.context) ;
+        //TextView Context = convertView.findViewById(R.id.context) ;
         TextView price = convertView.findViewById(R.id.price);
 
         ListVO listViewItem = listVO.get(position);
@@ -50,7 +50,7 @@ public class ListViewAdapter extends BaseAdapter {
         Glide.with(context).load(listViewItem.getImg()).into(image);
         //image.setImageDrawable(listViewItem.getImg());
         title.setText(listViewItem.getTitle());
-        Context.setText(listViewItem.getContext());
+        //Context.setText(listViewItem.getContext());
         price.setText(listViewItem.getPrice());
 
 
@@ -84,7 +84,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         item.setImg(icon);
         item.setTitle(title);
-        item.setContext(desc);
+        //item.setContext(desc);
         item.setPrice(price);
         listVO.add(item);
     }

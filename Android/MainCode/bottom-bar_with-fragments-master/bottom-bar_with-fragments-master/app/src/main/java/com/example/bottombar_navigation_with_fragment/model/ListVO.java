@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 public class ListVO {
     private String img; //이미지
     private String title; // 제목
-    private String context; // 상세정보
     private String price; // 가격
 
     public String getTitle() {
@@ -34,11 +33,4 @@ public class ListVO {
     }
 
 
-    public String getContext() {
-        return context;
-    }
-
-    public void setContext(String context) {
-        this.context = context;
-    }
 }
