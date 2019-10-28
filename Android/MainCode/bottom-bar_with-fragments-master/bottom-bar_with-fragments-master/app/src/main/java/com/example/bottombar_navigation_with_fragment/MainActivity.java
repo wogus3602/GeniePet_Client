@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bottombar_navigation_with_fragment.Fragment.CartFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.CircleFragment;
 import com.example.bottombar_navigation_with_fragment.Fragment.HomeFragment;
 import com.example.bottombar_navigation_with_fragment.Fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     int mCartItemCount = 10;
     TextView textCartItemCount;
     //Circle 속성
-    String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
-    int[] imgArray = new int[] {R.drawable.dog_food,R.drawable.dog_snack,R.drawable.dog_lotion,R.drawable.dog_house,R.drawable.dog_etc,R.drawable.dog_etc};
+//    String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
+//    int[] imgArray = new int[] {R.drawable.dog_food,R.drawable.dog_snack,R.drawable.dog_lotion,R.drawable.dog_house,R.drawable.dog_etc,R.drawable.dog_etc};
     float staticwidth = 0f;
     public static MainActivity mMyApplication;
 
@@ -66,28 +67,28 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         staticwidth = dm.widthPixels;
 
-        mCircleMenuLayout = findViewById(R.id.id_menulayout);
-        mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
-        mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
-            @Override
-            public void itemClick(View view, int pos) {
-                Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
-                if(pos==6){
-                    Intent intent = new Intent(getApplicationContext(),StoreListActivity.class);
-                    startActivity(intent);
-                }
-            }
-
-            @Override
-            public void itemCenterClick(View view) {
-                Toast.makeText(getApplicationContext(), "센터 클릭" ,Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void itemSelChange(int pos) {
-                //Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
-            }
-        });
+//        mCircleMenuLayout = findViewById(R.id.id_menulayout);
+//        mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
+//        mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
+//            @Override
+//            public void itemClick(View view, int pos) {
+//                Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
+//                if(pos==6){
+//                    Intent intent = new Intent(getApplicationContext(),StoreListActivity.class);
+//                    startActivity(intent);
+//                }
+//            }
+//
+//            @Override
+//            public void itemCenterClick(View view) {
+//                Toast.makeText(getApplicationContext(), "센터 클릭" ,Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void itemSelChange(int pos) {
+//                //Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -98,19 +99,15 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                   // mCircleMenuLayout.setVisibility(View.INVISIBLE);
                     replaceFragment(HomeFragment.newInstance());
                     return true;
                 case R.id.navigation_dashboard:
-                    if(flag==1) {
-                        mCircleMenuLayout.setVisibility(View.VISIBLE);
-                        flag = 0;
-                    }
-                    else {
-                        mCircleMenuLayout.setVisibility(View.INVISIBLE);
-                        flag = 1;
-                    }
+                    //mCircleMenuLayout.setVisibility(View.VISIBLE);
+                    replaceFragment(CircleFragment.newInstance());
                     return true;
                 case R.id.navigation_profile:
+                    //mCircleMenuLayout.setVisibility(View.INVISIBLE);
                     if (SaveSharedPreference.getLogged(MainActivity.getInstance())) {
                         replaceFragment(ProfileFragment.newInstance());
                     } else {
@@ -199,7 +196,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String[] getMenuArray() {
-        return menuArray;
+        //CircleFragment.newInstance().getMenuArray();
+        return CircleFragment.newInstance().getMenuArray();
     }
 
     public float getStaticwidth() {

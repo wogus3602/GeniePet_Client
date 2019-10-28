@@ -5,7 +5,11 @@
         <item name="windowNoTitle">true</item>
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+<<<<<<< HEAD
         <item name="colorPrimaryDark">#FFCA7E2A</item>
+=======
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+>>>>>>> 731cb3345f2faf50076ac757e12b8074524da597
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/hanna</item>
     </style>

@@ -104,6 +104,31 @@ public class DjangoREST {
         });
     }
 
+    //정보 올리기
+    public void Tip() {
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(DjangoApi.root)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        postApi= retrofit.create(DjangoApi.class);
+
+
+        Call<ResponseBody> tip = postApi.tipload();
+        tip.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("ResponseBody", "" + response.raw());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("fail", "fail" + t);
+            }
+        });
+    }
+
+
 //
 //    public void login(){
 //        Retrofit.Builder builder = new Retrofit.Builder()
