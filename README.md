@@ -12,4 +12,4 @@
 2019.10.29 - UI 전체 색 바꾸기, 레이아웃 살짝 손봄<br>
 ![진행단계](./picture/android_2.png)
 ![진행단계](./picture/p2.png)
-![진행단계](./pucture/p1.gif)
+![진행단계](./picture/p1.gif)
