@@ -2,6 +2,7 @@ package com.example.bottombar_navigation_with_fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textCartItemCount;
     //Circle 속성
     String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
+    int[] imgArray = new int[] {R.drawable.dog_food,R.drawable.dog_snack,R.drawable.dog_lotion,R.drawable.dog_house,R.drawable.dog_etc,R.drawable.dog_etc};
     float staticwidth = 0f;
     public static MainActivity mMyApplication;
 
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         staticwidth = dm.widthPixels;
 
         mCircleMenuLayout = findViewById(R.id.id_menulayout);
-        mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray);
+        mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
             public void itemClick(View view, int pos) {

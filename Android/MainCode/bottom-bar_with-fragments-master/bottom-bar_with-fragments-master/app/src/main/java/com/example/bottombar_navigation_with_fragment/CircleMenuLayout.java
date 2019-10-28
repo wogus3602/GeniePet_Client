@@ -1,6 +1,7 @@
 package com.example.bottombar_navigation_with_fragment;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -31,6 +33,8 @@ public class CircleMenuLayout extends ViewGroup {
     private double mStartAngle = 90;
 
     private String[] mItemTexts;
+
+    private int[] mItemImgs;
 
     private int mMenuItemCount;
 
@@ -182,7 +186,7 @@ public class CircleMenuLayout extends ViewGroup {
                 jiaodu = (float) Math.abs(Math.atan(x / y) * 180 / Math.PI);
             }
             if (Math.abs(jiaodu) < (360 / (MainActivity.getInstance().getMenuArray().length * 4))-1){
-                child.findViewById(R.id.id_circle_menu_item_text).setBackgroundResource(R.drawable.menuitem_sel);
+                child.findViewById(R.id.id_circle_menu_item_text).setBackgroundResource(R.drawable.menuitem);
                 if(nowSelPostion != i-1 && nowSelPostion !=i-1-MainActivity.getInstance().getMenuArray().length){
                     nowSelPostion = i-1;
                     if(nowSelPostion >= MainActivity.getInstance().getMenuArray().length)
@@ -305,13 +309,16 @@ public class CircleMenuLayout extends ViewGroup {
 
     }
 
-    public void setMenuItemIconsAndTexts(String[] texts) {
+    public void setMenuItemIconsAndTexts(String[] texts, int[] drawables) {
         mItemTexts = new String[texts.length * 2];
+        mItemImgs = new int[drawables.length * 2];
         for (int i = 0; i < texts.length; i++) {
             mItemTexts[i] = texts[i];
+            mItemImgs[i] = drawables[i];
         }
         for (int i = texts.length; i < texts.length * 2; i++) {
             mItemTexts[i] = texts[i - texts.length];
+            mItemImgs[i] = drawables[i - texts.length];
         }
 
         mMenuItemCount = mItemTexts.length;
@@ -335,6 +342,12 @@ public class CircleMenuLayout extends ViewGroup {
                 tv.setVisibility(View.VISIBLE);
                 tv.setText(mItemTexts[i]);
             }
+
+            ImageView imageView = view.findViewById(R.id.id_circle_menu_item_img);
+            if(imageView != null) {
+                imageView.setImageResource(mItemImgs[i]);
+            }
+
             final int finalI = i;
             view.setOnClickListener(new OnClickListener() {
                 @Override

@@ -1,32 +1,20 @@
 package com.example.bottombar_navigation_with_fragment.Fragment;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bottombar_navigation_with_fragment.CircleMenuLayout;
-import com.example.bottombar_navigation_with_fragment.StoreListActivity;
 import com.example.bottombar_navigation_with_fragment.model.MainItemInfo;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.Adapter.RecyclerVerticalAdapter;
 
 import java.util.ArrayList;
-
-import static android.view.View.VISIBLE;
 
 public class CenterFragment extends Fragment {
 
