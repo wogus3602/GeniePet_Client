@@ -124,7 +124,7 @@
         android:background="@drawable/custom_edittxt"
         android:textCursorDrawable="@drawable/edittxt_cursor"
         android:ems="10"
-        android:inputType="textWebPassword"
+        android:inputType="textPassword"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_username" />
@@ -149,7 +149,7 @@
         android:background="@drawable/custom_edittxt"
         android:textCursorDrawable="@drawable/edittxt_cursor"
         android:ems="10"
-        android:inputType="textWebPassword"
+        android:inputType="textPassword"
         android:textSize="16sp"
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"

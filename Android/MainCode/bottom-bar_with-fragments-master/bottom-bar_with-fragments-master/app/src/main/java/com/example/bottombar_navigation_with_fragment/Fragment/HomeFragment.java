@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
     public void initializeData(){
 //      Item 뷰 표시 내용
         ArrayList<MainItemInfo> feedInfoArrayList_1 = new ArrayList<>();
-        feedInfoArrayList_1.add(new MainItemInfo(R.drawable.feed1, "39,900원", "퓨리나 원 1세이상 관절건강 강아지사료 3.4kg","모두 보기(63개)->"));
+        feedInfoArrayList_1.add(new MainItemInfo(R.drawable.feed1, "39,000원", "퓨리나 원 1세이상 관절건강 강아지사료 3.4kg","모두 보기(63개)->"));
         feedInfoArrayList_1.add(new MainItemInfo(R.drawable.feed2, "41,500원", "[간식포켓+휴대용물그릇 증정] 로얄캐닌 엑스 퍼피 강아지사료 1.5kg","모두 보기(24개)->"));
 
         ArrayList<MainItemInfo> feedInfoArrayList_2 = new ArrayList<>();
