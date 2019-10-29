@@ -33,7 +33,6 @@ public class ListViewAdapter extends BaseAdapter {
         final int pos = position;
         final Context context = parent.getContext();
 
-
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.store_item, parent, false);
@@ -82,7 +81,7 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     // 데이터값 넣어줌
-    public void addVO(int rank,String icon, String title, String desc,String price) {
+    public void addVO(String rank,String icon, String title, String desc,String price) {
         ListVO item = new ListVO();
         item.setRank(rank);
         item.setImg(icon);

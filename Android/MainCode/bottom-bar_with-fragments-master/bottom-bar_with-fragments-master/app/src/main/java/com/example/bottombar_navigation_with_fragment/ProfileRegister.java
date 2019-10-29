@@ -43,9 +43,12 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
         Button logBtn = rootView.findViewById(R.id.to_login_button);
 
         Edreg_username = rootView.findViewById(R.id.reg_username);
+
         Edreg_password = rootView.findViewById(R.id.reg_password);
         Edreg_password.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
         Edreg_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+
         Edreg_password2 = rootView.findViewById(R.id.reg_password_confirm);
         Edreg_password2.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
         Edreg_password2.setTransformationMethod(PasswordTransformationMethod.getInstance());

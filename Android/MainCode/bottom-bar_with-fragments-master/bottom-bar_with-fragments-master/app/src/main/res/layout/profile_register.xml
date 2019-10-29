@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:text="@string/name"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,16 +42,18 @@
 
     <EditText
         android:id="@+id/nameEt"
-        android:layout_width="280dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/custom_edittxt"
-        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintStart_toEndOf="@+id/nameTv"
         app:layout_constraintTop_toBottomOf="@+id/infoTv" />
 
     <TextView
@@ -59,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:text="@string/email"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +69,7 @@
 
     <EditText
         android:id="@+id/reg_email"
-        android:layout_width="280dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -77,6 +79,8 @@
         android:textCursorDrawable="@drawable/edittxt_cursor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintStart_toEndOf="@+id/emailTv"
         app:layout_constraintTop_toBottomOf="@+id/nameEt" />
 
     <TextView
@@ -84,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="30dp"
         android:text="@string/id"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,16 +96,18 @@
 
     <EditText
         android:id="@+id/reg_username"
-        android:layout_width="280dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/custom_edittxt"
-        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toEndOf="@+id/useridTv"
         app:layout_constraintTop_toBottomOf="@+id/reg_email" />
 
     <TextView
@@ -109,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="31dp"
         android:text="@string/pw"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,16 +123,18 @@
 
     <EditText
         android:id="@+id/reg_password"
-        android:layout_width="280dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/custom_edittxt"
-        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:ems="10"
         android:inputType="textPassword"
+        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintStart_toEndOf="@+id/pwEt"
         app:layout_constraintTop_toBottomOf="@+id/reg_username" />
 
     <TextView
@@ -134,26 +142,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="28dp"
         android:text="@string/pw_chk"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_password" />
+        app:layout_constraintTop_toBottomOf="@+id/pwEt" />
 
     <EditText
         android:id="@+id/reg_password_confirm"
-        android:layout_width="280dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/custom_edittxt"
-        android:textCursorDrawable="@drawable/edittxt_cursor"
         android:ems="10"
-        android:inputType="textPassword"
-        android:textSize="16sp"
         android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:textCursorDrawable="@drawable/edittxt_cursor"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pwEt" />
+        app:layout_constraintHorizontal_bias="0.689"
+        app:layout_constraintStart_toEndOf="@+id/pwChkTv"
+        app:layout_constraintTop_toBottomOf="@+id/reg_password" />
 
     <TextView
         android:id="@+id/genderTv"
@@ -168,14 +178,15 @@
 
     <RadioGroup
         android:id="@+id/genderRg"
-        android:layout_width="280dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/genderTv"
         app:layout_constraintTop_toBottomOf="@+id/reg_password_confirm">
 
         <RadioButton
@@ -208,12 +219,13 @@
 
     <Spinner
         android:id="@+id/yearsSppiner"
-        android:dropDownWidth="280dp"
-        android:layout_width="280dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
+        android:dropDownWidth="280dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/yearsTv"
         app:layout_constraintTop_toBottomOf="@+id/genderRg" />
 
     <Button

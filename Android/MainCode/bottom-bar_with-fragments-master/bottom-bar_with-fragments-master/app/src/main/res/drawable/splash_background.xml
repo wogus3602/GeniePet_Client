@@ -4,9 +4,9 @@
     <item
         android:drawable="@color/cardview_light_background"/>
     <item>
-        <bitmap
+        <pl.droidsonroids.gif.GifTextView
             android:gravity="center"
-            android:src="@drawable/splash_image"
+            android:background="@drawable/splash_moving"
             />
     </item>
 </layer-list>

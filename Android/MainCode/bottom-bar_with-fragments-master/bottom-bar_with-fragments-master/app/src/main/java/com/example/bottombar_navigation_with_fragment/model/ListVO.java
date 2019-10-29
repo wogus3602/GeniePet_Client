@@ -4,7 +4,7 @@ import android.graphics.drawable.Drawable;
 
 
 public class ListVO {
-    private int rank;
+    private String rank;
     private String img; //이미지
     private String title; // 제목
     private String price; // 가격
@@ -17,11 +17,11 @@ public class ListVO {
         this.title = title;
     }
 
-    public int getRank() {
+    public String getRank() {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(String rank) {
         this.rank = rank;
     }
 

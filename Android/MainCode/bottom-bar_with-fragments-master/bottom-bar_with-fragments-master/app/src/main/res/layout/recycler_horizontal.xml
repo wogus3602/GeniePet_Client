@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="5dp">
+    android:layout_margin="20dp"
+    android:layout_marginStart="40dp"
+    android:layout_marginEnd="40dp"
+    android:layout_marginBottom="20dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
     <!--cardCornerRadius는 라운드 모서리용 코드-->
 
     <RelativeLayout
@@ -22,40 +21,38 @@
             android:id="@+id/iv_picture"
             android:layout_width="178dp"
             android:layout_height="178dp"
-            android:layout_above="@+id/tv_name"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="115dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
 
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="29dp"
             tools:src="@tools:sample/avatars[2]" />
 
         <TextView
             android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginBottom="11dp"
+            android:layout_width="175dp"
+            android:layout_height="37dp"
+            android:layout_below="@+id/tv_name"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toEndOf="@+id/iv_picture"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="22sp"
             tools:text="가격" />
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_width="171dp"
+            android:layout_height="77dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
-            android:layout_marginBottom="64dp"
-            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/iv_picture"
             android:textColor="#000000"
             android:textSize="20sp"
             tools:text="이름" />
@@ -66,10 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="11dp"
             android:textColor="#FFCA7E2A"
-            android:textSize="20sp"
+            android:textSize="18sp"
             tools:text="모두 보기->" />
 
     </RelativeLayout>
