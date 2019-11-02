@@ -20,10 +20,9 @@
 <img src="./picture/p4.png" >
 
 
+---
+# 사진(UI 변경중)
 
-------
-## 사진(UI 변경중)
-
-<img src="./picture/android_2.png" width="240" height="500">
-<img src="./picture/p2.png" width="240" height="500">
-<img src="./picture/p1.gif" width="240" height="500">
+<img src="./picture/android_2.png" width="270" height="500">
+<img src="./picture/p2.png" width="270" height="500">
+<img src="./picture/p1.gif" width="270" height="500">
