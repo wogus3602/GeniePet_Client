@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 
+import com.bumptech.glide.Glide;
 import com.example.bottombar_navigation_with_fragment.DataManager;
 import com.example.bottombar_navigation_with_fragment.DjangoREST;
 import com.example.bottombar_navigation_with_fragment.MainActivity;
@@ -55,6 +56,11 @@ public class Camera extends AppCompatActivity {
         Button bt_camera = findViewById(R.id.btnCamera);
         Button bt_album = findViewById(R.id.btnGallery);
         Button bt_check = findViewById(R.id.check);
+
+        ImageView imageView = findViewById(R.id.get_imageview);
+        Glide.with(this).load(R.drawable.dog_goqual).into(imageView);
+
+
         textView = findViewById(R.id.textView2);
         bt_camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,6 +178,7 @@ public class Camera extends AppCompatActivity {
                 }
             }
             setImage();
+            showMessage();
         } else if (requestCode == PICK_FROM_CAMERA) {
             setImage();
             showMessage();
@@ -202,6 +209,9 @@ public class Camera extends AppCompatActivity {
     private void setImage() {
         BitmapFactory.Options options = new BitmapFactory.Options();
         Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
+
+        TextView textView = findViewById(R.id.input_text);
+        textView.setVisibility(View.INVISIBLE);
 
         stream = new ByteArrayOutputStream();
         originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);

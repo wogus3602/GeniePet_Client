@@ -57,8 +57,8 @@ public class CircleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_circle, container, false);
 
         TextView textView = view.findViewById(R.id.tiptext);
-        ImageView imageView = view.findViewById(R.id.tip_image);
 
+        ImageView imageView = view.findViewById(R.id.tip_image);
         Glide.with(this).load(R.drawable.dog_run).into(imageView);
 
         mCircleMenuLayout = view.findViewById(R.id.id_menulayout);

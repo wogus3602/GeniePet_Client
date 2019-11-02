@@ -29,13 +29,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     static int flag = 1;
-    private CircleMenuLayout mCircleMenuLayout;
 
     int mCartItemCount = 10;
     TextView textCartItemCount;
-    //Circle 속성
-//    String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
-//    int[] imgArray = new int[] {R.drawable.dog_food,R.drawable.dog_snack,R.drawable.dog_lotion,R.drawable.dog_house,R.drawable.dog_etc,R.drawable.dog_etc};
     float staticwidth = 0f;
     public static MainActivity mMyApplication;
 
@@ -115,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         final MenuItem menuItem = menu.findItem(R.id.action_cart);
 
         View actionView = MenuItemCompat.getActionView(menuItem);
-        textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
+        textCartItemCount = actionView.findViewById(R.id.cart_badge);
 
         setupBadge();
 
@@ -146,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
     }
 
@@ -174,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String[] getMenuArray() {
-        //CircleFragment.newInstance().getMenuArray();
         return CircleFragment.newInstance().getMenuArray();
     }
 

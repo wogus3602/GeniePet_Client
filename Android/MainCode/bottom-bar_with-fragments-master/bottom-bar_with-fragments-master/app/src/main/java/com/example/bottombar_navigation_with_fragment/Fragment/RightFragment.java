@@ -39,7 +39,7 @@ public class RightFragment extends Fragment {
             {
                 SaveSharedPreference.clearPreference(getActivity());
                 Fragment fragment = null;
-                fragment = new CenterFragment();
+                fragment = new HomeFragment();
                 replaceFragment(fragment);
             }
         });

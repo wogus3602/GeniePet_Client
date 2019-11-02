@@ -33,12 +33,12 @@ public class ListViewAdapter extends BaseAdapter {
         final int pos = position;
         final Context context = parent.getContext();
 
-
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.store_item, parent, false);
         }
 
+        TextView rank = convertView.findViewById(R.id.rank);
         ImageView image =  convertView.findViewById(R.id.img) ;
         TextView title =  convertView.findViewById(R.id.title) ;
         //TextView Context = convertView.findViewById(R.id.context) ;
@@ -46,6 +46,8 @@ public class ListViewAdapter extends BaseAdapter {
 
         ListVO listViewItem = listVO.get(position);
 
+
+        rank.setText(listViewItem.getRank());
         // 아이템 내 각 위젯에 데이터 반영
         Glide.with(context).load(listViewItem.getImg()).into(image);
         //image.setImageDrawable(listViewItem.getImg());
@@ -79,9 +81,9 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     // 데이터값 넣어줌
-    public void addVO(String icon, String title, String desc,String price) {
+    public void addVO(String rank,String icon, String title, String desc,String price) {
         ListVO item = new ListVO();
-
+        item.setRank(rank);
         item.setImg(icon);
         item.setTitle(title);
         //item.setContext(desc);

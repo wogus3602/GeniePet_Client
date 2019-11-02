@@ -53,7 +53,7 @@ public class DjangoREST {
                 try {
                     MyResult = response.body().string();
                     setMyResult(MyResult);
-
+                    Log.d("",""+response.body());
                     SaveSharedPreference.setSpecie(MainActivity.getInstance(),MyResult);
 
                     Log.d("MyResult", "" +MyResult);

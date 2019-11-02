@@ -110,7 +110,7 @@ public class StoreListActivity extends AppCompatActivity{
                     String context = friend.getString("text");
                     String price = friend.getString("price");
 
-                    adapter.addVO(img,title,context,price);
+                    adapter.addVO(""+(i+1),img,title,context,price);
 //                    Log.d("FOR_LOG", nameOS);
 //
 //                    hashMap = new HashMap<String, String>();
