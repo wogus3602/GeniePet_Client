@@ -10,6 +10,20 @@
 2019.10.15 ~ 16 - 메인에다 카메라(딥러닝 견종 적용), 프로필생성(토큰 잘 안넘어옴) 추가 <br>
 ~ 2019.10.28 - UI 꾸밈, 전반적으로 코드 수정 및 정리, 회원가입, 툴바 추가<br>
 2019.10.29 - UI 전체 색 바꾸기, 레이아웃 살짝 손봄<br>
-<img src="./picture/android_2.png" width="270" height="500">
-<img src="./picture/p2.png" width="270" height="500">
-<img src="./picture/p1.gif" width="270" height="500">
+
+------
+## 개발환경
+<img src="./picture/p3.png" >
+
+------
+## 시스템 구성도
+<img src="./picture/p4.png" >
+
+
+
+------
+## 사진(UI 변경중)
+
+<img src="./picture/android_2.png" width="240" height="500">
+<img src="./picture/p2.png" width="240" height="500">
+<img src="./picture/p1.gif" width="240" height="500">
