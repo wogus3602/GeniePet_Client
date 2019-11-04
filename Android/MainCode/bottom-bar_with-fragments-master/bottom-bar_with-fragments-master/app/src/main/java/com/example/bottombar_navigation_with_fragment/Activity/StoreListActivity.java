@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bottombar_navigation_with_fragment.Adapter.ListViewAdapter;
 import com.example.bottombar_navigation_with_fragment.DjangoApi;
-import com.example.bottombar_navigation_with_fragment.MainActivity;
+
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 

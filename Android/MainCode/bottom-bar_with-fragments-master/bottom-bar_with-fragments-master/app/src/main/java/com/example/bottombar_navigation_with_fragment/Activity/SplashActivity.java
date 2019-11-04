@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bottombar_navigation_with_fragment.MainActivity;
+
 import com.example.bottombar_navigation_with_fragment.R;
 
 public class SplashActivity extends AppCompatActivity {

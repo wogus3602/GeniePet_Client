@@ -2,6 +2,7 @@ package com.example.bottombar_navigation_with_fragment;
 
 import android.util.Log;
 
+import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
 import com.example.bottombar_navigation_with_fragment.model.PostModel;
 
 
@@ -28,6 +29,8 @@ public class DjangoREST {
     public void setMyResult(String myResult) {
         MyResult = myResult;
     }
+
+
 
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
@@ -73,6 +76,8 @@ public class DjangoREST {
         return MyResult;
     }
 
+
+
     //정보 올리기
     public void AddPostServer(String name, String species, String age) {
 
@@ -103,6 +108,8 @@ public class DjangoREST {
             }
         });
     }
+
+
 
     //정보 올리기
     public void Tip() {

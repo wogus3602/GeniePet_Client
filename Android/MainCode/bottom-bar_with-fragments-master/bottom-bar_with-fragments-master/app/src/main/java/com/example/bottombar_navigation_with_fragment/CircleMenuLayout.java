@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
+
 
 public class CircleMenuLayout extends ViewGroup {
     private int mRadius;

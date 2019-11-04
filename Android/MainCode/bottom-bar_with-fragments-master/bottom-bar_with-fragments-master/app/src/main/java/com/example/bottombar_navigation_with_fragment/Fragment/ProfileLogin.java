@@ -17,7 +17,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bottombar_navigation_with_fragment.DjangoApi;
 import com.example.bottombar_navigation_with_fragment.InternetUtil;
-import com.example.bottombar_navigation_with_fragment.MainActivity;
+
+import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
+
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 import com.example.bottombar_navigation_with_fragment.model.Login;

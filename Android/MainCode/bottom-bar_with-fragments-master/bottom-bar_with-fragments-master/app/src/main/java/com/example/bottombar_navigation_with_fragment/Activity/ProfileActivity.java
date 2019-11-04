@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bottombar_navigation_with_fragment.DataManager;
 import com.example.bottombar_navigation_with_fragment.DjangoREST;
-import com.example.bottombar_navigation_with_fragment.MainActivity;
+
 import com.example.bottombar_navigation_with_fragment.R;
 import com.google.android.material.textfield.TextInputEditText;
 
