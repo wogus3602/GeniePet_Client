@@ -1,7 +1,6 @@
 package com.example.bottombar_navigation_with_fragment;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -11,6 +10,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
 
 
 public class CircleMenuLayout extends ViewGroup {

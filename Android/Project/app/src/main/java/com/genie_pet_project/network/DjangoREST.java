@@ -1,10 +1,10 @@
-package com.example.bottombar_navigation_with_fragment;
+package com.genie_pet_project.network;
 
 import android.util.Log;
 
-import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
-import com.example.bottombar_navigation_with_fragment.model.PostModel;
-
+import com.genie_pet_project.MainActivity;
+import com.genie_pet_project.SaveSharedPreference;
+import com.genie_pet_project.models.PostModel;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,8 +29,6 @@ public class DjangoREST {
     public void setMyResult(String myResult) {
         MyResult = myResult;
     }
-
-
 
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
@@ -93,7 +91,7 @@ public class DjangoREST {
                 age
         );
 
-        String token = "JWT "+SaveSharedPreference.getToken(MainActivity.getInstance());
+        String token = "JWT "+ SaveSharedPreference.getToken(MainActivity.getInstance());
         Log.d("adsada",""+token);
         Call<ResponseBody> comment = postApi.addPostVoditel(token,postModel);
         comment.enqueue(new Callback<ResponseBody>() {

@@ -1,4 +1,4 @@
-package com.example.bottombar_navigation_with_fragment;
+package com.example.bottombar_navigation_with_fragment.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bottombar_navigation_with_fragment.DataManager;
+import com.example.bottombar_navigation_with_fragment.DjangoREST;
+import com.example.bottombar_navigation_with_fragment.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ProfileActivity extends AppCompatActivity {

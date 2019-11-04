@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.bottombar_navigation_with_fragment.Camera.Camera;
-import com.example.bottombar_navigation_with_fragment.MainActivity;
+import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 

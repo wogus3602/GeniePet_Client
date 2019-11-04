@@ -1,11 +1,12 @@
-package com.example.bottombar_navigation_with_fragment;
+package com.example.bottombar_navigation_with_fragment.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bottombar_navigation_with_fragment.R;
 
 public class SplashActivity extends AppCompatActivity {
     /** Duration of wait **/

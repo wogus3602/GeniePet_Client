@@ -26,11 +26,8 @@ import androidx.core.content.FileProvider;
 import com.bumptech.glide.Glide;
 import com.example.bottombar_navigation_with_fragment.DataManager;
 import com.example.bottombar_navigation_with_fragment.DjangoREST;
-import com.example.bottombar_navigation_with_fragment.MainActivity;
-import com.example.bottombar_navigation_with_fragment.ProfileActivity;
-import com.example.bottombar_navigation_with_fragment.ProfileLogin;
+import com.example.bottombar_navigation_with_fragment.Activity.ProfileActivity;
 import com.example.bottombar_navigation_with_fragment.R;
-import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
