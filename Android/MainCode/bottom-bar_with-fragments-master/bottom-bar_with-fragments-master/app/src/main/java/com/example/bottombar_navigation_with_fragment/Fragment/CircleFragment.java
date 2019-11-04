@@ -13,10 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
 import com.example.bottombar_navigation_with_fragment.CircleMenuLayout;
 import com.example.bottombar_navigation_with_fragment.R;
-import com.example.bottombar_navigation_with_fragment.StoreListActivity;
+import com.example.bottombar_navigation_with_fragment.Activity.StoreListActivity;
 
 public class CircleFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";

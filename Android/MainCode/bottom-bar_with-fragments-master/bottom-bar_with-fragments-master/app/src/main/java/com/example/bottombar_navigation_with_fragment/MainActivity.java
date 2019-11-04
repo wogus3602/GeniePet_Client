@@ -1,15 +1,12 @@
 package com.example.bottombar_navigation_with_fragment;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -24,6 +21,7 @@ import com.example.bottombar_navigation_with_fragment.Fragment.CartFragment;
 import com.example.bottombar_navigation_with_fragment.Fragment.CircleFragment;
 import com.example.bottombar_navigation_with_fragment.Fragment.HomeFragment;
 import com.example.bottombar_navigation_with_fragment.Fragment.ProfileFragment;
+import com.example.bottombar_navigation_with_fragment.Fragment.ProfileLogin;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 

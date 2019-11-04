@@ -1,4 +1,4 @@
-package com.example.bottombar_navigation_with_fragment;
+package com.example.bottombar_navigation_with_fragment.Activity;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -11,6 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bottombar_navigation_with_fragment.Adapter.ListViewAdapter;
+import com.example.bottombar_navigation_with_fragment.DjangoApi;
+import com.example.bottombar_navigation_with_fragment.MainActivity;
+import com.example.bottombar_navigation_with_fragment.R;
+import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
