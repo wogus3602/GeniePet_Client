@@ -1,8 +1,5 @@
 package com.example.bottombar_navigation_with_fragment.model;
 
-import android.graphics.drawable.Drawable;
-
-
 public class ListVO {
     private String rank;
     private String img; //이미지

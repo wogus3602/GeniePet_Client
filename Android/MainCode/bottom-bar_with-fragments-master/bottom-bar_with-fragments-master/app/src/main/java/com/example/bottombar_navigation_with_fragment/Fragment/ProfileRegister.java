@@ -21,6 +21,8 @@ import com.example.bottombar_navigation_with_fragment.InternetUtil;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.model.RegisterModel;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,41 +30,35 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileRegister extends Fragment implements View.OnClickListener {
-
-
-    EditText Edreg_username;
-    EditText Edreg_password;
-    EditText Edreg_password2;
-    EditText Edreg_email;
+    @BindView(R.id.registration_button)
+    Button mRegisterButton;
+    @BindView(R.id.to_login_button)
+    Button mLoginButton;
+    @BindView(R.id.reg_username)
+    EditText mRegisterUserName;
+    @BindView(R.id.reg_password)
+    EditText mRegisterPassword;
+    @BindView(R.id.reg_email)
+    EditText mRegisterEmail;
+    @BindView(R.id.reg_password_confirm)
+    EditText mRegisterPassword2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.profile_register, container, false);
+        ButterKnife.bind(this,view);
 
-        View rootView = inflater.inflate(R.layout.profile_register, container, false);
+        mRegisterPassword.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        mRegisterPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        mRegisterPassword2.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+        mRegisterPassword2.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
-        Button regBtn = rootView.findViewById(R.id.registration_button);
-        Button logBtn = rootView.findViewById(R.id.to_login_button);
+        mRegisterButton.setOnClickListener(this);
+        mLoginButton.setOnClickListener(this);
 
-        Edreg_username = rootView.findViewById(R.id.reg_username);
-
-        Edreg_password = rootView.findViewById(R.id.reg_password);
-        Edreg_password.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
-        Edreg_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-
-        Edreg_password2 = rootView.findViewById(R.id.reg_password_confirm);
-        Edreg_password2.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_NUMBER_VARIATION_PASSWORD);
-        Edreg_password2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        Edreg_email = rootView.findViewById(R.id.reg_email);
-
-
-        regBtn.setOnClickListener(this);
-        logBtn.setOnClickListener(this);
-
-        return rootView;
+        return view;
     }
-
 
     @Override
     public void onClick(View view) {
@@ -76,7 +72,6 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
         }
     }
 
-
     public void replaceFragment(Fragment someFragment) {
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -86,13 +81,12 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
     }
 
-
     public void RegButtonClick()
     {
-        String reg_username = Edreg_username.getText().toString();
-        String reg_password = Edreg_password.getText().toString();
-        String reg_password2 = Edreg_password2.getText().toString();
-        String reg_email = Edreg_email.getText().toString();
+        String reg_username = mRegisterUserName.getText().toString();
+        String reg_password = mRegisterPassword.getText().toString();
+        String reg_password2 = mRegisterPassword2.getText().toString();
+        String reg_email = mRegisterEmail.getText().toString();
 
         RegisterModel registerModel = new RegisterModel(
                 reg_email,
@@ -110,13 +104,11 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
         }
     }
 
-
     public void LogButtonClick()
     {
         Fragment fragment = new ProfileLogin();
         replaceFragment(fragment);
     }
-
 
     public void RegisterInServer(RegisterModel registerModel) {
 
@@ -150,23 +142,15 @@ public class ProfileRegister extends Fragment implements View.OnClickListener {
 
     }
 
-
-
     private Boolean IsEmptyEditTextLogin(){
-        if(Edreg_password.getText().toString().isEmpty() || Edreg_username.getText().toString().isEmpty()|| Edreg_email.getText().toString().isEmpty()){
-
+        if(mRegisterPassword.getText().toString().isEmpty() || mRegisterUserName.getText().toString().isEmpty()|| mRegisterEmail.getText().toString().isEmpty()){
             Toast toast = Toast.makeText(getActivity(),"Empty EditText", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-
-
             return true;
         }else{
             return false;
         }
-
     }
-
-
 
 }

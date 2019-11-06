@@ -7,7 +7,6 @@ public class RegisterModel {
     private String password1;
     private String password2;
 
-
     public RegisterModel(
                 String email,
                 String username,

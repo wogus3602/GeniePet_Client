@@ -17,6 +17,4 @@ public class DataManager {
         Species = species;
     }
 
-    private DataManager() {
-    }
 }

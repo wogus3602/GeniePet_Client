@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
 
-
 public class CircleMenuLayout extends ViewGroup {
     private int mRadius;
 
@@ -78,9 +77,6 @@ public class CircleMenuLayout extends ViewGroup {
 
             resWidth = resHeight = Math.min(width, height);
         }
-
-
-        // 수정///////////////////////////////////////////////////
 
         setMeasuredDimension(resWidth, resHeight);
 
@@ -204,13 +200,10 @@ public class CircleMenuLayout extends ViewGroup {
 
         View cView = findViewById(R.id.id_circle_menu_item_center);
         if (cView != null) {
-            cView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            cView.setOnClickListener(v -> {
 
-                    if (mOnMenuItemClickListener != null) {
-                        mOnMenuItemClickListener.itemCenterClick(v);
-                    }
+                if (mOnMenuItemClickListener != null) {
+                    mOnMenuItemClickListener.itemCenterClick(v);
                 }
             });
 
@@ -220,10 +213,8 @@ public class CircleMenuLayout extends ViewGroup {
         }
 
     }
-
     private float mLastX;
     private float mLastY;
-
     private AutoFlingRunnable mFlingRunnable;
 
     @Override
@@ -231,10 +222,8 @@ public class CircleMenuLayout extends ViewGroup {
         float x = event.getX();
         float y = event.getY();
 
-
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-
                 mLastX = x;
                 mLastY = y;
                 mDownTime = System.currentTimeMillis();
@@ -248,9 +237,7 @@ public class CircleMenuLayout extends ViewGroup {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-
                 float start = getAngle(mLastX, mLastY);
-
                 float end = getAngle(x, y);
 
                 if (getQuadrant(x, y) == 1 || getQuadrant(x, y) == 4) {

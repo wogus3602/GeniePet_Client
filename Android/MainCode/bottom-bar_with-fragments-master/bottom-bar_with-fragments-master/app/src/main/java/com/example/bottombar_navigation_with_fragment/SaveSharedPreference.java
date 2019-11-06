@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class SaveSharedPreference {
-
     static final String PREF_TOKEN = "username";
     static final String PREF_LOGGED = "logged";
     static final String PREF_SPECIE = "specie";
@@ -20,6 +19,7 @@ public class SaveSharedPreference {
         editor.putBoolean(PREF_LOGGED, Logged);
         editor.commit();
     }
+
     // 계정 정보 저장
     public static void setSpecie(Context ctx, String specie) {
         SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
@@ -31,7 +31,6 @@ public class SaveSharedPreference {
     public static String getToken(Context ctx) {
         return getSharedPreferences(ctx).getString(PREF_TOKEN, "");
     }
-
 
     public static Boolean getLogged(Context ctx) {
         return getSharedPreferences(ctx).getBoolean(PREF_LOGGED,false);
@@ -48,6 +47,4 @@ public class SaveSharedPreference {
         editor.clear();
         editor.commit();
     }
-
-
 }

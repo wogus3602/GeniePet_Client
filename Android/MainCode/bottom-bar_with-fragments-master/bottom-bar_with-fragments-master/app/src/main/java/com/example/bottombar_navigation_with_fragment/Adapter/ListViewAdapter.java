@@ -41,39 +41,25 @@ public class ListViewAdapter extends BaseAdapter {
         TextView rank = convertView.findViewById(R.id.rank);
         ImageView image =  convertView.findViewById(R.id.img) ;
         TextView title =  convertView.findViewById(R.id.title) ;
-        //TextView Context = convertView.findViewById(R.id.context) ;
         TextView price = convertView.findViewById(R.id.price);
 
         ListVO listViewItem = listVO.get(position);
 
-
         rank.setText(listViewItem.getRank());
         // 아이템 내 각 위젯에 데이터 반영
         Glide.with(context).load(listViewItem.getImg()).into(image);
-        //image.setImageDrawable(listViewItem.getImg());
         title.setText(listViewItem.getTitle());
-        //Context.setText(listViewItem.getContext());
         price.setText(listViewItem.getPrice());
 
-
         //리스트뷰 클릭 이벤트
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, (pos+1)+"번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
+        convertView.setOnClickListener(view -> Toast.makeText(context, (pos+1)+"번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show());
         return convertView;
     }
-
 
     @Override
     public long getItemId(int position) {
         return position ;
     }
-
 
     @Override
     public Object getItem(int position) {
@@ -86,7 +72,6 @@ public class ListViewAdapter extends BaseAdapter {
         item.setRank(rank);
         item.setImg(icon);
         item.setTitle(title);
-        //item.setContext(desc);
         item.setPrice(price);
         listVO.add(item);
     }

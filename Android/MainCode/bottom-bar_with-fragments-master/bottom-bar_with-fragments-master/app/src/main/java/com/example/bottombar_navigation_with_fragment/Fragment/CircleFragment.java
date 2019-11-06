@@ -17,15 +17,17 @@ import com.example.bottombar_navigation_with_fragment.CircleMenuLayout;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.Activity.StoreListActivity;
 
-public class CircleFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private CircleMenuLayout mCircleMenuLayout;
-    private String mParam1;
-    private String mParam2;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    public CircleFragment() {
-    }
+public class CircleFragment extends Fragment {
+    String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
+    int[] imgArray = new int[] {R.drawable.dog_food,R.drawable.dog_snack,R.drawable.dog_lotion,R.drawable.dog_house,R.drawable.dog_etc,R.drawable.dog_etc};
+
+    @BindView(R.id.tip_image)
+    ImageView mImageView;
+    @BindView(R.id.id_menulayout)
+    CircleMenuLayout mCircleMenuLayout;
 
     public static CircleFragment newInstance() {
         return new CircleFragment();
@@ -34,11 +36,6 @@ public class CircleFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
     }
 
     @Override
@@ -46,21 +43,13 @@ public class CircleFragment extends Fragment {
         super.onResume();
     }
 
-
-    String[] menuArray = new String[] { "사료", "간식", "미용/목욕", "하우스", "장난감", "기타" };
-    int[] imgArray = new int[] {R.drawable.dog_food,R.drawable.dog_snack,R.drawable.dog_lotion,R.drawable.dog_house,R.drawable.dog_etc,R.drawable.dog_etc};
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_circle, container, false);
+        ButterKnife.bind(this,view);
 
-        TextView textView = view.findViewById(R.id.tiptext);
+        Glide.with(this).load(R.drawable.dog_run).into(mImageView);
 
-        ImageView imageView = view.findViewById(R.id.tip_image);
-        Glide.with(this).load(R.drawable.dog_run).into(imageView);
-
-        mCircleMenuLayout = view.findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
@@ -84,6 +73,8 @@ public class CircleFragment extends Fragment {
         });
         return view;
     }
+
+
     public String[] getMenuArray() {
         return menuArray;
     }

@@ -18,52 +18,43 @@ import com.example.bottombar_navigation_with_fragment.Activity.MainActivity;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class ProfileFragment extends Fragment {
-    private SharedPreferences sharedPreferences;
-    public ProfileFragment() {
-    }
 
+    @BindView(R.id.button)
+    Button mButton;
+    @BindView(R.id.button2)
+    Button mButton2;
+    @BindView(R.id.button3)
+    Button mButton3;
     public static Fragment newInstance() {
-
         return new ProfileFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment,container, false);
-        Button button = view.findViewById(R.id.button);
-        Button button1 = view.findViewById(R.id.button2);
-        Button button3 = view.findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                SaveSharedPreference.clearPreference(MainActivity.getInstance());
-                Fragment fragment = null;
-                fragment = new HomeFragment();
-                replaceFragment(fragment);
-            }
+        ButterKnife.bind(this,view);
+        mButton.setOnClickListener(v -> {
+            SaveSharedPreference.clearPreference(MainActivity.getInstance());
+            Fragment fragment = null;
+            fragment = new HomeFragment();
+            replaceFragment(fragment);
         });
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Camera.class);
-                startActivity(intent);
+        mButton2.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), Camera.class);
+            startActivity(intent);
 
-            }
         });
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mButton3.setOnClickListener(v -> {
 
-            }
         });
         return view;
     }
-
 
     public void replaceFragment(Fragment someFragment) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

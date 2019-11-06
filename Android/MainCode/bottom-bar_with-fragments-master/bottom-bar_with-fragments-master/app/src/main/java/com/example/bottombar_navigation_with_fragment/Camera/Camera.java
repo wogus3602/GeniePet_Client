@@ -71,16 +71,13 @@ public class Camera extends AppCompatActivity {
                 goToAlbum();
             }
         });
-        bt_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                byte[] byteArray = stream.toByteArray();
-                intent.putExtra("image",byteArray);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
+        bt_check.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            byte[] byteArray = stream.toByteArray();
+            intent.putExtra("image",byteArray);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
         });
 
         //툴바
@@ -183,20 +180,15 @@ public class Camera extends AppCompatActivity {
     }
 
     public void showMessage() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (djangoREST.getMyResult() == null) {
-                    // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            textView.setText(djangoREST.getMyResult());
-                            // 메시지 큐에 저장될 메시지의 내용
-                        }
-                    });
-                    if(djangoREST.getMyResult() != null) {
-                        DataManager.getInstance().setSpecies(djangoREST.getMyResult());
-                    }
+        new Thread(() -> {
+            while (djangoREST.getMyResult() == null) {
+                // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
+                runOnUiThread(() -> {
+                    textView.setText(djangoREST.getMyResult());
+                    // 메시지 큐에 저장될 메시지의 내용
+                });
+                if(djangoREST.getMyResult() != null) {
+                    DataManager.getInstance().setSpecies(djangoREST.getMyResult());
                 }
             }
         }).start();

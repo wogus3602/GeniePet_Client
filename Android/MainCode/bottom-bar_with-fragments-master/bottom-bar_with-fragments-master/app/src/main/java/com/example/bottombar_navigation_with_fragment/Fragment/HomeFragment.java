@@ -16,11 +16,15 @@ import com.example.bottombar_navigation_with_fragment.model.MainItemInfo;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class HomeFragment extends Fragment {
 
-    RecyclerView recyclerView_item;
     private ArrayList<ArrayList<MainItemInfo>> all = new ArrayList();
 
+    @BindView(R.id.activity_recycler)
+    RecyclerView recyclerView_item;
 
     public HomeFragment() {
     }
@@ -28,7 +32,6 @@ public class HomeFragment extends Fragment {
     public static Fragment newInstance() {
         return new HomeFragment();
     }
-
 
     public void onStart() {
         super.onStart();
@@ -49,8 +52,9 @@ public class HomeFragment extends Fragment {
 
         //목록 용 RecyclerView
         this.initializeData();
-        View v = inflater.inflate(R.layout.home_fragment, container, false);
-        recyclerView_item = v.findViewById(R.id.activity_recycler);
+        View view = inflater.inflate(R.layout.home_fragment, container, false);
+        ButterKnife.bind(this,view);
+
         RecyclerVerticalAdapter verticalAdapter = new RecyclerVerticalAdapter(getContext(), all);
         recyclerView_item.setHasFixedSize(true);
         recyclerView_item.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL,false));
@@ -59,7 +63,7 @@ public class HomeFragment extends Fragment {
         recyclerView_item.setAdapter(verticalAdapter);
 
 
-        return v;
+        return view;
     }
 
 

@@ -1,30 +1,24 @@
-package com.genie_pet_project.network;
+package com.example.bottombar_navigation_with_fragment.network;
 
-import com.genie_pet_project.models.Login;
-import com.genie_pet_project.models.PostModel;
-import com.genie_pet_project.models.RegisterModel;
-import com.genie_pet_project.models.User;
 
+import com.example.bottombar_navigation_with_fragment.model.Login;
+import com.example.bottombar_navigation_with_fragment.model.PostModel;
+import com.example.bottombar_navigation_with_fragment.model.RegisterModel;
+import com.example.bottombar_navigation_with_fragment.model.User;
+
+import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-import rx.Observable;
 
-/**
- * Created by alandwiprasetyo on 11/22/16.
- */
-
-public interface NetworkStores {
+public interface NetworkService {
     @Multipart
-    @POST("upload/")
+    @POST("pot/upload/")
     Observable<ResponseBody> uploadFile(@Part MultipartBody.Part file);
 
     //Tip 받기
@@ -36,11 +30,10 @@ public interface NetworkStores {
     Observable<ResponseBody> addPostVoditel(@Header("Authorization") String djangoToken, @Body PostModel postModel);
 
     //로그인
-    @POST("login/")
+    @POST("auth/login/")
     Observable<User> login(@Body Login login);
 
     //회원가입
-    @POST("register/")
+    @POST("auth/register/")
     Observable<RegisterModel> registrationUser(@Body RegisterModel userModel);
-
 }

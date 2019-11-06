@@ -1,7 +1,6 @@
 package com.example.bottombar_navigation_with_fragment.model;
 
 public class PostModel {
-
     private String name;
     private String age;
     private  String species;

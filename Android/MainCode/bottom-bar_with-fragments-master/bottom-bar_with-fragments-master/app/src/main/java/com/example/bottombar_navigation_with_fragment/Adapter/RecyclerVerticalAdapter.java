@@ -31,7 +31,7 @@ public class RecyclerVerticalAdapter extends RecyclerView.Adapter<RecyclerVertic
         {
             super(view);
 
-            this.recyclerView = (RecyclerView)view.findViewById(R.id.recyclerViewVertical);
+            this.recyclerView = view.findViewById(R.id.recyclerViewVertical);
         }
     }
     @NonNull

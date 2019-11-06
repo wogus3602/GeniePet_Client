@@ -1,6 +1,5 @@
 package com.example.bottombar_navigation_with_fragment.model;
 
-
 public class User {
     private int id;
     private String email;
@@ -8,7 +7,6 @@ public class User {
     private String password1;
     private String password2;
     private String token;
-
 
     public User(int id,
                 String email,
@@ -24,7 +22,6 @@ public class User {
         this.password2 = password2;
         this.token = token;
     }
-
 
     public int getId(){
         return id;

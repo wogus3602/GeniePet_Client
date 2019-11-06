@@ -15,9 +15,11 @@ import com.example.bottombar_navigation_with_fragment.DjangoApi;
 
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -25,26 +27,37 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StoreListActivity extends AppCompatActivity{
+
+    @BindView(R.id.isLogin)
+    TextView mTextview;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_list);
+        ButterKnife.bind(this);
 
-        TextView textview = findViewById(R.id.textlogin);
+        isLoginStatus();
+
+        new ParseTask().execute();
+    }
+
+    protected void isLoginStatus(){
         if(!SaveSharedPreference.getLogged(MainActivity.getInstance())){
-            textview.setText("로그인이 안됐습니다. ");
+            mTextview.setText("로그인을 해주세요");
         }else{
             if(SaveSharedPreference.getSpecie(MainActivity.getInstance())==""){
                 String strColor = "#FF0004";
-                textview.setTextColor(Color.parseColor(strColor));
-                textview.setText("프로필 등록이 안됐습니다. 정확한 추천을 해주기 어렵습니다.");
+                mTextview.setTextColor(Color.parseColor(strColor));
+                mTextview.setText("프로필 등록을 해주시면 정확한 추천을 해드리겠습니다.");
             }else {
-                textview.setText(SaveSharedPreference.getSpecie(MainActivity.getInstance()) + " 종에게 맞춤 추천 상품입니다.");
+                mTextview.setText(SaveSharedPreference.getSpecie(MainActivity.getInstance()) + " 종에게 맞춤 추천 상품입니다.");
             }
         }
-        new ParseTask().execute();
     }
 
     //멀티 쓰레드
@@ -91,19 +104,7 @@ public class StoreListActivity extends AppCompatActivity{
             listView = findViewById(R.id.List_view);
             listView.setAdapter(adapter);
 
-            //final ListView lView = findViewById(R.id.lvMain);
-            ////json 받는 종류
-            //String[] from = {"id","text","name", "price", "image"};
-            //int[] to = {R.id.name_item, R.id.price, R.id.imageView,R.id.id,R.id.text1};
-
-            //ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
-            //HashMap<String,String> hashMap;
-
             try {
-                // JsonObject results:{ id: , re: ..} 받기
-                //JSONObject jsonObject = new JSONObject(strJson);
-                //JSONArray jArray = jsonObject.getJSONArray("results");
-
                 JSONArray jArray = new JSONArray(strJson);
 
                 Log.d("FOR_LOG", ""+jArray);
@@ -115,36 +116,12 @@ public class StoreListActivity extends AppCompatActivity{
                     String price = friend.getString("price");
 
                     adapter.addVO(""+(i+1),img,title,context,price);
-//                    Log.d("FOR_LOG", nameOS);
-//
-//                    hashMap = new HashMap<String, String>();
-//                    hashMap.put("id", "" + rating);
-//                    hashMap.put("name", "" + nameOS);
-//                    hashMap.put("price", "" + price);
-//                    hashMap.put("image", "" + id);
-//                    hashMap.put("text", "" + text);
-//                    arrayList.add(hashMap);
-                }
 
-//                final SimpleAdapter adapter = new SimpleAdapter(StoreListActivity.this, arrayList, R.layout.store_item, from , to);
-//                lView.setAdapter(adapter); //뿌려주는 부분
+                }
 
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
-
-//        private Drawable drawableFromUrl(String url)
-//                throws IOException {
-//            Bitmap x;
-//
-//            HttpURLConnection connection =
-//                    (HttpURLConnection) new URL(url).openConnection();
-//            connection.connect();
-//            InputStream input = connection.getInputStream();
-//
-//            x = BitmapFactory.decodeStream(input);
-//            return new BitmapDrawable(getResources(),x);
-//        }
     }
 }

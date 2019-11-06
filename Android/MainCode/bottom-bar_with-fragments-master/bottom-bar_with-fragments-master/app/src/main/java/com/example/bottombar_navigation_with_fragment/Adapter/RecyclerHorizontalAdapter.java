@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 public class RecyclerHorizontalAdapter extends RecyclerView.Adapter<RecyclerHorizontalAdapter.HorizontalViewHolder>  {
 
-
     public static class HorizontalViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPicture;
         TextView tvPrice;

@@ -28,6 +28,8 @@ import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     int mCartItemCount = 10;
@@ -35,30 +37,39 @@ public class MainActivity extends AppCompatActivity {
     float staticwidth = 0f;
     public static MainActivity mMyApplication;
 
+    @BindView(R.id.navigation)
+    BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mMyApplication = this;
-        BottomNavigationView navView = findViewById(R.id.navigation);
-        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        ButterKnife.bind(this);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, HomeFragment.newInstance()).commit();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
-        actionBar.setDisplayHomeAsUpEnabled(false); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
-        actionBar.setHomeAsUpIndicator(R.drawable.splash_image); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
+        AppbarExcute();
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         staticwidth = dm.widthPixels;
         
+    }
+
+    public void AppbarExcute(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayHomeAsUpEnabled(false); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+        actionBar.setHomeAsUpIndicator(R.drawable.splash_image); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -92,21 +103,24 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
 
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        final MenuItem mMenuItem = menu.findItem(R.id.action_cart);
 
-        View actionView = MenuItemCompat.getActionView(menuItem);
+        View actionView = MenuItemCompat.getActionView(mMenuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
 
         setupBadge();
 
-        actionView.setOnClickListener(v -> onOptionsItemSelected(menuItem));
+        actionView.setOnClickListener(v -> onOptionsItemSelected(mMenuItem));
 
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -127,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment).commit();
     }
+
 
     private void setupBadge() {
         if (textCartItemCount != null) {
