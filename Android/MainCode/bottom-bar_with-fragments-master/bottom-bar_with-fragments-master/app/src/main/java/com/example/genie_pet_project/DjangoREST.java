@@ -24,10 +24,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DjangoREST {
     private Retrofit retrofit;
     private DjangoApi postApi;
+
     public String MyResult;
+    public String tipText;
 
     public void setMyResult(String myResult) {
         MyResult = myResult;
+    }
+
+    public String getTipText() {
+        return tipText;
+    }
+
+    public void setTipText(String tipText) {
+        this.tipText = tipText;
     }
 
     public void aa(String storage){
@@ -132,7 +142,12 @@ public class DjangoREST {
         tip.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.d("ResponseBody", "" + response.raw());
+                try {
+                    MainActivity.getInstance().tipText = response.body().string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
 
             @Override

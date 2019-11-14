@@ -27,7 +27,7 @@ public interface DjangoApi {
    Call<ResponseBody> uploadFile(@Part MultipartBody.Part file);
 
     //Tip 받기
-    @GET("top/")
+    @GET("tip/")
     Call<ResponseBody> tipload();
 
     //견종 ADD
@@ -41,4 +41,5 @@ public interface DjangoApi {
     //회원가입
     @POST("register/")
     Call<RegisterModel> registrationUser(@Body RegisterModel userModel);
+
 }

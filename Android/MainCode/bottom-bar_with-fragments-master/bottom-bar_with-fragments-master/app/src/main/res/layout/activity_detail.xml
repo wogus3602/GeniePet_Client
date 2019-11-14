@@ -17,7 +17,7 @@
         android:layout_marginTop="36dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="꼬리를 흔드는 것은 주인을 좋아하기 때문입니다."
+        android:text="등수 표시"
         android:textSize="20dp" />
 
     <ImageView

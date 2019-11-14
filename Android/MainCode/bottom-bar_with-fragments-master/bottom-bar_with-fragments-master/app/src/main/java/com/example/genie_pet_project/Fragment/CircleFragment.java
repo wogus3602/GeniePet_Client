@@ -5,13 +5,16 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.genie_pet_project.Activity.MainActivity;
 import com.example.genie_pet_project.CircleMenuLayout;
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.Activity.StoreListActivity;
@@ -27,6 +30,8 @@ public class CircleFragment extends Fragment {
     ImageView mImageView;
     @BindView(R.id.id_menulayout)
     CircleMenuLayout mCircleMenuLayout;
+    @BindView(R.id.tiptext)
+    TextView mTipText;
 
     public static CircleFragment newInstance() {
         return new CircleFragment();
@@ -48,7 +53,8 @@ public class CircleFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         Glide.with(this).load(R.drawable.dog_run).into(mImageView);
-
+        Log.d("tiptext",""+ MainActivity.getInstance().tipText);
+        mTipText.setText(MainActivity.getInstance().tipText);
         mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override

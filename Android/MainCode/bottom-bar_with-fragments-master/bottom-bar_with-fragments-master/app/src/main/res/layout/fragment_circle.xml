@@ -47,7 +47,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:gravity="center"
-        android:text="꼬리를 흔드는 것은 주인을 좋아하기 때문입니다."
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
