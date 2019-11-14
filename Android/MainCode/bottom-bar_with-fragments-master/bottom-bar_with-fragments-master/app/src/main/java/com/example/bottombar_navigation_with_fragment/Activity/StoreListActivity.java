@@ -1,9 +1,12 @@
 package com.example.bottombar_navigation_with_fragment.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +18,7 @@ import com.example.bottombar_navigation_with_fragment.DjangoApi;
 
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.SaveSharedPreference;
+import com.example.bottombar_navigation_with_fragment.model.ListVO;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
@@ -26,12 +30,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StoreListActivity extends AppCompatActivity{
-
+    public static ListViewAdapter adapter;
+    public static ListView listView;
+    public static StoreListActivity mStoreListActivity;
     @BindView(R.id.isLogin)
     TextView mTextview;
 
@@ -39,12 +46,27 @@ public class StoreListActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_list);
+        mStoreListActivity = this;
         ButterKnife.bind(this);
-
         isLoginStatus();
-
         new ParseTask().execute();
+
     }
+
+    public static StoreListActivity getInstance() {
+        if(mStoreListActivity == null){
+            mStoreListActivity = new StoreListActivity();
+        }
+        return mStoreListActivity;
+    }
+
+    public void Click(ListVO listItem){
+        Log.d("aaaaaaaaaaaaaaaaaa","");
+        Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+        intent.putExtra("object",listItem);
+        startActivity(intent);
+    }
+
 
     protected void isLoginStatus(){
         if(!SaveSharedPreference.getLogged(MainActivity.getInstance())){
@@ -97,9 +119,6 @@ public class StoreListActivity extends AppCompatActivity{
         protected void onPostExecute(String strJson){
             super.onPostExecute(strJson);
 
-            ListViewAdapter adapter;
-            ListView listView;
-
             adapter = new ListViewAdapter();
             listView = findViewById(R.id.List_view);
             listView.setAdapter(adapter);
@@ -114,9 +133,7 @@ public class StoreListActivity extends AppCompatActivity{
                     String title = friend.getString("name");
                     String context = friend.getString("text");
                     String price = friend.getString("price");
-
                     adapter.addVO(""+(i+1),img,title,context,price);
-
                 }
 
             }catch (Exception e){

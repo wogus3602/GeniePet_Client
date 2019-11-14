@@ -1,5 +1,6 @@
 package com.example.bottombar_navigation_with_fragment.Adapter;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.bottombar_navigation_with_fragment.Activity.StoreListActivity;
 import com.example.bottombar_navigation_with_fragment.R;
 import com.example.bottombar_navigation_with_fragment.model.ListVO;
 
@@ -51,8 +53,14 @@ public class ListViewAdapter extends BaseAdapter {
         title.setText(listViewItem.getTitle());
         price.setText(listViewItem.getPrice());
 
-        //리스트뷰 클릭 이벤트
-        convertView.setOnClickListener(view -> Toast.makeText(context, (pos+1)+"번째 리스트가 클릭되었습니다.", Toast.LENGTH_SHORT).show());
+        convertView.setOnClickListener(view -> StoreListActivity.getInstance().Click(listVO.get(pos)));
+
+//        //리스트뷰 클릭 이벤트
+//        convertView.setOnClickListener(v -> {
+//            //StoreListActivity.getInstance().Click();
+//            Log.d("","aaaaaaaaaaaaaaaaaa");
+//        });
+
         return convertView;
     }
 
@@ -72,6 +80,7 @@ public class ListViewAdapter extends BaseAdapter {
         item.setRank(rank);
         item.setImg(icon);
         item.setTitle(title);
+        item.setDesc(desc);
         item.setPrice(price);
         listVO.add(item);
     }
