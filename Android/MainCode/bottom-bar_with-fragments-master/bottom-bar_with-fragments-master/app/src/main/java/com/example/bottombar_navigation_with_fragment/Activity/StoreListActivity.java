@@ -28,6 +28,7 @@ import org.w3c.dom.Text;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -92,13 +93,34 @@ public class StoreListActivity extends AppCompatActivity{
         @Override
         protected String doInBackground(Void... Params) {
             try{
-                String site_url_json = DjangoApi.root+"feed/";
+                String site_url_json;
+                if(SaveSharedPreference.getSpecie(MainActivity.getInstance())=="") {
+                    site_url_json = DjangoApi.root + "feed/";
+                }
+                else{
+                    site_url_json = DjangoApi.root + "ranking/";
+                }
+//                JSONObject json = new JSONObject();
+//                json.put("user_dog", "john");
+
+                String body = "user_dog=john";
                 URL url = new URL(site_url_json);
 
                 urlconnection = (HttpURLConnection) url.openConnection();
-                urlconnection.setRequestMethod("GET");
-                urlconnection.connect();
+                urlconnection.setRequestMethod("POST");
+                urlconnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                //urlconnection.setRequestProperty("user_dog", "john");
 
+                urlconnection.setDoOutput(true);
+                urlconnection.setDoInput(true);
+
+                OutputStream os = urlconnection.getOutputStream();
+                os.write(body.getBytes());
+                os.flush();
+                os.close();
+                //urlconnection.connect();
+
+                Log.d("ResponseCOde",""+urlconnection.getResponseCode());
                 InputStream inputStream = urlconnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
 
@@ -109,6 +131,8 @@ public class StoreListActivity extends AppCompatActivity{
                     buffer.append(line);
                 }
                 resultJson = buffer.toString();
+
+                urlconnection.disconnect();
             } catch (Exception e){
                 e.printStackTrace();
             }
