@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.bottombar_navigation_with_fragment.CircleMenuLayout
+    <com.example.genie_pet_project.CircleMenuLayout
         android:id="@+id/id_menulayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
                 android:layout_marginTop="25dp"
                 android:gravity="center" />
         </RelativeLayout>
-    </com.example.bottombar_navigation_with_fragment.CircleMenuLayout>
+    </com.example.genie_pet_project.CircleMenuLayout>
 
     <TextView
         android:id="@+id/tiptext"
