@@ -87,35 +87,37 @@ public class StoreListActivity extends AppCompatActivity{
         //쓰레드가 수행할 작업(Generated Thread)
         @Override
         protected String doInBackground(Void... Params) {
+            boolean flag = true;
             try{
                 String site_url_json;
                 if(SaveSharedPreference.getSpecie(MainActivity.getInstance())=="") {
                     site_url_json = DjangoApi.root + "feed/";
+                    flag = true;
                 }
                 else{
                     site_url_json = DjangoApi.root + "ranking/";
+                    flag = false;
                 }
-//                JSONObject json = new JSONObject();
-//                json.put("user_dog", "john");
-
-                String body = "user_dog=john";
                 URL url = new URL(site_url_json);
+                if(flag){
+                    urlconnection = (HttpURLConnection) url.openConnection();
+                    urlconnection.setRequestMethod("GET");
+                    urlconnection.connect();
+                }else{
+                    String body = "user_dog=john";
 
-                urlconnection = (HttpURLConnection) url.openConnection();
-                urlconnection.setRequestMethod("POST");
-                urlconnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                //urlconnection.setRequestProperty("user_dog", "john");
+                    urlconnection = (HttpURLConnection) url.openConnection();
+                    urlconnection.setRequestMethod("POST");
+                    urlconnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+                    urlconnection.setDoOutput(true);
+                    urlconnection.setDoInput(true);
+                    OutputStream os = urlconnection.getOutputStream();
+                    os.write(body.getBytes());
+                    os.flush();
+                    os.close();
+                }
 
-                urlconnection.setDoOutput(true);
-                urlconnection.setDoInput(true);
-
-                OutputStream os = urlconnection.getOutputStream();
-                os.write(body.getBytes());
-                os.flush();
-                os.close();
-                //urlconnection.connect();
-
-                Log.d("ResponseCOde",""+urlconnection.getResponseCode());
+                Log.d("ResponseCode",""+urlconnection.getResponseCode());
                 InputStream inputStream = urlconnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
 
