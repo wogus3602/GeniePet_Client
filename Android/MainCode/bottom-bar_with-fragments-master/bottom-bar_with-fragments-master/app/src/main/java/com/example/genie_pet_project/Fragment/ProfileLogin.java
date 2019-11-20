@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.genie_pet_project.DjangoApi;
+import com.example.genie_pet_project.network.DjangoApi;
 import com.example.genie_pet_project.InternetUtil;
 
 import com.example.genie_pet_project.Activity.MainActivity;

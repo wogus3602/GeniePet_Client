@@ -2,7 +2,6 @@ package com.example.genie_pet_project.Activity;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.genie_pet_project.DjangoApi;
-import com.example.genie_pet_project.DjangoREST;
+import com.example.genie_pet_project.network.DjangoREST;
 import com.example.genie_pet_project.Fragment.CartFragment;
 import com.example.genie_pet_project.Fragment.CircleFragment;
 import com.example.genie_pet_project.Fragment.HomeFragment;
@@ -66,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         staticwidth = dm.widthPixels;
 
         DjangoREST djangoREST = new DjangoREST();
+
         djangoREST.Tip();
     }
 

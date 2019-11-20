@@ -1,7 +1,8 @@
-package com.example.genie_pet_project;
+package com.example.genie_pet_project.network;
 
-import com.example.genie_pet_project.model.PostModel;
+
 import com.example.genie_pet_project.model.Login;
+import com.example.genie_pet_project.model.PostModel;
 import com.example.genie_pet_project.model.RegisterModel;
 import com.example.genie_pet_project.model.User;
 

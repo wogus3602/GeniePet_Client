@@ -26,7 +26,7 @@ import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.genie_pet_project.DataManager;
-import com.example.genie_pet_project.DjangoREST;
+import com.example.genie_pet_project.network.DjangoREST;
 import com.example.genie_pet_project.Activity.ProfileActivity;
 import com.example.genie_pet_project.R;
 import com.gun0912.tedpermission.PermissionListener;

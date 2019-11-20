@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.genie_pet_project.Adapter.ListViewAdapter;
-import com.example.genie_pet_project.DjangoApi;
+import com.example.genie_pet_project.network.DjangoApi;
 
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.SaveSharedPreference;

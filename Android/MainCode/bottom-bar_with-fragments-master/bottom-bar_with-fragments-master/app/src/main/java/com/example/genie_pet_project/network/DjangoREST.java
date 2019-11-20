@@ -1,10 +1,10 @@
-package com.example.genie_pet_project;
+package com.example.genie_pet_project.network;
 
 import android.util.Log;
 
 import com.example.genie_pet_project.Activity.MainActivity;
+import com.example.genie_pet_project.SaveSharedPreference;
 import com.example.genie_pet_project.model.PostModel;
-import com.example.genie_pet_project.network.ApiConnection;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,26 +40,26 @@ public class DjangoREST {
         this.tipText = tipText;
     }
 
-    public void aa(String storage){
-        String image_path = storage;
-        File imageFile = new File(image_path);  // File 이미지 경로 저장
-
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/data"), imageFile);
-
-        MultipartBody.Part multiPartBody = MultipartBody.Part
-                .createFormData("model_pic", imageFile.getName(), requestBody);
-
-        ApiConnection.getInstance().getRetrofitService()
-                .uploadFile(multiPartBody)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(githubUser -> {
-                            Log.d("Observable Data","Observable Data :" + githubUser);
-                        }, throwable -> {
-                        }
-
-                );
-    }
+//    public void aa(String storage){
+//        String image_path = storage;
+//        File imageFile = new File(image_path);  // File 이미지 경로 저장
+//
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/data"), imageFile);
+//
+//        MultipartBody.Part multiPartBody = MultipartBody.Part
+//                .createFormData("model_pic", imageFile.getName(), requestBody);
+//
+//        ApiConnection.getInstance().getRetrofitService()
+//                .uploadFile(multiPartBody)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(githubUser -> {
+//                            Log.d("Observable Data","Observable Data :" + githubUser);
+//                        }, throwable -> {
+//                        }
+//
+//                );
+//    }
 
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
@@ -143,6 +143,7 @@ public class DjangoREST {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    if(response.isSuccessful())
                     MainActivity.getInstance().tipText = response.body().string();
                 } catch (IOException e) {
                     e.printStackTrace();
