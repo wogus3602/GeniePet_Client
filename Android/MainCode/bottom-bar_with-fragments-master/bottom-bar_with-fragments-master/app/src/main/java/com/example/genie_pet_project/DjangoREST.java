@@ -147,7 +147,6 @@ public class DjangoREST {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
 
             @Override
