@@ -59,6 +59,8 @@ public class StoreListActivity extends AppCompatActivity{
     public void Click(StoreList listItem){
         Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
         intent.putExtra("object",listItem);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 

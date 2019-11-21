@@ -3,6 +3,7 @@ package com.example.genie_pet_project.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.genie_pet_project.Fragment.CartFragment;
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.model.StoreList;
 
@@ -43,12 +45,27 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.dest)
     TextView mDest;
 
+
+    String itemName;
+    String value;
+    String image;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         // processIntent();
+
+
+        mPutInCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("11111111111111111111111",""+image);
+                Log.d("11111111111111111111111",""+itemName);
+                Log.d("11111111111111111111111",""+value);
+                CartFragment.getInstance().addItem(image,itemName,value);
+            }
+        });
 
         // 수량 팝업용 Adapter
         adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_singlechoice);
@@ -82,12 +99,13 @@ public class DetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         StoreList data = bundle.getParcelable("object");
-
-        mGoodsName.setText(data.getTitle());
-        mGoodsValue.setText(data.getPrice());
+        itemName = data.getTitle();
+        value = data.getPrice();
+        image = data.getImg();
+        mGoodsName.setText(itemName);
+        mGoodsValue.setText(value);
         mDest.setText(data.getDesc());
-        Glide.with(getApplicationContext()).load(data.getImg()).into(mGoodsImage);
-
+        Glide.with(getApplicationContext()).load(image).into(mGoodsImage);
     }
 
 }

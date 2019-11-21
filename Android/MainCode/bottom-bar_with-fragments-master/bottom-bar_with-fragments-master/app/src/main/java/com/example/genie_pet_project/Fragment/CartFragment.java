@@ -23,8 +23,6 @@ import butterknife.ButterKnife;
 public class CartFragment extends Fragment {
     public static CartListViewAdapter adapter;
     public static CartFragment mCartFragment;
-
-    @BindView(R.id.List_view)
     ListView mListView;
 
     public static CartFragment getInstance() {
@@ -46,14 +44,14 @@ public class CartFragment extends Fragment {
         mCartFragment = this;
     }
 
-    public void addItem(){
+    public void addItem(String img, String itemname, String price){
         adapter = new CartListViewAdapter();
         mListView.setAdapter(adapter);
-        String img="1";
-        String itemname = "1";
-        String price = "1";
+        String cartImg= img;
+        String cartItemName = itemname;
+        String cartPrice = price;
 
-        adapter.addVO(img,itemname,price);
+        adapter.addVO(cartImg,cartItemName,cartPrice);
     }
 
 
@@ -67,7 +65,7 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cart_fragment, container, false);
         ButterKnife.bind(this,view);
-
+        mListView = view.findViewById(R.id.Cart_List_view);
         return view;
     }
 
