@@ -11,12 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.genie_pet_project.Adapter.StoreListViewAdapter;
-import com.example.genie_pet_project.DjangoApi;
 
+import com.example.genie_pet_project.Adapter.StoreListViewAdapter;
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.SaveSharedPreference;
 import com.example.genie_pet_project.model.StoreList;
+import com.example.genie_pet_project.network.DjangoApi;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

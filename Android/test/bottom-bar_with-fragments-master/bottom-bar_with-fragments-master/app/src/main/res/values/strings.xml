@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Bottombar_navigation_with_fragment</string>
-
-    <string name="title_home">장바구니</string>
-    <string name="title_dashboard">GenieDot</string>
-    <string name="title_profile">프로필</string>
-</resources>

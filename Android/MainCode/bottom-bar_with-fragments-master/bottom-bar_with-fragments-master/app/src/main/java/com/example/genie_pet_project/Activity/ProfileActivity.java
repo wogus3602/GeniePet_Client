@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.genie_pet_project.DataManager;
-import com.example.genie_pet_project.DjangoREST;
+import com.example.genie_pet_project.network.DjangoREST;
 
 import com.example.genie_pet_project.R;
 import com.google.android.material.textfield.TextInputEditText;

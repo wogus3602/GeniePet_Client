@@ -1,0 +1,186 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+MERGED from [com.google.android.material:material:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e3afd382dc4ff75f4faaa33f37f838c4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e406232f144b1845ca295545ea5dc22a\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e1ccc75f509e3c25f9b35d064d0209a0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\3e6b5063b6d8bc58fd9be6f0df875b19\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\2120b48fe688c0d56df077960976d798\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta04] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\3e5aa7233ea8197106a1cdc51d0ffe58\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta04] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e271fe96a21cecfa901fdc52bbaa8d89\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\2248da64a02f93c13bb3bc119e1a82e6\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\dccc6eb761d0a37eec239ff09b563325\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\63f61e8c1ee6bccb4e868f2308e0c49d\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e0b52f5554b656f01701d0ac88ce4801\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e52cc76d307695b2a7199e447dc0de22\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\7338408087eeaeba6462083dacd2ee0a\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\f6e6b06af846f947e49671299a6e36a3\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\8bb27a33ae31579fee5d0d5224eb6a69\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5354ccfcb39a895e1b16d595fc49457d\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\f80e1031766f965b797001745aadd42c\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\389f7fbc5f4675fda46f209a8ecbfb07\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\506f5eea3a261ab3e45eec87e1cf6eca\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\005589c50d878a2aaadf90b44a95efab\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e08a8aad42b75f29e2ed01a3fd4e3134\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\48d38f08cd7987df2aba9f725ee5eb43\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4f3a7529c9c831971d916a0ff3c46737\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4182699e64bedeccbe0d66df80365133\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5c5684eff720f80504191888e9cf4af7\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\7d58234740d4b860a114c32979d1db24\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e95794e20d6bc6c834c68860ff090d82\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\a5a968de67dd6d3b0c51b655c932b583\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\c21a48c194ff773dcc2d5651e68b4495\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\97cb5824153d2fe595218ae351cfd4e9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4b1f94144674e2700425a7898b46d294\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\dbfa233e4dc675c9be571c0509b3c005\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\6f38eed19384b6ab7f2becfe65e8743b\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\ab8ada9956233fc97fd8ec2ca2beb5f2\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\52ec663e26beab09084efb42e25063d0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e310eeccaef081cb73882bd25fc69ae9\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\232e745f6afba21ec8e09e49f0d905c2\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+	package
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:3:5-33
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:1-22:12
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:5:5-20:19
+MERGED from [com.google.android.material:material:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e3afd382dc4ff75f4faaa33f37f838c4\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e3afd382dc4ff75f4faaa33f37f838c4\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e1ccc75f509e3c25f9b35d064d0209a0\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e1ccc75f509e3c25f9b35d064d0209a0\AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5c5684eff720f80504191888e9cf4af7\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5c5684eff720f80504191888e9cf4af7\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e95794e20d6bc6c834c68860ff090d82\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e95794e20d6bc6c834c68860ff090d82\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5c5684eff720f80504191888e9cf4af7\AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:8:9-42
+	android:roundIcon
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.alpha.mainmenu.MainActivity
+ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:12:9-17:20
+	android:name
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:13:13-16:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:15:17-77
+	android:name
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml:15:27-74
+uses-sdk
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+MERGED from [com.google.android.material:material:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e3afd382dc4ff75f4faaa33f37f838c4\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e3afd382dc4ff75f4faaa33f37f838c4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e406232f144b1845ca295545ea5dc22a\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e406232f144b1845ca295545ea5dc22a\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e1ccc75f509e3c25f9b35d064d0209a0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e1ccc75f509e3c25f9b35d064d0209a0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\3e6b5063b6d8bc58fd9be6f0df875b19\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\3e6b5063b6d8bc58fd9be6f0df875b19\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\2120b48fe688c0d56df077960976d798\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\2120b48fe688c0d56df077960976d798\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta04] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\3e5aa7233ea8197106a1cdc51d0ffe58\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0-beta04] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\3e5aa7233ea8197106a1cdc51d0ffe58\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta04] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e271fe96a21cecfa901fdc52bbaa8d89\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0-beta04] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e271fe96a21cecfa901fdc52bbaa8d89\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\2248da64a02f93c13bb3bc119e1a82e6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\2248da64a02f93c13bb3bc119e1a82e6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\dccc6eb761d0a37eec239ff09b563325\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\dccc6eb761d0a37eec239ff09b563325\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\63f61e8c1ee6bccb4e868f2308e0c49d\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\63f61e8c1ee6bccb4e868f2308e0c49d\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e0b52f5554b656f01701d0ac88ce4801\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e0b52f5554b656f01701d0ac88ce4801\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e52cc76d307695b2a7199e447dc0de22\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e52cc76d307695b2a7199e447dc0de22\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\7338408087eeaeba6462083dacd2ee0a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\7338408087eeaeba6462083dacd2ee0a\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\f6e6b06af846f947e49671299a6e36a3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\f6e6b06af846f947e49671299a6e36a3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\8bb27a33ae31579fee5d0d5224eb6a69\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\8bb27a33ae31579fee5d0d5224eb6a69\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5354ccfcb39a895e1b16d595fc49457d\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5354ccfcb39a895e1b16d595fc49457d\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\f80e1031766f965b797001745aadd42c\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\f80e1031766f965b797001745aadd42c\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\389f7fbc5f4675fda46f209a8ecbfb07\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\389f7fbc5f4675fda46f209a8ecbfb07\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\506f5eea3a261ab3e45eec87e1cf6eca\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\506f5eea3a261ab3e45eec87e1cf6eca\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\005589c50d878a2aaadf90b44a95efab\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\005589c50d878a2aaadf90b44a95efab\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e08a8aad42b75f29e2ed01a3fd4e3134\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e08a8aad42b75f29e2ed01a3fd4e3134\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\48d38f08cd7987df2aba9f725ee5eb43\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\48d38f08cd7987df2aba9f725ee5eb43\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4f3a7529c9c831971d916a0ff3c46737\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4f3a7529c9c831971d916a0ff3c46737\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4182699e64bedeccbe0d66df80365133\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4182699e64bedeccbe0d66df80365133\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5c5684eff720f80504191888e9cf4af7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\5c5684eff720f80504191888e9cf4af7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\7d58234740d4b860a114c32979d1db24\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\7d58234740d4b860a114c32979d1db24\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e95794e20d6bc6c834c68860ff090d82\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e95794e20d6bc6c834c68860ff090d82\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\a5a968de67dd6d3b0c51b655c932b583\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\a5a968de67dd6d3b0c51b655c932b583\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\c21a48c194ff773dcc2d5651e68b4495\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\c21a48c194ff773dcc2d5651e68b4495\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\97cb5824153d2fe595218ae351cfd4e9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\97cb5824153d2fe595218ae351cfd4e9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4b1f94144674e2700425a7898b46d294\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\4b1f94144674e2700425a7898b46d294\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\dbfa233e4dc675c9be571c0509b3c005\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\dbfa233e4dc675c9be571c0509b3c005\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\6f38eed19384b6ab7f2becfe65e8743b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\6f38eed19384b6ab7f2becfe65e8743b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\ab8ada9956233fc97fd8ec2ca2beb5f2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\ab8ada9956233fc97fd8ec2ca2beb5f2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\52ec663e26beab09084efb42e25063d0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\52ec663e26beab09084efb42e25063d0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e310eeccaef081cb73882bd25fc69ae9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\e310eeccaef081cb73882bd25fc69ae9\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\232e745f6afba21ec8e09e49f0d905c2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\wogus\.gradle\caches\transforms-2\files-2.1\232e745f6afba21ec8e09e49f0d905c2\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\wogus\Desktop\GeniePet_Client\Android\MainMenuActivity\MainMenu\app\src\main\AndroidManifest.xml
