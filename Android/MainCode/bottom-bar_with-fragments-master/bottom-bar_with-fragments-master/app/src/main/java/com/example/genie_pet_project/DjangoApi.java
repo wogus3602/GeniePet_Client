@@ -16,11 +16,10 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface DjangoApi {
-    String root = "http://0fd950c8.ngrok.io/";  // 기본주소
+    String root = "http://30bbc4b6.ngrok.io/";  // 기본주소
     String ImageUpload = root + "pot/";
     String LoginPage = root + "auth/";  //로그인 페이지
     String RegisterPage = root + "auth/";  // 회원가입 페이지
-    String TipPage = root;
 
     @Multipart
     @POST("upload/")

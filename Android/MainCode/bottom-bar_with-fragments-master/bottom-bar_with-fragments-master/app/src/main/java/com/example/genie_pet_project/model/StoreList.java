@@ -3,7 +3,7 @@ package com.example.genie_pet_project.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ListVO implements Parcelable {
+public class StoreList implements Parcelable {
     private String rank;
     private String img; //이미지
     private String title; // 제목
@@ -50,30 +50,33 @@ public class ListVO implements Parcelable {
         this.img = img;
     }
 
-    public ListVO(){
+    public StoreList(){
     }
 
 
-    public ListVO(Parcel src){
+    public StoreList(Parcel src){
         rank = src.readString();
         img = src.readString();
         title = src.readString();
         price = src.readString();
         desc = src.readString();
     }
+
     @Override
     public int describeContents() {
         return 0;
     }
     // create Parcelable
-    public static final Creator<ListVO> CREATOR = new Creator<ListVO>() {
+    public static final Creator<StoreList> CREATOR = new Creator<StoreList>() {
+
         @Override
-        public ListVO createFromParcel(Parcel parcel) {
-            return new ListVO(parcel);
+        public StoreList createFromParcel(Parcel parcel) {
+            return new StoreList(parcel);
         }
+
         @Override
-        public ListVO[] newArray(int size) {
-            return new ListVO[size];
+        public StoreList[] newArray(int size) {
+            return new StoreList[size];
         }
     };
     @Override

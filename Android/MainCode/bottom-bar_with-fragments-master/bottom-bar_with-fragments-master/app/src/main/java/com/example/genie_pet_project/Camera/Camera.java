@@ -44,7 +44,6 @@ public class Camera extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 672;   //카메라 변수
     private static final int GET_GALLERY_IMAGE = 200;  //갤러리 변수
     private static final String TAG = "FragmentActivity";
-    public File tempFile;
 
     ByteArrayOutputStream stream;
     TextView textView;

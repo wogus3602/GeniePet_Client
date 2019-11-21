@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.genie_pet_project.R;
-import com.example.genie_pet_project.model.ListVO;
+import com.example.genie_pet_project.model.StoreList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,7 +46,7 @@ public class DetailActivity extends AppCompatActivity {
     private void processIntent(){
         Bundle bundle = getIntent().getExtras();
 
-        ListVO data = bundle.getParcelable("object");
+        StoreList data = bundle.getParcelable("object");
 
         mGoodsName.setText(data.getTitle());
         mGoodsValue.setText(data.getPrice());

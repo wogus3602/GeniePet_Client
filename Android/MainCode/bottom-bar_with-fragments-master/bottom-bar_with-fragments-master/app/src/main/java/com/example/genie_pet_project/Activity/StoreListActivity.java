@@ -11,12 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.genie_pet_project.Adapter.ListViewAdapter;
+import com.example.genie_pet_project.Adapter.StoreListViewAdapter;
 import com.example.genie_pet_project.DjangoApi;
 
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.SaveSharedPreference;
-import com.example.genie_pet_project.model.ListVO;
+import com.example.genie_pet_project.model.StoreList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StoreListActivity extends AppCompatActivity{
-    public static ListViewAdapter adapter;
+    public static StoreListViewAdapter adapter;
     public static ListView listView;
     public static StoreListActivity mStoreListActivity;
     @BindView(R.id.isLogin)
@@ -56,8 +56,7 @@ public class StoreListActivity extends AppCompatActivity{
         return mStoreListActivity;
     }
 
-    public void Click(ListVO listItem){
-        Log.d("aaaaaaaaaaaaaaaaaa","");
+    public void Click(StoreList listItem){
         Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
         intent.putExtra("object",listItem);
         startActivity(intent);
@@ -140,7 +139,7 @@ public class StoreListActivity extends AppCompatActivity{
         protected void onPostExecute(String strJson){
             super.onPostExecute(strJson);
 
-            adapter = new ListViewAdapter();
+            adapter = new StoreListViewAdapter();
             listView = findViewById(R.id.List_view);
             listView.setAdapter(adapter);
 

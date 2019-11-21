@@ -143,6 +143,7 @@ public class DjangoREST {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    if(response.isSuccessful())
                     MainActivity.getInstance().tipText = response.body().string();
                 } catch (IOException e) {
                     e.printStackTrace();

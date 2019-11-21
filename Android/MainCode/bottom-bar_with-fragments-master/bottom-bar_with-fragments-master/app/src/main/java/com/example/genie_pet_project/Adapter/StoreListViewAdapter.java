@@ -10,20 +10,20 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.genie_pet_project.Activity.StoreListActivity;
 import com.example.genie_pet_project.R;
-import com.example.genie_pet_project.model.ListVO;
+import com.example.genie_pet_project.model.StoreList;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends BaseAdapter {
+public class StoreListViewAdapter extends BaseAdapter {
 
-    private ArrayList<ListVO> listVO = new ArrayList<ListVO>() ;
-    public ListViewAdapter() {
+    private ArrayList<StoreList> storeList = new ArrayList<StoreList>() ;
+    public StoreListViewAdapter() {
 
     }
 
     @Override
     public int getCount() {
-        return listVO.size() ;
+        return storeList.size() ;
     }
 
     // ** 이 부분에서 리스트뷰에 데이터를 넣어줌 **
@@ -43,7 +43,7 @@ public class ListViewAdapter extends BaseAdapter {
         TextView title =  convertView.findViewById(R.id.title) ;
         TextView price = convertView.findViewById(R.id.price);
 
-        ListVO listViewItem = listVO.get(position);
+        StoreList listViewItem = storeList.get(position);
 
         rank.setText(listViewItem.getRank());
         // 아이템 내 각 위젯에 데이터 반영
@@ -51,13 +51,7 @@ public class ListViewAdapter extends BaseAdapter {
         title.setText(listViewItem.getTitle());
         price.setText(listViewItem.getPrice());
 
-        convertView.setOnClickListener(view -> StoreListActivity.getInstance().Click(listVO.get(pos)));
-
-//        //리스트뷰 클릭 이벤트
-//        convertView.setOnClickListener(v -> {
-//            //StoreListActivity.getInstance().Click();
-//            Log.d("","aaaaaaaaaaaaaaaaaa");
-//        });
+        convertView.setOnClickListener(view -> StoreListActivity.getInstance().Click(storeList.get(pos)));
 
         return convertView;
     }
@@ -69,17 +63,17 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return listVO.get(position) ;
+        return storeList.get(position) ;
     }
 
     // 데이터값 넣어줌
     public void addVO(String rank,String icon, String title, String desc,String price) {
-        ListVO item = new ListVO();
+        StoreList item = new StoreList();
         item.setRank(rank);
         item.setImg(icon);
         item.setTitle(title);
         item.setDesc(desc);
         item.setPrice(price);
-        listVO.add(item);
+        storeList.add(item);
     }
 }
