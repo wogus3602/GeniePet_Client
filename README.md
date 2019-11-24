@@ -17,6 +17,7 @@
 |2019.11.14  |    추천알고리즘 연결     |   
 |2019.11.15  |    Tip 랜덤 받기 연결     |   
 |2019.11.21  |     Detail페이지 UI 수정    |   
+|2019.11.22~25  |     CartPage추가 및 CartPage기능추가 및 AppBar추가    |   
 
 ## 개발환경
 <img src="./picture/p3.png" >
@@ -28,7 +29,14 @@
 
 ---
 # 사진(UI 변경중)
-
+<div>
 <img src="./picture/android_2.png" width="270" height="500">
 <img src="./picture/p2.png" width="270" height="500">
+ 
+</div>
+<br/>
+<div>
 <img src="./picture/p1.gif" width="270" height="500">
+<img src="./picture/loginpage.png" width="270" height="500">
+<img src="./picture/registerpage.png" width="270" height="500">
+</div>
