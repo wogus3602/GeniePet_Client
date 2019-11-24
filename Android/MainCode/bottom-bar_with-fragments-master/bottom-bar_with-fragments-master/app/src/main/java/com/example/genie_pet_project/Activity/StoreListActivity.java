@@ -5,14 +5,21 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 
 
 import com.example.genie_pet_project.Adapter.StoreListViewAdapter;
+import com.example.genie_pet_project.DataManager;
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.SaveSharedPreference;
 import com.example.genie_pet_project.model.StoreList;
@@ -37,18 +44,82 @@ public class StoreListActivity extends AppCompatActivity{
     public static StoreListActivity mStoreListActivity;
     @BindView(R.id.isLogin)
     TextView mTextview;
-
+    TextView textCartItemCount;
+    int mCartItemCount = 10;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_list);
         mStoreListActivity = this;
         ButterKnife.bind(this);
         isLoginStatus();
-        new ParseTask().execute();
 
+        Toolbar mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        AppbarExcute();
+
+        new ParseTask().execute();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+            case R.id.action_cart: {
+                Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void AppbarExcute(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mCartItemCount = DataManager.getInstance().getArray().size();
+        setupBadge();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        final MenuItem mMenuItem = menu.findItem(R.id.action_cart);
+        View actionView = MenuItemCompat.getActionView(mMenuItem);
+        textCartItemCount = actionView.findViewById(R.id.cart_badge);
+        mCartItemCount = DataManager.getInstance().getArray().size();
+        setupBadge();
+
+        actionView.setOnClickListener(v -> onOptionsItemSelected(mMenuItem));
+
+        return true;
+    }
+
+
+    private void setupBadge() {
+        if (textCartItemCount != null) {
+            if(mCartItemCount < 0) return;
+            if (mCartItemCount == 0) {
+                if (textCartItemCount.getVisibility() != View.GONE) {
+                    textCartItemCount.setVisibility(View.GONE);
+                }
+            } else {
+                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
+                if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                    textCartItemCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+    }
     public static StoreListActivity getInstance() {
         if(mStoreListActivity == null){
             mStoreListActivity = new StoreListActivity();
@@ -59,8 +130,6 @@ public class StoreListActivity extends AppCompatActivity{
     public void Click(StoreList listItem){
         Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
         intent.putExtra("object",listItem);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 

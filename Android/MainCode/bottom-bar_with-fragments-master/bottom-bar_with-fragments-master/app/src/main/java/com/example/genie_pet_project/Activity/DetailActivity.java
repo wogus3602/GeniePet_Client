@@ -2,8 +2,11 @@ package com.example.genie_pet_project.Activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,10 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 
 import com.bumptech.glide.Glide;
-import com.example.genie_pet_project.Fragment.CartFragment;
+import com.example.genie_pet_project.DataManager;
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.model.StoreList;
 
@@ -26,7 +32,6 @@ import butterknife.ButterKnife;
 public class DetailActivity extends AppCompatActivity {
     //수량 List Dialog Adapter
     ArrayAdapter<String> adapter;
-
 
     @BindView(R.id.tipView)
     TextView mTipView;
@@ -44,11 +49,15 @@ public class DetailActivity extends AppCompatActivity {
     Button mPutInCartButton;
     @BindView(R.id.dest)
     TextView mDest;
-
+    @BindView(R.id.quantity)
+    Button mQuantity;
 
     String itemName;
     String value;
     String image;
+
+    TextView textCartItemCount;
+    int mCartItemCount;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,15 +65,15 @@ public class DetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         // processIntent();
 
+        Toolbar mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        AppbarExcute();
 
-        mPutInCartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("11111111111111111111111",""+image);
-                Log.d("11111111111111111111111",""+itemName);
-                Log.d("11111111111111111111111",""+value);
-                CartFragment.getInstance().addItem(image,itemName,value);
-            }
+        mPutInCartButton.setOnClickListener(v -> {
+            CartActivity.getInstance().addItem(image,itemName,value);
+            mCartItemCount = DataManager.getInstance().getArray().size();
+            setupBadge();
+            Toast.makeText(getApplicationContext(),"장바구니에 추가 되었습니다.",Toast.LENGTH_SHORT);
         });
 
         // 수량 팝업용 Adapter
@@ -78,6 +87,41 @@ public class DetailActivity extends AppCompatActivity {
         CreateListDialog();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+            case R.id.action_cart: {
+                Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    public void AppbarExcute(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        final MenuItem mMenuItem = menu.findItem(R.id.action_cart);
+
+        View actionView = MenuItemCompat.getActionView(mMenuItem);
+        textCartItemCount = actionView.findViewById(R.id.cart_badge);
+        mCartItemCount = DataManager.getInstance().getArray().size();
+        setupBadge();
+
+        actionView.setOnClickListener(v -> onOptionsItemSelected(mMenuItem));
+
+        return true;
+    }
     // 수량 리스트 다이얼로그 생성
     public void CreateListDialog(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -85,16 +129,40 @@ public class DetailActivity extends AppCompatActivity {
 //        alert.setIcon(R.drawable.icon); //아이콘
 
         //어답터 , 클릭이벤트 설정
-        alert.setAdapter(adapter, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String menu = adapter.getItem(which);
-                Toast.makeText(DetailActivity.this, "수량 : "+menu, Toast.LENGTH_SHORT).show();
-                // 위에 토스트 메시지 대신에 수량:n 칸에 n값을 넣어주고 싶은데.. 혹시 아시나요 ㅜ
-            }
+        alert.setAdapter(adapter, (dialog, which) -> {
+            String menu = adapter.getItem(which);
+            Toast.makeText(DetailActivity.this, "수량 : "+menu, Toast.LENGTH_SHORT).show();
+            mQuantity.setText("수량 : "+menu);
+            // 위에 토스트 메시지 대신에 수량:n 칸에 n값을 넣어주고 싶은데.. 혹시 아시나요 ㅜ
         });
         alert.show();
     }
+
+
+    private void setupBadge() {
+        if (textCartItemCount != null) {
+            if(mCartItemCount < 0) return;
+            if (mCartItemCount == 0) {
+                if (textCartItemCount.getVisibility() != View.GONE) {
+                    textCartItemCount.setVisibility(View.GONE);
+                }
+            } else {
+                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
+                if (textCartItemCount.getVisibility() != View.VISIBLE) {
+                    textCartItemCount.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mCartItemCount = DataManager.getInstance().getArray().size();
+        setupBadge();
+        Log.d("12221",""+DataManager.getInstance().getArray().size());
+    }
+
     private void processIntent(){
         Bundle bundle = getIntent().getExtras();
 

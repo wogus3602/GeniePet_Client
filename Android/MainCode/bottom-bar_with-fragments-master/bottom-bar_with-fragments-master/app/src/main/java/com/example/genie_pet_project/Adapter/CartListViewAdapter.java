@@ -1,5 +1,6 @@
 package com.example.genie_pet_project.Adapter;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.genie_pet_project.Activity.StoreListActivity;
-import com.example.genie_pet_project.Fragment.CartFragment;
+import com.example.genie_pet_project.Activity.CartActivity;
+import com.example.genie_pet_project.DataManager;
 import com.example.genie_pet_project.R;
 import com.example.genie_pet_project.model.CartItemList;
-import com.example.genie_pet_project.model.StoreList;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-
 public class CartListViewAdapter extends BaseAdapter {
 
-    @BindView(R.id.img)
-    ImageView mImage;
-    @BindView(R.id.price)
-    TextView mPrice;
-    @BindView(R.id.itemname)
-    TextView mItemName;
 
-    @BindView(R.id.amount)
-    Button mAmount;
-    @BindView(R.id.delect)
-    Button mDelect;
-
-    private ArrayList<CartItemList> cartItemList = new ArrayList<CartItemList>() ;
+    private ArrayList<CartItemList> cartItemList = new ArrayList<>() ;
     public CartListViewAdapter() {
 
     }
@@ -53,6 +40,11 @@ public class CartListViewAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.cart_item, parent, false);
         }
+        ImageView mImage  = convertView.findViewById(R.id.img);
+        TextView mPrice = convertView.findViewById(R.id.price);
+        TextView mItemName = convertView.findViewById(R.id.itemname);
+
+        Button mDelectButton = convertView.findViewById(R.id.delect);
 
         CartItemList listViewItem = cartItemList.get(position);
 
@@ -60,9 +52,13 @@ public class CartListViewAdapter extends BaseAdapter {
         Glide.with(context).load(listViewItem.getImg()).into(mImage);
         mItemName.setText(listViewItem.getItemname());
         mPrice.setText(listViewItem.getPrice());
-
-        //convertView.setOnClickListener(view -> CartFragment.getInstance().Click(cartItemList.get(pos)));
-
+        mDelectButton.setOnClickListener(view ->{
+            String str = cartItemList.get(pos).getPrice().replaceAll("[^0-9]", "");
+            cartItemList.remove(pos);
+            DataManager.getInstance().minusSum(Integer.parseInt(str));
+            CartActivity.getInstance().SumChange();
+            CartActivity.getInstance().Click(pos);
+        });
         return convertView;
     }
 
@@ -76,12 +72,25 @@ public class CartListViewAdapter extends BaseAdapter {
         return cartItemList.get(position) ;
     }
 
+    public void set(){
+        if(DataManager.getInstance().getArray()!=null) {
+            ArrayList<CartItemList> p = DataManager.getInstance().getArray();
+            for(CartItemList cartItemList2 : p){
+                cartItemList.add(cartItemList2);
+            }
+            return;
+        }
+    }
+
     // 데이터값 넣어줌
     public void addVO(String icon, String itemname, String price) {
         CartItemList item = new CartItemList();
         item.setImg(icon);
         item.setItemname(itemname);
         item.setPrice(price);
+        String str = price.replaceAll("[^0-9]", "");
+        DataManager.getInstance().setArray(item);
+        DataManager.getInstance().addSum(Integer.parseInt(str));
         cartItemList.add(item);
     }
 }

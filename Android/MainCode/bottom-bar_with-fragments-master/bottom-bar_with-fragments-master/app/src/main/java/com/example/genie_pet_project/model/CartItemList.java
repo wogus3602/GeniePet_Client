@@ -8,8 +8,6 @@ public class CartItemList implements Parcelable {
     private String price; //이미지
     private String itemname; // 제목
 
-
-
     public String getImg() {
         return img;
     }

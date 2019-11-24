@@ -3,6 +3,10 @@ package com.example.genie_pet_project;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.ViewGroup;
+
+import com.example.genie_pet_project.Activity.MainActivity;
 
 public class SaveSharedPreference {
     static final String PREF_TOKEN = "username";

@@ -1,5 +1,6 @@
 package com.example.genie_pet_project.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -15,8 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.genie_pet_project.Camera.Camera;
+import com.example.genie_pet_project.DataManager;
 import com.example.genie_pet_project.network.DjangoREST;
-import com.example.genie_pet_project.Fragment.CartFragment;
 import com.example.genie_pet_project.Fragment.CircleFragment;
 import com.example.genie_pet_project.Fragment.HomeFragment;
 import com.example.genie_pet_project.Fragment.ProfileFragment;
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.fragment_container, HomeFragment.newInstance()).commit();
 
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         AppbarExcute();
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -116,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         View actionView = MenuItemCompat.getActionView(mMenuItem);
         textCartItemCount = actionView.findViewById(R.id.cart_badge);
-
+        mCartItemCount = DataManager.getInstance().getArray().size();
         setupBadge();
 
         actionView.setOnClickListener(v -> onOptionsItemSelected(mMenuItem));
@@ -130,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.action_cart: {
-                replaceFragment(CartFragment.newInstance());
-//                mCartItemCount -= 1;
-//                setupBadge();
+                Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+                startActivity(intent);
+                //replaceFragment(CartFragment.newInstance());
                 return true;
             }
         }
@@ -167,6 +166,13 @@ public class MainActivity extends AppCompatActivity {
             mMyApplication = new MainActivity();
         }
         return mMyApplication;
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        mCartItemCount = DataManager.getInstance().getArray().size();
+        setupBadge();
     }
 
     public String[] getMenuArray() {

@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_image"
+        android:icon="@drawable/splash_image"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_image"
         android:supportsRtl="true"
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name="com.example.genie_pet_project.Activity.CartActivity"></activity>
         <activity android:name="com.example.genie_pet_project.Activity.MainActivity"></activity>
         <activity android:name="com.example.genie_pet_project.Activity.DetailActivity"/>
         <activity android:name="com.example.genie_pet_project.Activity.StoreListActivity"></activity>
