@@ -18,6 +18,7 @@
 |2019.11.15  |    Tip 랜덤 받기 연결     |   
 |2019.11.21  |     Detail페이지 UI 수정    |   
 |2019.11.22~25  |     CartPage추가 및 CartPage기능추가 및 AppBar추가    |   
+|2019.11.25~  |    APP실행 오류 해결 및 UI    |   
 
 ## 개발환경
 <img src="./picture/p3.png" >
