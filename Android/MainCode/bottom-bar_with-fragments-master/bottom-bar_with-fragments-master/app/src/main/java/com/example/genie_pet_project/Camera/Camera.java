@@ -2,6 +2,7 @@ package com.example.genie_pet_project.Camera;
 
 import android.Manifest;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -146,6 +147,24 @@ public class Camera extends AppCompatActivity {
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri selectedImageUri = data.getData();
             imageView.setImageURI(selectedImageUri);
+            Cursor cursor = null;
+            try {
+                String[] proj = {MediaStore.Images.Media.DATA};
+
+                assert photoUri != null;
+                cursor = getContentResolver().query(selectedImageUri, proj, null, null, null);
+
+                assert cursor != null;
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+                cursor.moveToFirst();
+
+                photoFile = new File(cursor.getString(column_index));
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
+                }
+            }
             setImage();
             showMessage();
         }
@@ -224,7 +243,6 @@ public class Camera extends AppCompatActivity {
     public void showMessage() {
         new Thread(() -> {
             while (djangoREST.getMyResult() == null) {
-                Log.d("11111111111111",""+djangoREST.getMyResult());
                 // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
                 runOnUiThread(() -> {
                     textView.setText(djangoREST.getMyResult());
@@ -239,11 +257,11 @@ public class Camera extends AppCompatActivity {
 
     private void setImage() {
         BitmapFactory.Options options = new BitmapFactory.Options();
-        Bitmap originalBm = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
-        TextView textView = findViewById(R.id.input_text);
-        textView.setVisibility(View.INVISIBLE);
-        stream = new ByteArrayOutputStream();
-        originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            Bitmap originalBm = BitmapFactory.decodeFile(photoFile.getAbsolutePath(), options);
+            TextView textView = findViewById(R.id.input_text);
+            textView.setVisibility(View.INVISIBLE);
+            stream = new ByteArrayOutputStream();
+            originalBm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
         djangoREST.uploadFoto(photoFile.toString());
     }
@@ -259,10 +277,9 @@ public class Camera extends AppCompatActivity {
             }
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 photoUri = FileProvider.getUriForFile(this,
-                        "com.example.bottombar_navigation_with_fragment.provider", photoFile);
+                        "com.example.genie_pet_project.provider", photoFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-
             } else {
                 photoUri = FileProvider.getUriForFile(getApplicationContext(),getPackageName(), photoFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);

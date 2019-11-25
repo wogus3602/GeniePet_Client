@@ -23,12 +23,10 @@ import butterknife.ButterKnife;
 
 public class ProfileFragment extends Fragment {
 
-    @BindView(R.id.button)
-    Button mButton;
-    @BindView(R.id.button2)
-    Button mButton2;
-    @BindView(R.id.button3)
-    Button mButton3;
+    @BindView(R.id.dogprofile)
+    Button mDogProfile;
+    @BindView(R.id.logout)
+    Button mLogout;
     public static Fragment newInstance() {
         return new ProfileFragment();
     }
@@ -37,20 +35,17 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment,container, false);
         ButterKnife.bind(this,view);
-        mButton.setOnClickListener(v -> {
+
+        mDogProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), Camera.class);
+            startActivity(intent);
+        });
+
+        mLogout.setOnClickListener(v -> {
             SaveSharedPreference.clearPreference(MainActivity.getInstance());
             Fragment fragment = null;
             fragment = new HomeFragment();
             replaceFragment(fragment);
-        });
-        mButton2.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), Camera.class);
-            startActivity(intent);
-
-        });
-
-        mButton3.setOnClickListener(v -> {
-
         });
         return view;
     }
