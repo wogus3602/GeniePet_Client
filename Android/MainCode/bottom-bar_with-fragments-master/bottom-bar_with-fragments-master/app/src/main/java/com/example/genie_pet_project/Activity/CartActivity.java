@@ -51,6 +51,7 @@ public class CartActivity extends AppCompatActivity {
         adapter.set();
         mSum.setText("총 가격 : "+String.valueOf(DataManager.getInstance().getSum()));
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,9 +111,10 @@ public class CartActivity extends AppCompatActivity {
         String cartImg= img;
         String cartItemName = itemname;
         String cartPrice = price;
+        String quantity = DataManager.getQuantity();
         mCartItemCount+=1;
         setupBadge();
-        adapter.addVO(cartImg,cartItemName,cartPrice);
+        adapter.addVO(cartImg,cartItemName,cartPrice,quantity);
         adapter.notifyDataSetChanged();
     }
 

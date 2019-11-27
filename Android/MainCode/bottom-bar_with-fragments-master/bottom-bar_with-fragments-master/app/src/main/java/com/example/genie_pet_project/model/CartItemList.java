@@ -7,6 +7,15 @@ public class CartItemList implements Parcelable {
     private String img;
     private String price; //이미지
     private String itemname; // 제목
+    private String quantity;
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
 
     public String getImg() {
         return img;

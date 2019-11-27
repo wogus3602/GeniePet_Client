@@ -80,6 +80,8 @@ public class DetailActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_singlechoice);
         adapter.addAll("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30");
         adapter.notifyDataSetChanged();
+
+
         processIntent();
     }
     // 수량 버튼 클릭
@@ -103,11 +105,13 @@ public class DetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     public void AppbarExcute(){
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true); //커스터마이징 하기 위해 필요
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -122,21 +126,20 @@ public class DetailActivity extends AppCompatActivity {
 
         return true;
     }
+
     // 수량 리스트 다이얼로그 생성
     public void CreateListDialog(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("수량");     //타이틀
-//        alert.setIcon(R.drawable.icon); //아이콘
 
         //어답터 , 클릭이벤트 설정
         alert.setAdapter(adapter, (dialog, which) -> {
             String menu = adapter.getItem(which);
+            DataManager.setQuantity(menu);
             mQuantity.setText("수량 : "+menu);
-            // 위에 토스트 메시지 대신에 수량:n 칸에 n값을 넣어주고 싶은데.. 혹시 아시나요 ㅜ
         });
         alert.show();
     }
-
 
     private void setupBadge() {
         if (textCartItemCount != null) {

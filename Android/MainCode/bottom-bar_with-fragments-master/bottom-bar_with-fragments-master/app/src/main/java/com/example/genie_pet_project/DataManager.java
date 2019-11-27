@@ -13,18 +13,18 @@ public class DataManager {
     private static String Species;
     private static Parcelable p;
     private static CartItemList Array;
-    private static int quantity;
+    private static String quantity ="1";
     private static int sum=0;
 
     public static int getSum() {
         return sum;
     }
 
-    public static int getQuantity() {
+    public static String getQuantity() {
         return quantity;
     }
 
-    public static void setQuantity(int quantity) {
+    public static void setQuantity(String quantity) {
         DataManager.quantity = quantity;
     }
 

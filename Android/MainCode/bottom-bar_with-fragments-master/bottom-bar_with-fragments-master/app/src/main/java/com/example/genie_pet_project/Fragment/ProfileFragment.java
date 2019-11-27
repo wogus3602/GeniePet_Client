@@ -16,6 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.genie_pet_project.Camera.Camera;
 import com.example.genie_pet_project.Activity.MainActivity;
 import com.example.genie_pet_project.R;
@@ -60,7 +62,8 @@ public class ProfileFragment extends Fragment {
 
 
         Bitmap myBitmap = BitmapFactory.decodeFile(profileimage);
-        mProfileImage.setImageBitmap(myBitmap);
+        Glide.with(getContext()).load(myBitmap).apply(new RequestOptions().circleCropTransform()).into(mProfileImage);
+        //mProfileImage.setImageBitmap(myBitmap);
 
         mDogName.setText(dogname);
         mAge.setText(dogage);
