@@ -73,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
             CartActivity.getInstance().addItem(image,itemName,value);
             mCartItemCount = DataManager.getInstance().getArray().size();
             setupBadge();
-            Toast.makeText(getApplicationContext(),"장바구니에 추가 되었습니다.",Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(),"장바구니에 추가 되었습니다.",Toast.LENGTH_SHORT).show();
         });
 
         // 수량 팝업용 Adapter
@@ -131,7 +131,6 @@ public class DetailActivity extends AppCompatActivity {
         //어답터 , 클릭이벤트 설정
         alert.setAdapter(adapter, (dialog, which) -> {
             String menu = adapter.getItem(which);
-            Toast.makeText(DetailActivity.this, "수량 : "+menu, Toast.LENGTH_SHORT).show();
             mQuantity.setText("수량 : "+menu);
             // 위에 토스트 메시지 대신에 수량:n 칸에 n값을 넣어주고 싶은데.. 혹시 아시나요 ㅜ
         });
@@ -160,7 +159,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onResume();
         mCartItemCount = DataManager.getInstance().getArray().size();
         setupBadge();
-        Log.d("12221",""+DataManager.getInstance().getArray().size());
     }
 
     private void processIntent(){

@@ -26,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
+import com.example.genie_pet_project.Activity.MainActivity;
 import com.example.genie_pet_project.DataManager;
 import com.example.genie_pet_project.network.DjangoREST;
 import com.example.genie_pet_project.Activity.ProfileActivity;
@@ -45,10 +46,11 @@ public class Camera extends AppCompatActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 672;   //카메라 변수
     private static final int GET_GALLERY_IMAGE = 200;  //갤러리 변수
     private static final String TAG = "FragmentActivity";
+    public static Camera mCamera;
 
     ByteArrayOutputStream stream;
     TextView textView;
-    DjangoREST djangoREST = new DjangoREST();
+    DjangoREST djangoREST = DjangoREST.getInstance();
 
     private String imageFilePath;
     private ImageView imageView;
@@ -59,7 +61,7 @@ public class Camera extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cemera_layout);
-
+        mCamera = this;
         Button bt_camera = findViewById(R.id.btnCamera);
         Button bt_album = findViewById(R.id.btnGallery);
         Button bt_check = findViewById(R.id.check);
@@ -84,9 +86,8 @@ public class Camera extends AppCompatActivity {
 
         bt_check.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-            byte[] byteArray = stream.toByteArray();
-            Log.d("1111111111",""+byteArray);
-            intent.putExtra("image",byteArray);
+            //byte[] byteArray = stream.toByteArray();
+            intent.putExtra("image",photoFile.getAbsolutePath());
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -105,6 +106,13 @@ public class Camera extends AppCompatActivity {
         tedPermission();
     }
 
+    public static Camera getInstance() {
+        if(mCamera == null){
+            mCamera = new Camera();
+        }
+        return mCamera;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -114,7 +122,9 @@ public class Camera extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    public void setMessage(){
+        textView.setText("견종 파악중입니다~~~");
+    }
     private void tedPermission() {
         PermissionListener permissionListener = new PermissionListener() {
             public void onPermissionGranted() {
@@ -166,7 +176,6 @@ public class Camera extends AppCompatActivity {
                 }
             }
             setImage();
-            showMessage();
         }
         // 카메라 //
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
@@ -189,8 +198,7 @@ public class Camera extends AppCompatActivity {
                 exifDegree = 0;
             }
             setImage();
-            showMessage();
-            ((ImageView) findViewById(R.id.get_imageview)).setImageBitmap(rotate(bitmap, exifDegree));
+            ((ImageView) findViewById(R.id.get_imageview)).setImageBitmap(rotate(bitmap, 90));
         }
     }
 
@@ -241,18 +249,7 @@ public class Camera extends AppCompatActivity {
     }
 
     public void showMessage() {
-        new Thread(() -> {
-            while (djangoREST.getMyResult() == null) {
-                // 현재 UI 스레드가 아니기 때문에 메시지 큐에 Runnable을 등록 함
-                runOnUiThread(() -> {
-                    textView.setText(djangoREST.getMyResult());
-                    // 메시지 큐에 저장될 메시지의 내용
-                });
-                if(djangoREST.getMyResult() != null) {
-                    DataManager.getInstance().setSpecies(djangoREST.getMyResult());
-                }
-            }
-        }).start();
+        textView.setText(DjangoREST.getInstance().getMyResult());
     }
 
     private void setImage() {

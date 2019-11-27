@@ -62,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         staticwidth = dm.widthPixels;
 
-        DjangoREST djangoREST = new DjangoREST();
+//        DjangoREST djangoREST = new DjangoREST();
+//        djangoREST.Tip();
 
-        djangoREST.Tip();
+        DjangoREST.getInstance().Tip();
     }
 
     public void AppbarExcute(){

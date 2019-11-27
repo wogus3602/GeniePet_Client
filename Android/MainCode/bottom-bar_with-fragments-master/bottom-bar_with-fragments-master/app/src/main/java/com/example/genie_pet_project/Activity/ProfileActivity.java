@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.genie_pet_project.DataManager;
+import com.example.genie_pet_project.SaveSharedPreference;
 import com.example.genie_pet_project.network.DjangoREST;
 
 import com.example.genie_pet_project.R;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProfileActivity extends AppCompatActivity {
-    DjangoREST djangoREST = new DjangoREST();
+    DjangoREST djangoREST = DjangoREST.getInstance();
 
     @BindView(R.id.profile_imageview)
     ImageView mImageView;
@@ -33,15 +34,19 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.textInputEditText2)
     TextInputEditText mInputDogAge;
 
+    String dogName;
+    String dogAge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_layout);
         ButterKnife.bind(this);
-        byte[] arr = getIntent().getByteArrayExtra("image");
-        Bitmap image = BitmapFactory.decodeByteArray(arr, 0, arr.length);
+        String imagePath = getIntent().getStringExtra("image");
 
-        mImageView.setImageBitmap(image);
+        SaveSharedPreference.setDogImagePath(MainActivity.getInstance(),imagePath);
+
+        Bitmap myBitmap = BitmapFactory.decodeFile(imagePath);
+        mImageView.setImageBitmap(myBitmap);
         mTextView.setText(DataManager.getInstance().getSpecies());
 
         mSendButton.setOnClickListener(v -> {
@@ -54,6 +59,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void sendProfileInformation(){
-        djangoREST.AddPostServer(mInputDogName.getText().toString(),DataManager.getInstance().getSpecies(),mInputDogAge.getText().toString());
+        dogName = mInputDogName.getText().toString();
+        dogAge = mInputDogAge.getText().toString();
+
+        SaveSharedPreference.setDogName(MainActivity.getInstance(),dogName);
+        SaveSharedPreference.setDogAge(MainActivity.getInstance(),dogAge);
+
+        djangoREST.AddPostServer(dogName,DataManager.getInstance().getSpecies(),dogAge);
     }
 }

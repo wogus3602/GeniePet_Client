@@ -54,9 +54,7 @@ public class CartActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem("https://ssl.pstatic.net/tveta/libs/1266/1266402/e95e882fbae59e3387df_20191122150559721.jpg","11","11");
-                mCartItemCount+=1;
-                setupBadge();
+
             }
         });
         mCartActivity = this;

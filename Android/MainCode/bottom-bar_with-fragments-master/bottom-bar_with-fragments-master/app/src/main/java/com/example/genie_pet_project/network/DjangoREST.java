@@ -3,6 +3,8 @@ package com.example.genie_pet_project.network;
 import android.util.Log;
 
 import com.example.genie_pet_project.Activity.MainActivity;
+import com.example.genie_pet_project.Activity.StoreListActivity;
+import com.example.genie_pet_project.Camera.Camera;
 import com.example.genie_pet_project.SaveSharedPreference;
 import com.example.genie_pet_project.model.PostModel;
 
@@ -22,6 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DjangoREST {
+    public static DjangoREST mDjangoREST;
     private Retrofit retrofit;
     private DjangoApi postApi;
 
@@ -32,34 +35,12 @@ public class DjangoREST {
         MyResult = myResult;
     }
 
-    public String getTipText() {
-        return tipText;
+    public static DjangoREST getInstance() {
+    if(mDjangoREST == null){
+        mDjangoREST = new DjangoREST();
     }
-
-    public void setTipText(String tipText) {
-        this.tipText = tipText;
+    return mDjangoREST;
     }
-
-//    public void aa(String storage){
-//        String image_path = storage;
-//        File imageFile = new File(image_path);  // File 이미지 경로 저장
-//
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/data"), imageFile);
-//
-//        MultipartBody.Part multiPartBody = MultipartBody.Part
-//                .createFormData("model_pic", imageFile.getName(), requestBody);
-//
-//        ApiConnection.getInstance().getRetrofitService()
-//                .uploadFile(multiPartBody)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(githubUser -> {
-//                            Log.d("Observable Data","Observable Data :" + githubUser);
-//                        }, throwable -> {
-//                        }
-//
-//                );
-//    }
 
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
@@ -77,7 +58,7 @@ public class DjangoREST {
                 .createFormData("model_pic", imageFile.getName(), requestBody);
 
         Call<ResponseBody> call = postApi.uploadFile(multiPartBody);
-
+        Camera.getInstance().setMessage();
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -85,6 +66,9 @@ public class DjangoREST {
                     MyResult = response.body().string();
                     setMyResult(MyResult);
                     SaveSharedPreference.setSpecie(MainActivity.getInstance(),MyResult);
+                    if(response.isSuccessful()) {
+                        Camera.getInstance().showMessage();
+                    }
                 }catch (IOException e){
                     e.printStackTrace();
                 }
@@ -121,7 +105,8 @@ public class DjangoREST {
         comment.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.d("ResponseBody", "" + response.raw());
+                //token 뜸
+                Log.d("ResponseBody", "");
             }
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {

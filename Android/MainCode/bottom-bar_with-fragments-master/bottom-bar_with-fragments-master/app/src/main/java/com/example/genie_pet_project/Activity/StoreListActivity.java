@@ -187,7 +187,6 @@ public class StoreListActivity extends AppCompatActivity{
                     os.close();
                 }
 
-                Log.d("ResponseCode",""+urlconnection.getResponseCode());
                 InputStream inputStream = urlconnection.getInputStream();
                 StringBuffer buffer = new StringBuffer();
 
@@ -217,7 +216,6 @@ public class StoreListActivity extends AppCompatActivity{
             try {
                 JSONArray jArray = new JSONArray(strJson);
 
-                Log.d("FOR_LOG", ""+jArray);
                 for(int i = 0; i < jArray.length(); i++){
                     JSONObject friend = jArray.getJSONObject(i);
                     String img = friend.getString("image");

@@ -53,13 +53,11 @@ public class CircleFragment extends Fragment {
         ButterKnife.bind(this,view);
 
         Glide.with(this).load(R.drawable.dog_run).into(mImageView);
-        Log.d("tiptext",""+ MainActivity.getInstance().tipText);
         mTipText.setText(MainActivity.getInstance().tipText);
         mCircleMenuLayout.setMenuItemIconsAndTexts(menuArray,imgArray);
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
             public void itemClick(View view, int pos) {
-                Toast.makeText(getContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
                 if(pos==6){
                     Intent intent = new Intent(getContext(), StoreListActivity.class);
                     startActivity(intent);
@@ -68,12 +66,10 @@ public class CircleFragment extends Fragment {
 
             @Override
             public void itemCenterClick(View view) {
-                Toast.makeText(getContext(), "센터 클릭" ,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void itemSelChange(int pos) {
-                //Toast.makeText(getApplicationContext(), "현재 선택" + pos ,Toast.LENGTH_SHORT).show();
             }
         });
         return view;
