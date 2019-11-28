@@ -19,6 +19,7 @@
 |2019.11.21  |     Detail페이지 UI 수정    |   
 |2019.11.22~25  |     CartPage추가 및 CartPage기능추가 및 AppBar추가    |   
 |2019.11.25~  |    APP실행 오류 해결 및 UI    |   
+|2019.11.28~  |    Camera 이미지 클릭시 카메라 이동, 카테고리 추가, UI변경    |   
 
 ## 개발환경
 <img src="./picture/p3.png" >
