@@ -58,10 +58,22 @@ public class CircleFragment extends Fragment {
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
             public void itemClick(View view, int pos) {
-                if(pos==6){
-                    Intent intent = new Intent(getContext(), StoreListActivity.class);
-                    startActivity(intent);
+                Log.d("11111111",""+pos);
+                Intent intent = new Intent(getContext(), StoreListActivity.class);
+                if(pos==6){ //사료
+                    intent.putExtra("category","ranking/");
+                    intent.putExtra("categoryPos","6");
+                }else if(pos == 7) { // 간식
+                    intent.putExtra("category","snackranking/");
+                    intent.putExtra("categoryPos","7");
+                }else if(pos == 8){ // 미용
+                    intent.putExtra("category","shampooranking/");
+                    intent.putExtra("categoryPos","8");
+                }else{
+                    Toast.makeText(getContext(),"추가 예정",Toast.LENGTH_LONG).show();
+                    return ;
                 }
+                startActivity(intent);
             }
 
             @Override

@@ -45,6 +45,8 @@ public class StoreListActivity extends AppCompatActivity{
     @BindView(R.id.isLogin)
     TextView mTextview;
     TextView textCartItemCount;
+    String getintent;
+    String getintentpos;
     int mCartItemCount = 10;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class StoreListActivity extends AppCompatActivity{
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         AppbarExcute();
+
 
         new ParseTask().execute();
     }
@@ -135,15 +138,31 @@ public class StoreListActivity extends AppCompatActivity{
 
 
     protected void isLoginStatus(){
+        boolean check = false;
         if(!SaveSharedPreference.getLogged(MainActivity.getInstance())){
             mTextview.setText("로그인을 해주세요");
+            check = false;
         }else{
+            check = true;
             if(SaveSharedPreference.getSpecie(MainActivity.getInstance())==""){
                 String strColor = "#FF0004";
                 mTextview.setTextColor(Color.parseColor(strColor));
                 mTextview.setText("프로필 등록을 해주시면 정확한 추천을 해드리겠습니다.");
             }else {
-                mTextview.setText(SaveSharedPreference.getSpecie(MainActivity.getInstance()) + " 종에게 맞춤 추천 상품입니다.");
+                mTextview.setText(SaveSharedPreference.getDogName(MainActivity.getInstance()) + " 에게 맞춤 추천 상품입니다.");
+            }
+        }
+        if(check){
+            getintent = getIntent().getStringExtra("category");
+        }else{
+            getintentpos=getIntent().getStringExtra("categoryPos");
+            Log.d("11111",""+getintentpos);
+            if(getintentpos.equals("6")){
+                getintent = "feed/";
+            }else if(getintentpos.equals("7")){
+                getintent = "snack/";
+            }else if(getintentpos.equals("8")){
+                getintent = "shampoo/";
             }
         }
     }
@@ -161,11 +180,11 @@ public class StoreListActivity extends AppCompatActivity{
             try{
                 String site_url_json;
                 if(SaveSharedPreference.getSpecie(MainActivity.getInstance())=="") {
-                    site_url_json = DjangoApi.root + "feed/";
+                    site_url_json = DjangoApi.root + getintent;
                     flag = true;
                 }
                 else{
-                    site_url_json = DjangoApi.root + "ranking/";
+                    site_url_json = DjangoApi.root + getintent;
                     flag = false;
                 }
                 URL url = new URL(site_url_json);

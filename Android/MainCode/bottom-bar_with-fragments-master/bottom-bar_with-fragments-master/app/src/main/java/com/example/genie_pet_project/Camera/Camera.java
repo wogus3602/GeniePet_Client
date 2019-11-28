@@ -68,6 +68,12 @@ public class Camera extends AppCompatActivity {
 
         imageView = findViewById(R.id.get_imageview);
         Glide.with(this).load(R.drawable.dog_goqual).into(imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takePhoto();
+            }
+        });
 
         textView = findViewById(R.id.textView2);
         bt_camera.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +186,8 @@ public class Camera extends AppCompatActivity {
         // 카메라 //
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             bitmap = BitmapFactory.decodeFile(imageFilePath);
+            Bitmap.createScaledBitmap(bitmap, 224,224,true);
+
             ExifInterface exifInterface = null;
 
             try {

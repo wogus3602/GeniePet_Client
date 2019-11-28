@@ -1,6 +1,5 @@
 package com.example.genie_pet_project.network;
 
-
 import com.example.genie_pet_project.model.Login;
 import com.example.genie_pet_project.model.PostModel;
 import com.example.genie_pet_project.model.RegisterModel;
@@ -17,7 +16,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 
 public interface DjangoApi {
-    String root = "http://4d61e8f8.ngrok.io/";  // 기본주소
+    String root = "http://e83766f9.ngrok.io/";  // 기본주소
     String ImageUpload = root + "pot/";
     String LoginPage = root + "auth/";  //로그인 페이지
     String RegisterPage = root + "auth/";  // 회원가입 페이지
