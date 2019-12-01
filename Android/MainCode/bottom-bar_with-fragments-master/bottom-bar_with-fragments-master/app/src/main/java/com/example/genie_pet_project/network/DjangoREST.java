@@ -66,7 +66,6 @@ public class DjangoREST {
                     MyResult = response.body().string();
                     setMyResult(MyResult);
                     SaveSharedPreference.setSpecie(MainActivity.getInstance(),MyResult);
-                    Log.d("11111",""+response.raw());
                     if(response.isSuccessful()) {
                         Camera.getInstance().showMessage();
                     }

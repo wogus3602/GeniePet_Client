@@ -149,7 +149,7 @@ public class StoreListActivity extends AppCompatActivity{
                 mTextview.setTextColor(Color.parseColor(strColor));
                 mTextview.setText("프로필 등록을 해주시면 정확한 추천을 해드리겠습니다.");
             }else {
-                mTextview.setText(SaveSharedPreference.getDogName(MainActivity.getInstance()) + " 에게 맞춤 추천 상품입니다.");
+                mTextview.setText(SaveSharedPreference.getDogName(MainActivity.getInstance()) + "에게 맞춤 추천 상품입니다.");
             }
         }
         if(check){

@@ -206,7 +206,7 @@ public class Camera extends AppCompatActivity {
                 exifDegree = 0;
             }
             setImage();
-            ((ImageView) findViewById(R.id.get_imageview)).setImageBitmap(rotate(bitmap, 90));
+            ((ImageView) findViewById(R.id.get_imageview)).setImageBitmap(rotate(bitmap, exifDegree));
         }
     }
 
