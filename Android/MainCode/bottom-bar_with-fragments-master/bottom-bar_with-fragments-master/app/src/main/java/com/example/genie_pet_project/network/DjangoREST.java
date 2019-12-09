@@ -10,11 +10,13 @@ import com.example.genie_pet_project.model.PostModel;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -44,9 +46,17 @@ public class DjangoREST {
 
     //이미지 Django에 올리기
     public void uploadFoto(String storage) {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .build();
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl(DjangoApi.ImageUpload)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
                 .build();
         postApi= retrofit.create(DjangoApi.class);
         String image_path = storage;

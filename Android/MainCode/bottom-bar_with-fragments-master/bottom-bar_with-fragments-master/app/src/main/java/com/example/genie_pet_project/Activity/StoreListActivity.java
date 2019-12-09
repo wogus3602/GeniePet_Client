@@ -143,12 +143,13 @@ public class StoreListActivity extends AppCompatActivity{
             mTextview.setText("로그인을 해주세요");
             check = false;
         }else{
-            check = true;
             if(SaveSharedPreference.getSpecie(MainActivity.getInstance())==""){
                 String strColor = "#FF0004";
                 mTextview.setTextColor(Color.parseColor(strColor));
                 mTextview.setText("프로필 등록을 해주시면 정확한 추천을 해드리겠습니다.");
+                check =false;
             }else {
+                check=true;
                 mTextview.setText(SaveSharedPreference.getDogName(MainActivity.getInstance()) + "에게 맞춤 추천 상품입니다.");
             }
         }
@@ -193,7 +194,7 @@ public class StoreListActivity extends AppCompatActivity{
                     urlconnection.setRequestMethod("GET");
                     urlconnection.connect();
                 }else{
-                    String body = "user_dog=john";
+                    String body = "user_dog=" + SaveSharedPreference.getSpecie(MainActivity.getInstance());
 
                     urlconnection = (HttpURLConnection) url.openConnection();
                     urlconnection.setRequestMethod("POST");

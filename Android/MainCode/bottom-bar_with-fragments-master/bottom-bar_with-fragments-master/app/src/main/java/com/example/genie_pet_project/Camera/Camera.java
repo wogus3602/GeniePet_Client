@@ -186,7 +186,8 @@ public class Camera extends AppCompatActivity {
         // 카메라 //
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             bitmap = BitmapFactory.decodeFile(imageFilePath);
-            Bitmap.createScaledBitmap(bitmap, 224,224,true);
+            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(),new Matrix(),true);
+            //Bitmap.createScaledBitmap(bitmap, 224,224,true);
 
             ExifInterface exifInterface = null;
 
