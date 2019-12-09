@@ -20,6 +20,8 @@
 |2019.11.22~25  |     CartPage추가 및 CartPage기능추가 및 AppBar추가    |   
 |2019.11.25~  |    APP실행 오류 해결 및 UI    |   
 |2019.11.28  |    Camera 이미지 클릭시 카메라 이동, 카테고리 추가, UI변경    |   
+|2019.12.1  |    앱 테스트 및 에러 수정    |   
+|2019.12.4  |        |   
 
 ## 개발환경
 <img src="./picture/p3.png" >
@@ -30,7 +32,7 @@
 
 
 ---
-# 사진(UI 변경중)
+# 사진
 <div>
 <img src="./picture/android_2.png" width="270" height="500">
 <img src="./picture/p2.png" width="270" height="500">
